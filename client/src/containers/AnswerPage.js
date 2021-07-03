@@ -15,7 +15,7 @@ const AnswerPage = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         if(exampleWord === answer){
-            console.log('correct', answer)
+            console.log('right', answer)
         }
         else{
             console.log('wrong')
