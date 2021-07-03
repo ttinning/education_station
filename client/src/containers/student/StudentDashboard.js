@@ -14,10 +14,12 @@ const StudentDashboard = () => {
             .then(result => setTopics(result))
     }, [])
     return (
-        <div>
-            <h2>This is the student dashboard</h2>
-            <TopicList topics={topics}></TopicList>
-        </div>
+        <section className="dashboard">
+            <div>
+                <h2>This is the student dashboard</h2>
+                <TopicList topics={topics}></TopicList>
+            </div>
+        </section>
     )
 }
 

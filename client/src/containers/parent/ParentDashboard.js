@@ -31,7 +31,7 @@ const ParentDashboard = () => {
     }, [])
 
     return (
-        <section>
+        <section className="dashboard">
             
             <section id="account-details">
                 <h2>Account details</h2>

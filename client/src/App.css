@@ -5,10 +5,11 @@
   padding: 0;
 }
 
+/* Nav Bar*/
 
 nav {
   height: 4rem;
-  background-color: #3f3f3f;
+  background-color: #0d0221;
   color: white;
   display: flex;
   align-items: center;
@@ -25,11 +26,30 @@ nav > h1 {
 }
 
 a {
-  color: white;
+  color: #f3f3f3;
 }
 
 a:visited {
   color: white;
+}
+
+/* Landing Page */
+
+#landing-page {
+  background-color: #c2e7d9;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content:space-evenly;
+}
+
+#landing-page > a > button {
+  padding: 8rem;
+  border-radius: 2rem;
+  font-size: 4rem;
+  font-family: "Barrio";
+  background-color: #26408B;
+  color: #f3f3f3;
 }
 
 /* .App {
