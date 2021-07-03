@@ -4,7 +4,7 @@ import TopicService from "../../services/TopicService";
 
 const ParentDashboard = () => {
     
-    const [topics, setTopics] = useState([{"title": "animals", "wordList": ["dog", "frog", "cat"], "_id":"1243"}])
+    const [topics, setTopics] = useState([])
     
     useEffect(() => {
         TopicService.getTopics()
