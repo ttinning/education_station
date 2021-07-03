@@ -32,9 +32,10 @@ const ParentDashboard = () => {
 
     return (
         <section className="dashboard">
+            <h2>Parent Dashboard</h2>
             
             <section id="account-details">
-                <h2>Account details</h2>
+                <h3>Account details</h3>
                 <p>Parent: {accounts[0].parent.name}</p>
                 <p>email: {accounts[0].parent.email}</p>
                 <p>Student: {accounts[0].student.name}</p>
