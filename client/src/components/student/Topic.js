@@ -1,14 +1,15 @@
-import {Link, useParams} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 const Topic = ({topic}) => {
 
-     
     return (
-        
         <div>
             <h4>{topic.title}</h4>
-            <Link to={`/student/quiz/${topic.title}`} topic={topic}><button>{topic.title}</button></Link> 
-
+            <Link to={{
+                    pathname: `/student/${topic.title}`,
+                    state: {topic}
+                }}><button>{topic.title}</button>
+            </Link> 
         </div>
     )
 }

@@ -15,8 +15,8 @@ function App() {
         <Switch>
         <Route path='/' component={LandingPage} exact />
         <Route path='/parent' component={ParentDashboard} />
-        <Route path='/student' component={StudentDashboard} />
-        <Route path='/student/quiz/:topic.title' component={QuizPage}/>
+        <Route path='/student' exact component={StudentDashboard} />
+        <Route path='/student/:topic' exact component={QuizPage}/>
         </Switch>
       </main>   
     </Router> 

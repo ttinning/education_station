@@ -1,13 +1,14 @@
-import Topic from "./Topic"
+import { useLocation } from "react-router-dom"
 
-const QuizPage = ({topic}) => {
+const QuizPage = () => {
 
-
+    const data = useLocation()
+    console.log(data.state.topic)
 
     return(
         <div>
-            <p>{topic.word_list}</p>
-            <p>Quizpage</p>
+            {/* <p>{topic.word_list}</p> */}
+            <p>This is the Quizpage</p>
         </div>
         
 
