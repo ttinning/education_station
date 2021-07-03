@@ -1,8 +1,8 @@
 
 
-const Word = () => {
+const Word = ({word}) => {
     return (
-        <p> a word</p>
+        <li>{word}</li>
     )
 };
 

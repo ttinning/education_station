@@ -9,7 +9,7 @@ const TopicList = ({topics}) => {
 
     return (
         <div>
-            <h1>This is the Parent Topic List</h1>
+            <h1>Topic categories:</h1>
             <ul>
                 {listItems}
             </ul>
