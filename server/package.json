@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server:dev": "nodemon server.js"
+    "server:dev": "nodemon server.js",
+    "seeds": "mongo < db/seeds.js"
   },
   "keywords": [],
   "author": "",
