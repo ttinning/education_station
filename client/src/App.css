@@ -1,4 +1,27 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#navbar {
+  height: 4rem;
+  background-color: #3f3f3f;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content:flex-end;
+  padding-right: 3rem;
+}
+
+a {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +58,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
