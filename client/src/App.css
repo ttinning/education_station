@@ -70,4 +70,19 @@ a:visited {
 .topics-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-};
+}
+
+.topic-buttons-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  justify-items: center;
+}
+
+.topic-button {
+  margin: 1rem;
+  padding: 2rem;
+  font-family: "Barrio";
+  border-radius: 2em;
+  color: #f3f3f3;
+  background-color: #BF6900;
+}

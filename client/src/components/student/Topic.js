@@ -3,14 +3,13 @@ import {Link} from 'react-router-dom'
 const Topic = ({topic}) => {
 
     return (
-        <div>
-            <h4>{topic.title}</h4>
+        <li>
             <Link to={{
                     pathname: `/student/${topic.title}`,
                     state: {topic}
-                }}><button>{topic.title}</button>
+                }}><button className="topic-button">{topic.title.toUpperCase()}</button>
             </Link> 
-        </div>
+        </li>
     )
 }
 

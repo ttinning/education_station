@@ -9,8 +9,8 @@ const TopicList = ({topics}) => {
 
     return (
         <div>
-            <h1>This is the Student Topic List</h1>
-            <ul>
+            <h3>Topics</h3>
+            <ul className="topic-buttons-container">
                 {listItems}
             </ul>
         </div>

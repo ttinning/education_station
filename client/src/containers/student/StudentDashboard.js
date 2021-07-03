@@ -15,10 +15,8 @@ const StudentDashboard = () => {
     }, [])
     return (
         <section className="dashboard">
-            <div>
-                <h2>This is the student dashboard</h2>
+                <h2>Student Dashboard</h2>
                 <TopicList topics={topics}></TopicList>
-            </div>
         </section>
     )
 }
