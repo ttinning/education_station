@@ -1,16 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Barrio&family=Cabin+Sketch&family=Modak&display=swap');
+
 * {
   margin: 0;
   padding: 0;
 }
 
-#navbar {
+
+nav {
   height: 4rem;
   background-color: #3f3f3f;
   color: white;
   display: flex;
   align-items: center;
-  justify-content:flex-end;
-  padding-right: 3rem;
+  font-family: "Cabin Sketch";
+  width: 100%;
+  justify-content: space-between;
+}
+#navbar {
+  margin-right: 3rem;
+}
+
+nav > h1 {
+  margin-left: 3rem;
 }
 
 a {
