@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:5000/api/topic';
+const baseURL = 'http://localhost:5000/api/topics';
 
 const TopicService = {
     getTopics() {
