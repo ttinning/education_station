@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import ParentDashboard from './containers/parent/ParentDashboard';
-import StudentDashboard from './components/student/StudentDashboard';
+import StudentDashboard from './containers/student/StudentDashboard';
 
 function App() {
   return (
