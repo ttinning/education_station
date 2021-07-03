@@ -14,6 +14,13 @@ MongoClient.connect('mongodb://localhost:27017').then((client) => {
     app.use('/api/accounts', accountRouter);
 }) .catch(console.error);
 
+MongoClient.connect('mongodb://localhost:27017').then((client) => {
+    const db = client.db('education_hub');
+    const topicCollection = db.collection('topics');
+    const topicRouter = createRouter(topicCollection);
+    app.use('/api/topics', topicRouter)
+}) .catch(console.error)
+
 app.listen(5000, function() {
     console.log(`Listening on port ${ this.address().port}`);
 });
