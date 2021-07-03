@@ -1,7 +1,7 @@
 use education_hub;
 db.dropDatabase();
 
-db.account.insertMany([
+db.accounts.insertMany([
     {
         parent: {
             name: "Sue",
