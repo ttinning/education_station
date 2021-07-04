@@ -15,10 +15,11 @@ const ParentDashboard = () => {
             .then(result => setAccounts(result))
     }, [])
 
+
     return (
         <section className="dashboard">
             <h2>Parent Dashboard</h2>
-            
+            { accounts.length > 0 ?
             <section id="account-details">
                 <h3>Account details</h3>
                 <p>Parent: {accounts[0].parent.name}</p>
@@ -27,7 +28,7 @@ const ParentDashboard = () => {
                 <p>Age: {accounts.[0].student.age}</p>
                 <h3>Learning status</h3>
                 <p>Animal words : {accounts.[0].student.learning_status.animals}</p>
-            </section>
+            </section> : null}
             
             <TopicList topics={topics}></TopicList>
         </section>
