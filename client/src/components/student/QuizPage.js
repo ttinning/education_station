@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
+import WordService from "../../services/WordService"
 
 const QuizPage = () => {
 
@@ -8,7 +9,14 @@ const QuizPage = () => {
 
     const [questionNumber, setQuestionNumber] = useState(0);
     const [answer, setAnswer] = useState("")
+    const [wordInfo, setWordInfo] = useState({})
 
+    useEffect(() => {
+        WordService.getWordInfo(topic.word_list[questionNumber])
+            .then(res => setWordInfo(res))
+            // .then(wordImage = wordInfo.definitions[0].image_url)
+    }, [questionNumber]);
+    
     // const [word, setword] = useState(topic.word_list[questionNumber]);
 
     // useEffect(() => {
@@ -41,13 +49,19 @@ const QuizPage = () => {
 
     const checkAnswer = (event) => {
         setAnswer(event.target.value.toLowerCase())
-        // console.log(quizWord)
     }
 
     return(
         <div>
-            <p>{randomWord}</p>
-            <p>This is the Quizpage</p>
+            <h2>{topic.title} quiz</h2>
+            <p>{topic.word_list[questionNumber]}</p>
+            {Object.keys(wordInfo).length > 0 ? 
+            <div>
+                <img src={wordInfo.definitions[0].image_url}></img> 
+                <p>{wordInfo.definitions[0].definition}</p>
+                <p>{letterRandomise(quizWord)}</p>
+            </div>
+            : null}
             <form id="answer-input" onSubmit={handleSubmit(quizWord)}>
                 <input type="text" onChange={checkAnswer}></input>
                 {/* <button type="submit" >Submit</button> */}

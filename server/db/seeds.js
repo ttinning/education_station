@@ -10,9 +10,12 @@ db.accounts.insertMany([
         student: {
             name: "Sara",
             age: 6,
-            learning_status: {
-                animals: "not started"
-            }
+            completed_topics: [
+                {
+                    title: "animals",
+                    words_first_time: ["tiger", "dog"]
+                }
+            ]
         }
     },
 ])
@@ -21,5 +24,9 @@ db.topics.insertMany([
     {
         title: "animals",
         word_list: ["tiger", "dog", "cat", "koala", "chicken", "turtle", "whale", "owl", "rooster", "pigeon", "zebra", "fox"]
+    },
+    {
+        title: "vehicles",
+        word_list: ["car", "train", "aeroplane", "bicycle", "crane", "motorbike", "tram", "lorry", "tractor", "scooter", "helicopter", "boat"]
     }
 ])
