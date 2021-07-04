@@ -1,33 +1,18 @@
 import { useState, useEffect } from "react";
 import TopicList from "../../components/parent/TopicList";
 import TopicService from "../../services/TopicService";
-// import AccountsService from "../../services/AccountsService";
+import AccountsService from "../../services/AccountsService";
 
 const ParentDashboard = () => {
     
     const [topics, setTopics] = useState([])
-    const [accounts, setAccounts] = useState([
-        {
-        "_id": "60e06023cfc77651299f6b23",
-        "parent": {
-        "name": "Sue",
-        "email": "sueparker@hotmail.com"
-        },
-        "student": {
-        "name": "Sara",
-        "age": 6,
-        "learning_status": {
-        "animals": "not started"
-        }
-        }
-        }
-        ]);
+    const [accounts, setAccounts] = useState([]);
     
     useEffect(() => {
         TopicService.getTopics()
             .then(result => setTopics(result))
-        // AccountsService.getAccounts()
-        //     .then(result => setAccounts(result))
+        AccountsService.getAccounts()
+            .then(result => setAccounts(result))
     }, [])
 
     return (
