@@ -18,10 +18,24 @@ const QuizPage = () => {
         setQuestionNumber(questionNumber + 1)
     }
 
+    const quizWord = topic.word_list[questionNumber]
+
+    const letterRandomise = (quizWord) => {
+        let shuffleWord = '';
+        quizWord = quizWord.split('');
+        while (quizWord.length > 0) {
+            shuffleWord += quizWord.splice(quizWord.length * Math.random() << 0,1);
+        }
+        return shuffleWord;
+    }
+
+    console.log(quizWord)
+    console.log(letterRandomise(quizWord))
+
 
     return(
         <div>
-            <p>{topic.word_list[questionNumber]}</p>
+            <p>{letterRandomise(quizWord)}</p>
             <p>This is the Quizpage</p>
             <button onClick={handleNextClick}>Next</button>
         </div>
