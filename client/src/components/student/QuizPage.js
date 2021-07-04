@@ -10,18 +10,17 @@ const QuizPage = () => {
     const [questionNumber, setQuestionNumber] = useState(0);
     const [answer, setAnswer] = useState("")
     const [wordInfo, setWordInfo] = useState({})
+    const [randomWord, setRandomWord] = useState('')
 
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
             .then(res => setWordInfo(res))
+            .then(letterRandomise(quizWord))
             // .then(wordImage = wordInfo.definitions[0].image_url)
     }, [questionNumber]);
     
     // const [word, setword] = useState(topic.word_list[questionNumber]);
 
-    // useEffect(() => {
-    //     setword(topic.word_list[questionNumber])
-    // }, [questionNumber])
 
     const handleNextClick = () => {
         document.getElementById("answer-input").reset()
@@ -36,10 +35,9 @@ const QuizPage = () => {
         while (quizWord.length > 0) {
             shuffleWord += quizWord.splice(quizWord.length * Math.random() << 0,1);
         }
-        return shuffleWord;
+        setRandomWord(shuffleWord);
+        // return shuffleWord
     }
-
-    const randomWord = letterRandomise(quizWord)
 
     const handleSubmit = (quizWord) => {
         if (answer == quizWord) {
@@ -59,7 +57,7 @@ const QuizPage = () => {
             <div>
                 <img src={wordInfo.definitions[0].image_url}></img> 
                 <p>{wordInfo.definitions[0].definition}</p>
-                <p>{letterRandomise(quizWord)}</p>
+                <p>{randomWord}</p>
             </div>
             : null}
             <form id="answer-input" onSubmit={handleSubmit(quizWord)}>

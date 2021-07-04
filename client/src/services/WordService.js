@@ -1,4 +1,4 @@
-import owlbotAuth from "./auth";
+import owlbotAuth from "./auth.js";
 
 const baseURL = 'https://owlbot.info/api/v4/dictionary/';
 
