@@ -7,6 +7,7 @@ const QuizPage = () => {
     const topic = data.state.topic
 
     const [questionNumber, setQuestionNumber] = useState(0);
+    const [answer, setAnswer] = useState("")
 
     // const [word, setword] = useState(topic.word_list[questionNumber]);
 
@@ -15,6 +16,7 @@ const QuizPage = () => {
     // }, [questionNumber])
 
     const handleNextClick = () => {
+        document.getElementById("answer-input").reset()
         setQuestionNumber(questionNumber + 1)
     }
 
@@ -29,14 +31,34 @@ const QuizPage = () => {
         return shuffleWord;
     }
 
+    const randomWord = letterRandomise(quizWord)
+
+    const handleSubmit = (quizWord) => {
+        if (answer == quizWord) {
+            console.log('correct')
+        }
+    }
+
+    const checkAnswer = (event) => {
+        setAnswer(event.target.value.toLowerCase())
+        // console.log(quizWord)
+    }
 
     return(
         <div>
-            <p>{letterRandomise(quizWord)}</p>
+            <p>{randomWord}</p>
             <p>This is the Quizpage</p>
+            <form id="answer-input" onSubmit={handleSubmit(quizWord)}>
+                <input type="text" onChange={checkAnswer}></input>
+                {/* <button type="submit" >Submit</button> */}
+            </form>
+            {/* <form>
+                <input type="text" onSubmit={handleSubmit} />
+                <input value="submit" type="submit" onSubmit={checkWord(answer, quizWord)}/>
+            </form> */}
             <button onClick={handleNextClick}>Next</button>
         </div>
-        
+
 
     )
 }
