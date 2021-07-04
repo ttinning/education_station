@@ -1,12 +1,28 @@
 import { useState } from "react";
+import Word from "./Word";
 
 const TopicForm = ({addNewTopic}) => {
 
     const [formData, setFormData] = useState({});
 
+
     const onChange = (evt) => {
         formData[evt.target.id] = evt.target.value;
         setFormData(formData);
+    };
+
+    const formatFormData = (evt) => {
+        evt.preventDefault()
+
+        let words = Object.values(formData);
+        words.pop();
+        console.log(words)
+
+        let formattedData = {
+            "title": formData.title,
+            "word-list": words
+        };
+        console.log("formatted data", formattedData)
     };
 
     
@@ -15,7 +31,7 @@ const TopicForm = ({addNewTopic}) => {
     return (
         <div>
             <h2>Topic form</h2>
-            <form>
+            <form onSubmit={formatFormData}>
                 <label htmlFor="title">Topic title</label>
                 <input onChange={onChange} type="text" id="title" required></input>
                 <h3>Word list</h3>
@@ -39,6 +55,8 @@ const TopicForm = ({addNewTopic}) => {
                 <input onChange={onChange} type="text" id="word9"></input>
                 <label htmlFor="word10">10.</label>
                 <input onChange={onChange} type="text" id="word10"></input>
+
+                <button type="submit">Save topic</button>
             </form>
         </div>
     );
