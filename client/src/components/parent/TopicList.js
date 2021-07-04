@@ -9,8 +9,8 @@ const TopicList = ({topics}) => {
 
     return (
         <div>
-            <h1>Topic categories:</h1>
-            <ul>
+            <h2>Topic categories:</h2>
+            <ul className="topics-list">
                 {listItems}
             </ul>
         </div>

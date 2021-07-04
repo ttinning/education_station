@@ -1,38 +1,88 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Barrio&family=Cabin+Sketch&family=Modak&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* Nav Bar*/
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav {
+  height: 4rem;
+  background-color: #0d0221;
+  color: white;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-family: "Cabin Sketch";
+  width: 100%;
+  justify-content: space-between;
+}
+#navbar {
+  margin-right: 3rem;
+}
+
+nav > h1 {
+  margin-left: 3rem;
+}
+
+a {
+  color: #f3f3f3;
+}
+
+a:visited {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Landing Page */
+
+#landing-page {
+  background-color: #E8DB7D;
+  height: calc(100vh - 4rem);
+  display: flex;
+  align-items: center;
+  justify-content:space-evenly;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#landing-page > a > button {
+  padding: 8rem;
+  border-radius: 2rem;
+  font-size: 4rem;
+  font-family: "Barrio";
+  background-color: #26408B;
+  color: #f3f3f3;
+}
+
+/* Dashboards */
+
+.dashboard {
+  background-color: #E8DB7D;
+  font-family: "Cabin Sketch";
+  padding-left: 2rem;
+  padding-top: 1rem;
+  height: 100vh;
+}
+
+.dashboard h2, h3, p, li {
+  margin: 1rem;
+}
+
+.topics-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.topic-buttons-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  justify-items: center;
+}
+
+.topic-button {
+  margin: 1rem;
+  padding: 2rem;
+  font-family: "Barrio";
+  border-radius: 2em;
+  color: #f3f3f3;
+  background-color: #BF6900;
 }
