@@ -8,7 +8,6 @@ const Topic = ({topic, accounts}) => {
 
     
     
-    
     return (
         
         <div>

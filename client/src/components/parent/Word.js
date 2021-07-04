@@ -4,7 +4,6 @@ const Word = ({word, accounts}) => {
 
     const completedWords = accounts[0].student.completed_topics[0].words_first_time;
    
-    console.log(completedWords);
     const calculateCompletedStatus = function() {
         
         for (let completedWord of completedWords) {
