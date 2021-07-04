@@ -2,9 +2,6 @@ import {useState, useEffect} from 'react'
 import TopicService from "../../services/TopicService";
 import TopicList from "../../components/student/TopicList";
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-
 const StudentDashboard = () => {
 
     const [topics, setTopics] = useState([])
