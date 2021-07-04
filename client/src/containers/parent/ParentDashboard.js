@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import TopicList from "../../components/parent/TopicList";
 import TopicService from "../../services/TopicService";
 import AccountsService from "../../services/AccountsService";
+import TopicForm from "../../components/parent/TopicForm";
 
 const ParentDashboard = () => {
     
@@ -15,7 +16,9 @@ const ParentDashboard = () => {
             .then(result => setAccounts(result))
     }, [])
 
-
+    const addNewTopic = (newTopic) => {
+        return
+    };
 
 
     return (
@@ -30,6 +33,8 @@ const ParentDashboard = () => {
                 <p>Age: {accounts.[0].student.age}</p>
                 
             </section> : null}
+
+            <TopicForm addNewTopic={addNewTopic}></TopicForm>
             
             <TopicList topics={topics}></TopicList>
         </section>
