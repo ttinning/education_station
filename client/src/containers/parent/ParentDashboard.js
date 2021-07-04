@@ -26,6 +26,7 @@ const ParentDashboard = () => {
                 <p>email: {accounts[0].parent.email}</p>
                 <p>Student: {accounts[0].student.name}</p>
                 <p>Age: {accounts.[0].student.age}</p>
+
             </section> : null}
             
             <TopicList topics={topics} accounts={accounts}></TopicList>
