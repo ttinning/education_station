@@ -64,12 +64,8 @@ const QuizPage = () => {
             : null}
             <form id="answer-input" onSubmit={handleSubmit(quizWord)}>
                 <input type="text" onChange={checkAnswer}></input>
-                {/* <button type="submit" >Submit</button> */}
             </form>
-            {/* <form>
-                <input type="text" onSubmit={handleSubmit} />
-                <input value="submit" type="submit" onSubmit={checkWord(answer, quizWord)}/>
-            </form> */}
+
             <button onClick={handleNextClick}>Next</button>
         </div>
 
