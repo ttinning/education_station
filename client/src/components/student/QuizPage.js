@@ -23,6 +23,8 @@ const QuizPage = () => {
         if (answer === quizWord) {
             setAnswerCorrect(true)
             document.getElementById("answer-input").reset()
+        } else if (answer.length === quizWord.length) {
+            document.getElementById("answer-input").reset()
         }
     }, [answer])
     
@@ -60,7 +62,7 @@ const QuizPage = () => {
     }
 
     return(
-        <div>
+        <section id="quiz-body">
             <h2>{topic.title} quiz</h2>
             
             {Object.keys(wordInfo).length > 0 ? <img src={wordInfo.definitions[0].image_url } alt={wordInfo.word}></img> : null}
@@ -71,19 +73,22 @@ const QuizPage = () => {
             <button onClick={handleRevealClick}>Reveal answer</button>
             {showAnswer ? <p>The answer is {wordInfo.word}</p> : null}
 
+            
+
+            <form id="answer-input">
+                <label htmlFor="answer-box">Enter your answer here:</label>
+                <input id="answer-box" type="text" onChange={checkAnswer}></input>
+            </form>
+
             {answerCorrect ? 
                 <div>
                     <h2>CORRECT!</h2>
                     <p>{wordInfo.definitions[0].definition}</p>
                 </div> : null}
 
-            <form id="answer-input">
-                <input type="text" onChange={checkAnswer}></input>
-            </form>
-
             {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ? <button onClick={handleNextClick}>Next</button> : <button>Complete Topic!</button> }
 
-        </div>
+        </section>
 
 
     )
