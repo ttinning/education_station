@@ -24,5 +24,9 @@ db.topics.insertMany([
     {
         title: "animals",
         word_list: ["tiger", "dog", "cat", "koala", "chicken", "turtle", "whale", "owl", "rooster", "pigeon", "zebra", "fox"]
+    },
+    {
+        title: "vehicles",
+        word_list: ["car", "train", "aeroplane", "bicycle", "crane", "motorbike", "tram", "lorry", "tractor", "scooter", "helicopter", "boat"]
     }
 ])
