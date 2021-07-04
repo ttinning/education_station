@@ -2,7 +2,7 @@
 
 const Word = ({word, accounts}) => {
 
-    const completedWords = accounts[0].student.learning_status.completed_topics[0].words_first_time;
+    const completedWords = accounts[0].student.completed_topics[0].words_first_time;
    
     console.log(completedWords);
     const calculateCompletedStatus = function() {
@@ -20,7 +20,7 @@ const Word = ({word, accounts}) => {
 
 
     return (
-        <li>{word} {completedStatus}</li>
+        <li>{word} {completedStatus} </li>
     )
 };
 
