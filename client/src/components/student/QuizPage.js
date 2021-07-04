@@ -65,7 +65,7 @@ const QuizPage = () => {
             <form id="answer-input" onSubmit={handleSubmit(quizWord)}>
                 <input type="text" onChange={checkAnswer}></input>
             </form>
-            {wordInfo.word === topic.word_list[-1] ? <button>Complete Topic!</button> : <button onClick={handleNextClick}>Next</button> }
+            {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ? <button onClick={handleNextClick}>Next</button> : <button>Complete Topic!</button> }
         </div>
 
 
