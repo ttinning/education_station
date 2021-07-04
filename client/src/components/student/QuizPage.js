@@ -14,15 +14,8 @@ const QuizPage = () => {
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
             .then(res => setWordInfo(res))
-            // .then(wordImage = wordInfo.definitions[0].image_url)
     }, [questionNumber]);
     
-    // const [word, setword] = useState(topic.word_list[questionNumber]);
-
-    // useEffect(() => {
-    //     setword(topic.word_list[questionNumber])
-    // }, [questionNumber])
-
     const handleNextClick = () => {
         document.getElementById("answer-input").reset()
         setQuestionNumber(questionNumber + 1)
@@ -57,7 +50,7 @@ const QuizPage = () => {
             <p>{topic.word_list[questionNumber]}</p>
             {Object.keys(wordInfo).length > 0 ? 
             <div>
-                <img src={wordInfo.definitions[0].image_url}></img> 
+                <img src={wordInfo.definitions[0].image_url } alt={wordInfo.word}></img> 
                 <p>{wordInfo.definitions[0].definition}</p>
                 <p>{letterRandomise(quizWord)}</p>
             </div>
@@ -65,8 +58,7 @@ const QuizPage = () => {
             <form id="answer-input" onSubmit={handleSubmit(quizWord)}>
                 <input type="text" onChange={checkAnswer}></input>
             </form>
-
-            <button onClick={handleNextClick}>Next</button>
+            {wordInfo.word !== topic.word_list[-1] ? <button onClick={handleNextClick}>Next</button> : <button>Complete Topic!</button> }
         </div>
 
 
