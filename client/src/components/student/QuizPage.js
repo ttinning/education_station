@@ -8,8 +8,9 @@ const QuizPage = () => {
     const topic = data.state.topic
 
     const [questionNumber, setQuestionNumber] = useState(0);
-    const [answer, setAnswer] = useState("")
-    const [wordInfo, setWordInfo] = useState({})
+    const [answer, setAnswer] = useState("");
+    const [wordInfo, setWordInfo] = useState({});
+    const [showHint, setShowHint]= useState(false);
 
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
@@ -19,6 +20,11 @@ const QuizPage = () => {
     const handleNextClick = () => {
         document.getElementById("answer-input").reset()
         setQuestionNumber(questionNumber + 1)
+        setShowHint(false)
+    }
+
+    const handleHintClick = () => {
+        setShowHint(true);
     }
 
     const quizWord = topic.word_list[questionNumber]
@@ -52,13 +58,14 @@ const QuizPage = () => {
             <div>
                 <img src={wordInfo.definitions[0].image_url } alt={wordInfo.word}></img> 
                 <p>{wordInfo.definitions[0].definition}</p>
-                <p>{letterRandomise(quizWord)}</p>
             </div>
             : null}
+            <button onClick={handleHintClick}>Show Hint</button>
+            {showHint ? <p>{letterRandomise(quizWord)}</p> : null}
             <form id="answer-input" onSubmit={handleSubmit(quizWord)}>
                 <input type="text" onChange={checkAnswer}></input>
             </form>
-            {wordInfo.word !== topic.word_list[-1] ? <button onClick={handleNextClick}>Next</button> : <button>Complete Topic!</button> }
+            {wordInfo.word === topic.word_list[-1] ? <button>Complete Topic!</button> : <button onClick={handleNextClick}>Next</button> }
         </div>
 
 
