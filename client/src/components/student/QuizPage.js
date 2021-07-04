@@ -11,6 +11,7 @@ const QuizPage = () => {
     const [answer, setAnswer] = useState("");
     const [wordInfo, setWordInfo] = useState({});
     const [showHint, setShowHint]= useState(false);
+    const [showAnswer, setShowAnswer]= useState(false);
 
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
@@ -21,10 +22,15 @@ const QuizPage = () => {
         document.getElementById("answer-input").reset()
         setQuestionNumber(questionNumber + 1)
         setShowHint(false)
+        setShowAnswer(false);
     }
 
     const handleHintClick = () => {
         setShowHint(true);
+    }
+
+    const handleRevealClick = () => {
+        setShowAnswer(true);
     }
 
     const quizWord = topic.word_list[questionNumber]
@@ -53,15 +59,20 @@ const QuizPage = () => {
     return(
         <div>
             <h2>{topic.title} quiz</h2>
-            <p>{topic.word_list[questionNumber]}</p>
+            
             {Object.keys(wordInfo).length > 0 ? 
             <div>
                 <img src={wordInfo.definitions[0].image_url } alt={wordInfo.word}></img> 
                 <p>{wordInfo.definitions[0].definition}</p>
             </div>
             : null}
+            
             <button onClick={handleHintClick}>Show Hint</button>
             {showHint ? <p>{letterRandomise(quizWord)}</p> : null}
+
+            <button onClick={handleRevealClick}>Reveal answer</button>
+            {showAnswer ? <p>The answer is {wordInfo.word}</p> : null}
+
             <form id="answer-input" onSubmit={handleSubmit(quizWord)}>
                 <input type="text" onChange={checkAnswer}></input>
             </form>
