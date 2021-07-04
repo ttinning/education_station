@@ -29,9 +29,6 @@ const QuizPage = () => {
         return shuffleWord;
     }
 
-    console.log(quizWord)
-    console.log(letterRandomise(quizWord))
-
 
     return(
         <div>
