@@ -12,17 +12,26 @@ const QuizPage = () => {
     const [wordInfo, setWordInfo] = useState({});
     const [showHint, setShowHint]= useState(false);
     const [showAnswer, setShowAnswer]= useState(false);
+    const [answerCorrect, setAnswerCorrect] = useState(false);
 
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
             .then(res => setWordInfo(res))
     }, [questionNumber]);
+
+    useEffect(() => {
+        if (answer === quizWord) {
+            setAnswerCorrect(true)
+            document.getElementById("answer-input").reset()
+        }
+    }, [answer])
     
     const handleNextClick = () => {
         document.getElementById("answer-input").reset()
         setQuestionNumber(questionNumber + 1)
         setShowHint(false)
         setShowAnswer(false);
+        setAnswerCorrect(false);
     }
 
     const handleHintClick = () => {
@@ -46,12 +55,6 @@ const QuizPage = () => {
 
     const randomWord = letterRandomise(quizWord)
 
-    const handleSubmit = (quizWord) => {
-        if (answer == quizWord) {
-            console.log('correct')
-        }
-    }
-
     const checkAnswer = (event) => {
         setAnswer(event.target.value.toLowerCase())
     }
@@ -60,12 +63,7 @@ const QuizPage = () => {
         <div>
             <h2>{topic.title} quiz</h2>
             
-            {Object.keys(wordInfo).length > 0 ? 
-            <div>
-                <img src={wordInfo.definitions[0].image_url } alt={wordInfo.word}></img> 
-                <p>{wordInfo.definitions[0].definition}</p>
-            </div>
-            : null}
+            {Object.keys(wordInfo).length > 0 ? <img src={wordInfo.definitions[0].image_url } alt={wordInfo.word}></img> : null}
             
             <button onClick={handleHintClick}>Show Hint</button>
             {showHint ? <p>{letterRandomise(quizWord)}</p> : null}
@@ -73,10 +71,18 @@ const QuizPage = () => {
             <button onClick={handleRevealClick}>Reveal answer</button>
             {showAnswer ? <p>The answer is {wordInfo.word}</p> : null}
 
-            <form id="answer-input" onSubmit={handleSubmit(quizWord)}>
+            {answerCorrect ? 
+                <div>
+                    <h2>CORRECT!</h2>
+                    <p>{wordInfo.definitions[0].definition}</p>
+                </div> : null}
+
+            <form id="answer-input">
                 <input type="text" onChange={checkAnswer}></input>
             </form>
+
             {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ? <button onClick={handleNextClick}>Next</button> : <button>Complete Topic!</button> }
+
         </div>
 
 
