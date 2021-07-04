@@ -61,7 +61,7 @@ const QuizPage = () => {
             </div>
             : null}
             <form id="answer-input" onSubmit={handleSubmit(quizWord)}>
-                <input type="text" onChange={checkAnswer}></input>
+                <input type="text" onChange={checkAnswer} maxLength={quizWord.length}></input>
             </form>
 
             <button onClick={handleNextClick}>Next</button>
