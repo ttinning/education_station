@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Word from "./Word";
+import TopicService from "../../services/TopicService";
+import WordService from "../../services/WordService";
 
 const TopicForm = ({addNewTopic}) => {
 
@@ -11,27 +12,29 @@ const TopicForm = ({addNewTopic}) => {
         setFormData(formData);
     };
 
-    const formatFormData = (evt) => {
+    const handleFormSubmit = (evt) => {
         evt.preventDefault()
-
         let words = Object.values(formData);
-        words.pop();
-        console.log(words)
-
+        words.splice(0, 1);
+        
         let formattedData = {
             "title": formData.title,
-            "word-list": words
+            "word_list": words
         };
-        console.log("formatted data", formattedData)
+        console.log(formattedData);
+        
+        TopicService.postTopic(formattedData)
+            .then((data) => {addNewTopic(formattedData)})
+        const form = document.querySelector('#new-topic-form')
+        form.reset();
+        setFormData({});
+        
     };
-
-    
-
 
     return (
         <div>
             <h2>Topic form</h2>
-            <form onSubmit={formatFormData}>
+            <form onSubmit={handleFormSubmit} id="new-topic-form">
                 <label htmlFor="title">Topic title</label>
                 <input onChange={onChange} type="text" id="title" required></input>
                 <h3>Word list</h3>

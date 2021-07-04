@@ -17,7 +17,9 @@ const ParentDashboard = () => {
     }, [])
 
     const addNewTopic = (newTopic) => {
-        return
+        const temp = topics.map(topics => topics);
+        temp.push(newTopic);
+        setTopics(temp);
     };
 
 

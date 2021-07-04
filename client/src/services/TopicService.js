@@ -6,7 +6,7 @@ const TopicService = {
         .then(res => res.json())
     },
 
-    addTopic(topic) {
+    postTopic(topic) {
         return fetch(baseURL, {
             method: 'POST',
             body: JSON.stringify(topic),
