@@ -27,6 +27,17 @@ const QuizPage = () => {
         setQuestionNumber(questionNumber + 1)
     }
 
+    const quizWord = topic.word_list[questionNumber]
+
+    const letterRandomise = (quizWord) => {
+        let shuffleWord = '';
+        quizWord = quizWord.split('');
+        while (quizWord.length > 0) {
+            shuffleWord += quizWord.splice(quizWord.length * Math.random() << 0,1);
+        }
+        return shuffleWord;
+    }
+
     return(
         <div>
             <h2>{topic.title} quiz</h2>
@@ -35,6 +46,7 @@ const QuizPage = () => {
             <div>
                 <img src={wordInfo.definitions[0].image_url}></img> 
                 <p>{wordInfo.definitions[0].definition}</p>
+                <p>{letterRandomise(quizWord)}</p>
             </div>
             : null}
             <button onClick={handleNextClick}>Next</button>
