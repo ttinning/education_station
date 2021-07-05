@@ -8,6 +8,7 @@ const ParentDashboard = () => {
     
     const [topics, setTopics] = useState([])
     const [accounts, setAccounts] = useState([]);
+
     
     useEffect(() => {
         TopicService.getTopics()
