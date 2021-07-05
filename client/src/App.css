@@ -86,3 +86,36 @@ a:visited {
   color: #f3f3f3;
   background-color: #BF6900;
 }
+
+/* Quiz */
+
+#quiz-body {
+  padding-left: 2rem;
+  font-family: "Cabin Sketch";
+  background-color: #E8DB7D;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#quiz-body h2, img, p, button, input, label {
+  margin: 1rem;
+}
+
+#quiz-body h2 {
+  margin-top: 0;
+  padding-top: 1rem;
+}
+
+#quiz-body img {
+  width: 300px;
+}
+
+#quiz-body button {
+  padding: 1rem;
+  font-family: "Barrio";
+  border-radius: 1rem;
+  color: #f3f3f3;
+  background-color: #BF6900;
+  width: 10rem;
+}

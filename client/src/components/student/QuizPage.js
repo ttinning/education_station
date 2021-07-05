@@ -8,23 +8,42 @@ const QuizPage = () => {
     const topic = data.state.topic
 
     const [questionNumber, setQuestionNumber] = useState(0);
-    const [wordInfo, setWordInfo] = useState({})
-
+    const [answer, setAnswer] = useState('');
+    const [wordInfo, setWordInfo] = useState({});
+    const [showHint, setShowHint]= useState(false);
+    const [showAnswer, setShowAnswer]= useState(false);
+    const [answerCorrect, setAnswerCorrect] = useState(false);
+    const [randomWord, setRandomWord] = useState('')
 
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
             .then(res => setWordInfo(res))
-            // .then(wordImage = wordInfo.definitions[0].image_url)
+            .then(letterRandomise(quizWord));
     }, [questionNumber]);
 
-    // const [word, setword] = useState(topic.word_list[questionNumber]);
-
-    // useEffect(() => {
-    //     setword(topic.word_list[questionNumber])
-    // }, [questionNumber])
-
+    useEffect(() => {
+        if (answer === quizWord) {
+            setAnswerCorrect(true)
+            document.getElementById("answer-input").reset()
+        } else if (answer.length === quizWord.length) {
+            document.getElementById("answer-input").reset()
+        }
+    }, [answer])
+    
     const handleNextClick = () => {
+        document.getElementById("answer-input").reset()
         setQuestionNumber(questionNumber + 1)
+        setShowHint(false)
+        setShowAnswer(false);
+        setAnswerCorrect(false);
+    }
+
+    const handleHintClick = () => {
+        setShowHint(true);
+    }
+
+    const handleRevealClick = () => {
+        setShowAnswer(true);
     }
 
     const quizWord = topic.word_list[questionNumber]
@@ -35,23 +54,42 @@ const QuizPage = () => {
         while (quizWord.length > 0) {
             shuffleWord += quizWord.splice(quizWord.length * Math.random() << 0,1);
         }
-        return shuffleWord;
+        setRandomWord(shuffleWord);
+    }
+
+    const checkAnswer = (event) => {
+        setAnswer(event.target.value.toLowerCase())
     }
 
     return(
-        <div>
+        <section id="quiz-body">
             <h2>{topic.title} quiz</h2>
-            <p>{topic.word_list[questionNumber]}</p>
-            {Object.keys(wordInfo).length > 0 ? 
-            <div>
-                <img src={wordInfo.definitions[0].image_url}></img> 
-                <p>{wordInfo.definitions[0].definition}</p>
-                <p>{letterRandomise(quizWord)}</p>
-            </div>
-            : null}
-            <button onClick={handleNextClick}>Next</button>
-        </div>
-        
+            
+            {Object.keys(wordInfo).length > 0 ? <img src={wordInfo.definitions[0].image_url } alt={wordInfo.word}></img> : null}
+            
+            <button onClick={handleHintClick}>Show Hint</button>
+            {showHint ? <p>{randomWord}</p> : null}
+
+            <button onClick={handleRevealClick}>Reveal answer</button>
+            {showAnswer ? <p>The answer is {wordInfo.word}</p> : null}
+
+            
+
+            <form id="answer-input">
+                <label htmlFor="answer-box">Enter your answer here:</label>
+                <input id="answer-box" type="text" onChange={checkAnswer}></input>
+            </form>
+
+            {answerCorrect ? 
+                <div>
+                    <h2>CORRECT!</h2>
+                    <p>{wordInfo.definitions[0].definition}</p>
+                </div> : null}
+
+            {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ? <button onClick={handleNextClick}>Next</button> : <button>Complete Topic!</button> }
+
+        </section>
+
 
     )
 }
