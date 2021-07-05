@@ -22,7 +22,6 @@ const QuizPage = () => {
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
             .then(res => setWordInfo(res))
-            setCounter(1)
             // .then(letterRandomise(quizWord));
     }, [questionNumber]);
 
@@ -31,10 +30,12 @@ const QuizPage = () => {
             setAnswerCorrect(true)
             setAnswerIncorrect(false)
             setAnswer('')
+            setCounter(0)
             document.getElementById("answer-input").reset()
         } else if (answer.length === quizWord.length) {
             document.getElementById("answer-input").reset()
             setAnswerIncorrect(true)
+            setCounter(0)
             setAnswer('')
         }
     }, [answer])
@@ -46,6 +47,8 @@ const QuizPage = () => {
         setShowAnswer(false);
         setAnswerCorrect(false);
         setAnswerIncorrect(false);
+        setCounter(1);
+        setAnswer('')
     }
 
     const quizWord = topic.word_list[questionNumber]
@@ -85,16 +88,16 @@ const QuizPage = () => {
         AccountService.updateAccounts(accounts[0]._id, temp)
     }
 
-    // let firstBox = document.querySelector('#answer-box-0')
-    // let secondBox = document.querySelector('#answer-box-1')
-
     const handleKeyUp = (event) => {
-        if (event.target.value.length == 1) {
-                document.querySelector(`#answer-box-${counter}`).focus()
+        if (counter >= quizWord.length) {
+            setCounter(0)
+        } else if (event.target.value.length == 1) {
+            setCounter(counter +1)
+            document.querySelector(`#answer-box-${counter}`).focus()
         }
-        setCounter(counter +1)
-        console.log("Keys Up!");
-        console.log(counter)
+        console.log(event.target.value)
+        // console.log("Keys Up!");
+        // console.log(counter)
     }
         
 
