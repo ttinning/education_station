@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useLocation, Link } from "react-router-dom"
 import WordService from "../../services/WordService"
 import AccountService from '../../services/AccountsService'
+import AudioService from "../../services/AudioServices"
 
 const QuizPage = () => {
 
@@ -19,10 +20,38 @@ const QuizPage = () => {
     const [answerIncorrect, setAnswerIncorrect] = useState(false);
     const [quizWord, setQuizWord] = useState(topic.word_list[questionNumber])
 
+    /////
+
+    const [wordAudioAPI, setWordAudioAPI] = useState([]);
+
+    
+
+    const getAudioLink = () => {      
+        if (wordAudioAPI[0]) {
+            const audioLink = wordAudioAPI[0].phonetics[0].audio;
+            return {    link: audioLink,
+                        text: "click to listen"
+                    };
+        } else {
+            return {    link: null,
+                        text: "no link available"
+                    };
+        };
+    };
+
+    const audioLink = getAudioLink();
+
+    /////
+
+    useEffect(() => {
+        AudioService.getWordAudioAPI(quizWord)
+        .then(res => setWordAudioAPI(res))
+    }, [quizWord]);
+
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
             .then(res => setWordInfo(res))
-            setQuizWord(topic.word_list[questionNumber])
+        setQuizWord(topic.word_list[questionNumber])
     }, [questionNumber]);
 
     useEffect(() => {
@@ -83,6 +112,8 @@ const QuizPage = () => {
     return(
         <section id="quiz-body">
             <h2>{topic.title} quiz</h2>
+            <a href={audioLink.link} target="_blank">{audioLink.text}</a>
+
             
             {Object.keys(wordInfo).length > 0 ? <img src={wordInfo.definitions[0].image_url } alt={wordInfo.word}></img> : null}
             

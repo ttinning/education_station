@@ -60,7 +60,7 @@ a:visited {
   font-family: "Cabin Sketch";
   padding-left: 2rem;
   padding-top: 1rem;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .dashboard h2, h3, p, li {
