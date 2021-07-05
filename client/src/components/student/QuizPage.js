@@ -14,6 +14,7 @@ const QuizPage = () => {
     const [showAnswer, setShowAnswer]= useState(false);
     const [answerCorrect, setAnswerCorrect] = useState(false);
     const [randomWord, setRandomWord] = useState('')
+    const [answerIncorrect, setAnswerIncorrect] = useState(false);
 
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
@@ -24,9 +25,11 @@ const QuizPage = () => {
     useEffect(() => {
         if (answer === quizWord) {
             setAnswerCorrect(true)
+            setAnswerIncorrect(false)
             document.getElementById("answer-input").reset()
         } else if (answer.length === quizWord.length) {
             document.getElementById("answer-input").reset()
+            setAnswerIncorrect(true)
         }
     }, [answer])
     
@@ -36,6 +39,7 @@ const QuizPage = () => {
         setShowHint(false)
         setShowAnswer(false);
         setAnswerCorrect(false);
+        setAnswerIncorrect(false);
     }
 
     const handleHintClick = () => {
@@ -58,7 +62,6 @@ const QuizPage = () => {
         if (word === shuffleWord) {
             letterRandomise(quizWord)
         }
-        console.log(shuffleWord)
         setRandomWord(shuffleWord);
     }
 
@@ -89,6 +92,11 @@ const QuizPage = () => {
                 <div>
                     <h2>CORRECT!</h2>
                     <p>{wordInfo.definitions[0].definition}</p>
+                </div> : null}
+
+            {answerIncorrect ?
+                <div>
+                    <h2>TRY AGAIN!</h2>
                 </div> : null}
 
             {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ? <button onClick={handleNextClick}>Next</button> : <button>Complete Topic!</button> }
