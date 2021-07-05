@@ -83,6 +83,16 @@ const QuizPage = () => {
         AccountService.updateAccounts(accounts[0]._id, temp)
     }
 
+    const handleKeyUp = (event) => {
+        
+    }
+
+    // for (var i = 0; i < sandwiches.length; i++) {
+    //     console.log(i); // index
+    //     console.log(sandwiches[i]); // value
+    // }
+        
+
     return(
         <section id="quiz-body">
             <h2>{topic.title} quiz</h2>
@@ -99,8 +109,9 @@ const QuizPage = () => {
 
             <form id="answer-input">
                 <label htmlFor="answer-box">Enter your answer here:</label>
-                {quizWord.split('').map((letter) => {
-                    return <input maxLength='1' id="answer-box" type="text" onChange={checkAnswer}></input>
+                {/* {for (let i=0, i < quizWord.length, i++)} */}
+                {quizWord.split('').map((letter, index) => {
+                    return <input maxLength='1' className="letter-input" id={`answer-box-${index}`} type="text" onChange={checkAnswer} onKeyUp={handleKeyUp}></input>
                 })}
                 {/* <input id="answer-box" type="text" onChange={checkAnswer}></input> */}
             </form>
