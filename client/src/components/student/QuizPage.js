@@ -86,11 +86,6 @@ const QuizPage = () => {
     const handleKeyUp = (event) => {
         
     }
-
-    // for (var i = 0; i < sandwiches.length; i++) {
-    //     console.log(i); // index
-    //     console.log(sandwiches[i]); // value
-    // }
         
 
     return(
@@ -109,7 +104,6 @@ const QuizPage = () => {
 
             <form id="answer-input">
                 <label htmlFor="answer-box">Enter your answer here:</label>
-                {/* {for (let i=0, i < quizWord.length, i++)} */}
                 {quizWord.split('').map((letter, index) => {
                     return <input maxLength='1' className="letter-input" id={`answer-box-${index}`} type="text" onChange={checkAnswer} onKeyUp={handleKeyUp}></input>
                 })}
