@@ -6,6 +6,7 @@ import ParentDashboard from './containers/parent/ParentDashboard';
 import StudentDashboard from './containers/student/StudentDashboard';
 import QuizPage from './components/student/QuizPage';
 import CompletionPage from './components/student/CompletionPage';
+import DnDPage from './components/student/DnDPage';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path='/parent' component={ParentDashboard} />
         <Route path='/student' exact component={StudentDashboard} />
         <Route path='/student/:topic' exact component={QuizPage}/>
+        <Route path='/student/:topic/dnd' exact component={DnDPage}/>
         <Route path='/student/:topic/completed' component={CompletionPage}/>
         </Switch>
       </main>   

@@ -126,3 +126,16 @@ a:visited {
   background-color: #BF6900;
   width: 10rem;
 }
+
+#dnd-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.dnd-word {
+  border: solid 2px black;
+}
+
+.dnd-image {
+  border: solid 2px black;
+}
