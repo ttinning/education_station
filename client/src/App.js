@@ -7,11 +7,14 @@ import StudentDashboard from './containers/student/StudentDashboard';
 import QuizPage from './components/student/QuizPage';
 import CompletionPage from './components/student/CompletionPage';
 import DnDPage from './components/student/DnDPage';
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
 
 function App() {
   return (
-    <Router>
+    <Router>    
+      <DndProvider backend={HTML5Backend}>
       <Navbar></Navbar>
       <main>
         <Switch>
@@ -22,7 +25,8 @@ function App() {
         <Route path='/student/:topic/dnd' exact component={DnDPage}/>
         <Route path='/student/:topic/completed' component={CompletionPage}/>
         </Switch>
-      </main>   
+      </main>
+      </DndProvider>
     </Router> 
     );
     

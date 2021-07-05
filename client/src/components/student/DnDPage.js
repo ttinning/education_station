@@ -2,6 +2,9 @@ import { useState, useEffect } from "react"
 import { useLocation, Link } from "react-router-dom"
 import WordService from "../../services/WordService"
 import AccountService from '../../services/AccountsService'
+import { WordDrag } from "./DnDDrag"
+
+import { ImageDrop } from "./DnDDrop"
 
 const DnDPage = () => {
 
@@ -22,6 +25,8 @@ const DnDPage = () => {
             .then(res => setWord2Info(res))
     }, []);
 
+
+
     // useEffect(() => {
     //     topic.word_list.map((word) => {
     //         let tempArray = []
@@ -35,19 +40,19 @@ const DnDPage = () => {
  
 
     return(
-        <section id="quiz-body">
-            <h2>{topic.title} quiz</h2>
-
-            <ul id="dnd-list">
-                <li className="dnd-word">{word1Info.word}</li>
-                <li className="dnd-image"><img src={word1Info.definitions[0].image_url} alt="" /></li>
-                <li className="dnd-word">{word2Info.word}</li>
-                <li className="dnd-image"><img src={word2Info.definitions[0].image_url} alt="" /></li>
-            </ul>
+            <section id="quiz-body">
+                <h2>{topic.title} quiz</h2>
+                <ul id="dnd-list">
+                    <WordDrag />
+                    <li className="dnd-word" role="Word">{word1Info.word}</li>
+                    <ImageDrop />
+                    <li className="dnd-word">{word2Info.word}</li>
+                    {/* <li className="dnd-image"><img src={word2Info.definitions[0].image_url} alt="" /></li> */}
+                </ul>
             
-            <Link to="/student"><button>Back To Dashboard</button> </Link>
+                <Link to="/student"><button>Back To Dashboard</button> </Link>
+            </section>
 
-        </section>
 
 
     )
