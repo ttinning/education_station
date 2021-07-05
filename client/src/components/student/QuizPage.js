@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useLocation } from "react-router-dom"
+import { useLocation, Link } from "react-router-dom"
 import WordService from "../../services/WordService"
 
 const QuizPage = () => {
@@ -86,7 +86,9 @@ const QuizPage = () => {
                     <p>{wordInfo.definitions[0].definition}</p>
                 </div> : null}
 
-            {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ? <button onClick={handleNextClick}>Next</button> : <button>Complete Topic!</button> }
+            {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ? 
+            <button onClick={handleNextClick}>Next</button> : 
+            <Link to={`/student/${topic}/completed`}><button>Complete Topic!</button></Link>}
 
         </section>
 
