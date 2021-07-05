@@ -17,10 +17,12 @@ const QuizPage = () => {
     const [answerCorrect, setAnswerCorrect] = useState(false);
     const [randomWord, setRandomWord] = useState('')
     const [answerIncorrect, setAnswerIncorrect] = useState(false);
+    const [counter, setCounter] = useState(1)
 
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
             .then(res => setWordInfo(res))
+            setCounter(1)
             // .then(letterRandomise(quizWord));
     }, [questionNumber]);
 
@@ -83,8 +85,16 @@ const QuizPage = () => {
         AccountService.updateAccounts(accounts[0]._id, temp)
     }
 
+    // let firstBox = document.querySelector('#answer-box-0')
+    // let secondBox = document.querySelector('#answer-box-1')
+
     const handleKeyUp = (event) => {
-        
+        if (event.target.value.length == 1) {
+                document.querySelector(`#answer-box-${counter}`).focus()
+        }
+        setCounter(counter +1)
+        console.log("Keys Up!");
+        console.log(counter)
     }
         
 
