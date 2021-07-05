@@ -58,7 +58,6 @@ const QuizPage = () => {
         if (word === shuffleWord) {
             letterRandomise(quizWord)
         }
-        console.log(shuffleWord)
         setRandomWord(shuffleWord);
     }
 
