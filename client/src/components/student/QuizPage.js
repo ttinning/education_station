@@ -28,10 +28,12 @@ const QuizPage = () => {
         if (answer === quizWord) {
             setAnswerCorrect(true)
             setAnswerIncorrect(false)
+            setAnswer('')
             document.getElementById("answer-input").reset()
         } else if (answer.length === quizWord.length) {
             document.getElementById("answer-input").reset()
             setAnswerIncorrect(true)
+            setAnswer('')
         }
     }, [answer])
     
@@ -69,8 +71,8 @@ const QuizPage = () => {
     }
 
     const checkAnswer = (event) => {
-        setAnswer(event.target.value.toLowerCase())
-        console.log(answer)
+        setAnswer(answer.concat(event.target.value.toLowerCase()))
+        // setAnswer(event.target.value.toLowerCase())
     }
 
 
