@@ -21,7 +21,7 @@ const QuizPage = () => {
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
             .then(res => setWordInfo(res))
-            .then(letterRandomise(quizWord));
+            console.log(quizWord, typeof quizWord)
     }, [questionNumber]);
 
     useEffect(() => {
@@ -45,6 +45,7 @@ const QuizPage = () => {
     }
 
     const handleHintClick = () => {
+        letterRandomise(quizWord)
         setShowHint(true);
     }
 
