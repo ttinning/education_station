@@ -9,19 +9,6 @@ const ParentDashboard = () => {
     const [topics, setTopics] = useState([])
     const [accounts, setAccounts] = useState([]);
 
-    AccountsService.updateAccounts('60e2cb6ff9f992b30a7aface', {
-        "parent": {
-          "name": "Sue",
-          "email": "sueparker@hotmail.co.uk"
-        },
-        "student": {
-          "name": "Beth",
-          "age": 6,
-          "completed_topics": [
-            "animals"
-          ]
-        }
-      })
     
     useEffect(() => {
         TopicService.getTopics()
