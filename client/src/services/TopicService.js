@@ -4,6 +4,17 @@ const TopicService = {
     getTopics() {
         return fetch(baseURL)
         .then(res => res.json())
+    },
+
+    postTopic(topic) {
+        return fetch(baseURL, {
+            method: 'POST',
+            body: JSON.stringify(topic),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json());
     }
 }
 
