@@ -49,10 +49,14 @@ const QuizPage = () => {
     const quizWord = topic.word_list[questionNumber]
 
     const letterRandomise = (quizWord) => {
+        let word = quizWord;
         let shuffleWord = '';
         quizWord = quizWord.split('');
         while (quizWord.length > 0) {
             shuffleWord += quizWord.splice(quizWord.length * Math.random() << 0,1);
+        }
+        if (word === shuffleWord) {
+            letterRandomise(quizWord)
         }
         setRandomWord(shuffleWord);
     }
