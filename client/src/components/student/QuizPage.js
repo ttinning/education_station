@@ -19,7 +19,7 @@ const QuizPage = () => {
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
             .then(res => setWordInfo(res))
-            .then(letterRandomise(quizWord));
+            // .then(letterRandomise(quizWord));
     }, [questionNumber]);
 
     useEffect(() => {
@@ -42,15 +42,16 @@ const QuizPage = () => {
         setAnswerIncorrect(false);
     }
 
+    const quizWord = topic.word_list[questionNumber]
+
     const handleHintClick = () => {
+        letterRandomise(quizWord)
         setShowHint(true);
     }
 
     const handleRevealClick = () => {
         setShowAnswer(true);
     }
-
-    const quizWord = topic.word_list[questionNumber]
 
     const letterRandomise = (quizWord) => {
         let word = quizWord;
