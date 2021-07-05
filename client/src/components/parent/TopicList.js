@@ -10,9 +10,11 @@ const TopicList = ({topics, accounts}) => {
     return (
         <div>
             <h2>Topic categories:</h2>
+            { accounts.length > 0 ?
             <ul className="topics-list">
                 {listItems}
             </ul>
+            : null }
         </div>
     )
 }
