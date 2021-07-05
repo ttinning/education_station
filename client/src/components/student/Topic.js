@@ -1,12 +1,12 @@
 import {Link} from 'react-router-dom'
 
-const Topic = ({topic}) => {
+const Topic = ({topic, accounts}) => {
 
     return (
         <li>
             <Link to={{
                     pathname: `/student/${topic.title}`,
-                    state: {topic}
+                    state: {topic, accounts}
                 }}><button className="topic-button">{topic.title.toUpperCase()}</button>
             </Link> 
         </li>

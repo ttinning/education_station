@@ -1,6 +1,8 @@
 import '../../CompletionPage.css'
 import trophy from "../../images/trophy.png"
 import { useParams, Link } from 'react-router-dom'
+import AccountService from '../../services/AccountsService'
+import { useEffect } from 'react'
 
 const CompletionPage = () => {
 let {topic} = useParams()

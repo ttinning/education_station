@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react"
 import { useLocation, Link } from "react-router-dom"
 import WordService from "../../services/WordService"
+import AccountService from '../../services/AccountsService'
 
 const QuizPage = () => {
 
     const data = useLocation()
     const topic = data.state.topic
+    const accounts = data.state.accounts
 
     const [questionNumber, setQuestionNumber] = useState(0);
     const [answer, setAnswer] = useState('');
@@ -69,6 +71,13 @@ const QuizPage = () => {
         setAnswer(event.target.value.toLowerCase())
     }
 
+    const updateAccount = () => {
+        const temp = {...accounts[0]}
+        temp.student.completed_topics.push(topic.title)
+        delete temp._id
+        AccountService.updateAccounts(accounts[0]._id, temp)
+    }
+
     return(
         <section id="quiz-body">
             <h2>{topic.title} quiz</h2>
@@ -101,7 +110,7 @@ const QuizPage = () => {
 
             {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ? 
                 <button onClick={handleNextClick}>Next</button> : 
-                <Link to={`/student/${topic.title}/completed`}><button>Complete Topic!</button></Link>}
+                <Link to={`/student/${topic.title}/completed`}><button onClick={updateAccount}>Complete Topic!</button></Link>}
 
         </section>
 
