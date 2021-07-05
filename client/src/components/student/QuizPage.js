@@ -88,7 +88,7 @@ const QuizPage = () => {
 
             {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ? 
             <button onClick={handleNextClick}>Next</button> : 
-            <Link to={`/student/${topic}/completed`}><button>Complete Topic!</button></Link>}
+            <Link to={`/student/${topic.title}/completed`}><button>Complete Topic!</button></Link>}
 
         </section>
 
