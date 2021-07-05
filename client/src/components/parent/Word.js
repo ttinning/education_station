@@ -13,9 +13,13 @@ const Word = ({word}) => {
     const getAudioLink = () => {      
         if (wordAudioAPI[0]) {
             const audioLink = wordAudioAPI[0].phonetics[0].audio;
-            return audioLink
+            return {    link: audioLink,
+                        text: "click to listen"
+                    };
         } else {
-            return "none found"
+            return {    link: null,
+                        text: "no link available"
+                    };
         };
     };
 
@@ -27,7 +31,7 @@ const Word = ({word}) => {
         <div>
             <div>
                 <li>{word}</li>
-                <a href={audioLink}>Listen to word</a>
+                <a href={audioLink.link} target="_blank">{audioLink.text}</a>
             </div>
         </div>
     )
