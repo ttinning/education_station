@@ -22,6 +22,6 @@ db.topics.insertMany([
     },
     {
         title: "vehicles",
-        word_list: ["car", "train", "aeroplane", "bicycle", "crane", "motorbike", "tram", "lorry", "tractor", "scooter", "helicopter", "boat"]
+        word_list: ["car", "train", "aeroplane", "bicycle", "crane", "motorbike", "motorbike", "motorbike", "motorbike", "motorbike", "motorbike", "motorbike"]
     }
 ])
