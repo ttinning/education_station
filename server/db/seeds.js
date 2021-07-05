@@ -13,7 +13,7 @@ db.accounts.insertMany([
             completed_topics: [
                 {
                     title: "animals",
-                    words_first_time: ["tiger", "dog"]
+                    words_first_time: ["tiger", "turtle"]
                 }
             ]
         }
