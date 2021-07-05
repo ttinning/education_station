@@ -70,7 +70,9 @@ const QuizPage = () => {
 
     const checkAnswer = (event) => {
         setAnswer(event.target.value.toLowerCase())
+        console.log(answer)
     }
+
 
     const updateAccount = () => {
         const temp = {...accounts[0]}
@@ -95,7 +97,10 @@ const QuizPage = () => {
 
             <form id="answer-input">
                 <label htmlFor="answer-box">Enter your answer here:</label>
-                <input id="answer-box" type="text" onChange={checkAnswer}></input>
+                {quizWord.split('').map((letter) => {
+                    return <input maxLength='1' id="answer-box" type="text" onChange={checkAnswer}></input>
+                })}
+                {/* <input id="answer-box" type="text" onChange={checkAnswer}></input> */}
             </form>
 
             {answerCorrect ? 
