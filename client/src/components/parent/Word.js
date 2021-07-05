@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 const Word = ({word}) => {
 
-    const [wordAudioAPI, setWordAudioAPI] = useState({});
+    const [wordAudioAPI, setWordAudioAPI] = useState([]);
 
     useEffect(() => {
         AudioService.getWordAudioAPI(word)

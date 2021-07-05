@@ -6,6 +6,7 @@ const AudioService = {
     getWordAudioAPI(word) {
         return fetch(baseURL + word)
             .then(res => res.json())
+        
     }
 };
 
