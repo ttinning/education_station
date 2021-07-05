@@ -38,7 +38,7 @@ a:visited {
 
 #landing-page {
   background-color: #E8DB7D;
-  height: calc(100vh - 4rem);
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content:space-evenly;
@@ -60,7 +60,7 @@ a:visited {
   font-family: "Cabin Sketch";
   padding-left: 2rem;
   padding-top: 1rem;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .dashboard h2, h3, p, li {
@@ -100,7 +100,7 @@ a:visited {
   padding-left: 2rem;
   font-family: "Cabin Sketch";
   background-color: #E8DB7D;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
