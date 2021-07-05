@@ -77,6 +77,7 @@ const QuizPage = () => {
 
     const checkAnswer = (event) => {
         setAnswer(answer.concat(event.target.value.toLowerCase()))
+        // .then(handleKeyUp())
         // setAnswer(event.target.value.toLowerCase())
     }
 
@@ -94,8 +95,9 @@ const QuizPage = () => {
         } else if (event.target.value.length == 1) {
             setCounter(counter +1)
             document.querySelector(`#answer-box-${counter}`).focus()
+        } else{
+            console.log("oops")
         }
-        console.log(event.target.value)
         // console.log("Keys Up!");
         // console.log(counter)
     }
@@ -118,7 +120,7 @@ const QuizPage = () => {
             <form id="answer-input">
                 <label htmlFor="answer-box">Enter your answer here:</label>
                 {quizWord.split('').map((letter, index) => {
-                    return <input maxLength='1' className="letter-input" id={`answer-box-${index}`} type="text" onChange={checkAnswer} onKeyUp={handleKeyUp}></input>
+                    return <input maxLength='1' className="letter-input" id={`answer-box-${index}`} type="text" onKeyUp={e => {checkAnswer(e); handleKeyUp(e)}} ></input>
                 })}
                 {/* <input id="answer-box" type="text" onChange={checkAnswer}></input> */}
             </form>
