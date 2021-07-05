@@ -1,10 +1,10 @@
 import Topic from "./Topic";
 
 
-const TopicList = ({topics}) => {
+const TopicList = ({topics, accounts}) => {
 
     const listItems = topics.map(topic => {
-        return <Topic topic={topic} key={topic._id}/>
+        return <Topic topic={topic} accounts={accounts} key={topic._id}/>
     })
 
     return (
