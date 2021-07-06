@@ -13,6 +13,13 @@ const AudioGame = function() {
     const [wordAudioAPI, setWordAudioAPI] = useState({});
     let wrongCounter = 0;
 
+    const checkLastWord = () => {
+        return audioWordList.indexOf(focusWord) === audioWordList.length - 1;
+    };
+
+    let lastWordCheck = checkLastWord();
+    
+
     
     useEffect(() => {
         AudioService.getWordAudioAPI(focusWord)
@@ -36,18 +43,22 @@ const AudioGame = function() {
 
     const goToNextWord = () => {
         const currentFocusWordIndex = audioWordList.indexOf(focusWord);
+        const nextButton = document.querySelector('.next-button');
+        
         if (currentFocusWordIndex < audioWordList.length - 1) {
             const nextFocusWordIndex = currentFocusWordIndex + 1
             const nextFocusWord = audioWordList[nextFocusWordIndex];
             setFocusWord(nextFocusWord);
+            nextButton.hidden = true;
         } else {
-            console.log("end of list");
+            nextButton.textContent = "Finsh topic";
         };
         wrongCounter = 0;        
         const text = document.querySelector('#correct-text');
         text.hidden = true;
         const form = document.querySelector('#form')
         form.reset();
+        
     };
 
     const playAudio = () => {
@@ -60,7 +71,7 @@ const AudioGame = function() {
         const guess = evt.target.guess.value.toLowerCase().trim();
         console.log(guess);
         const text = document.querySelector('#correct-text');
-        const nextButton = document.querySelector('#next-button');
+        const nextButton = document.querySelector('.next-button');
         text.hidden = false;
         if (guess === focusWord) {
             text.textContent = "That's Correct!!!"
@@ -88,7 +99,8 @@ const AudioGame = function() {
                     <input type="text" id="guess"></input>
                     <button type="submit">Check</button>
                 </form>
-                <button id="next-button" onClick={handleButtonClick} hidden>Next word</button>
+                { lastWordCheck ? <button className="next-button" hidden>Finsh topic</button> :
+                <button className="next-button" onClick={handleButtonClick} hidden>Next word</button>}
             </section>
             <section>
                 <h2 id="correct-text" hidden></h2>
