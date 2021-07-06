@@ -2,17 +2,19 @@ import {Link} from 'react-router-dom'
 
 const Topic = ({topic, accounts}) => {
 
-    const completedTopics = accounts[0].student.completed_topics;
+    // const completedTopics = accounts[0].student.completed_topics;
+    const topicTrophies = accounts[0].student.trophies[`${topic.title}`];
+    console.log(topicTrophies);
 
-    const calculateCompletedTopicStatus = function () {
-        for (let completedTopic of completedTopics) {
-            if (topic.title === completedTopic) {
-                return true
-            };
-        };
-    };
+    // const calculateCompletedTopicStatus = function () {
+    //     for (let completedTopic of completedTopics) {
+    //         if (topic.title === completedTopic) {
+    //             return true
+    //         };
+    //     };
+    // };
 
-    const completedTopicStatus = calculateCompletedTopicStatus();
+    // const completedTopicStatus = calculateCompletedTopicStatus();
 
     return (
         <li>
@@ -21,7 +23,7 @@ const Topic = ({topic, accounts}) => {
                     state: {topic, accounts}
                 }}><button className="standard-button">{topic.title.toUpperCase()}</button>
             </Link>
-            {completedTopicStatus ? <p className="completed-trophy">&#127942;</p> : null}
+            {/* {completedTopicStatus ? <p className="completed-trophy">&#127942;</p> : null} */}
         </li>
     )
 }
