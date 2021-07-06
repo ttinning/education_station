@@ -9,9 +9,6 @@ const AnswerPage = () => {
         setAnswer(event.target.value.toLowerCase())
     }
 
-
-
-
     const handleSubmit = (event) => {
         event.preventDefault()
         if(exampleWord === answer){
@@ -22,14 +19,12 @@ const AnswerPage = () => {
         }
     }
 
-
     return(
         <div>
             <form onSubmit={handleSubmit}>
                 <input type='text' onChange={handleAnswer}></input>
                 <button className="standard-button" type='submit'>Submit</button>
             </form>
-            
         </div>
     )
 }

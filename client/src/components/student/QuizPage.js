@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import { useLocation, Link } from "react-router-dom"
 import WordService from "../../services/WordService"
-import AccountService from '../../services/AccountsService'
 import ProgressBar from "./ProgressBar"
 
 const QuizPage = () => {
@@ -84,12 +83,7 @@ const QuizPage = () => {
     }
 
 
-    const updateAccount = () => {
-        const temp = {...accounts[0]}
-        temp.student.completed_topics.push(topic.title)
-        delete temp._id
-        AccountService.updateAccounts(accounts[0]._id, temp)
-    }
+    
 
     const handleKeyUp = (event) => {
         if (counter >= quizWord.length) {
@@ -98,10 +92,7 @@ const QuizPage = () => {
             setCounter(counter +1)
             document.querySelector(`#answer-box-${counter}`).focus()
         } else{
-            console.log("oops")
         }
-        // console.log("Keys Up!");
-        // console.log(counter)
     }
         
 
@@ -116,8 +107,6 @@ const QuizPage = () => {
 
             <button className="standard-button" onClick={handleRevealClick}>Reveal answer</button>
             {showAnswer ? <p>The answer is {wordInfo.word}</p> : null}
-
-            
 
             <form id="answer-input">
                 <label htmlFor="answer-box">Enter your answer here:</label>
@@ -140,7 +129,11 @@ const QuizPage = () => {
 
             {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ? 
                 <button className="standard-button" onClick={handleNextClick}>Next</button> : 
-                <Link to={`/student/${topic.title}/completed`}><button onClick={updateAccount}>Complete Topic!</button></Link>}
+
+                <Link to={{
+                    pathname: `/student/quiz/${topic.title}/completed`,
+                    state: {accounts}
+                }}><button>Complete Topic!</button></Link>}
             <Link to="/student"><button className="standard-button">Back To Dashboard</button> </Link>
 
         </section>
