@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useLocation, Link } from "react-router-dom"
 import WordService from "../../services/WordService"
 import AccountService from '../../services/AccountsService'
+import ProgressBar from "./ProgressBar"
 
 const QuizPage = () => {
 
@@ -39,6 +40,7 @@ const QuizPage = () => {
     const handleNextClick = () => {
         document.getElementById("answer-input").reset()
         setQuestionNumber(questionNumber + 1)
+
         setShowHint(false)
         setShowAnswer(false);
         setAnswerCorrect(false);
@@ -83,7 +85,7 @@ const QuizPage = () => {
     return(
         <section id="quiz-body">
             <h2>{topic.title} quiz</h2>
-            
+            <ProgressBar questionNumber={questionNumber} answerCorrect={answerCorrect}/>
             {Object.keys(wordInfo).length > 0 ? <img src={wordInfo.definitions[0].image_url } alt={wordInfo.word}></img> : null}
             
             <button onClick={handleHintClick}>Show Hint</button>
