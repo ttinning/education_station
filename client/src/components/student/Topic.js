@@ -23,7 +23,12 @@ const Topic = ({topic, accounts}) => {
                     state: {topic, accounts}
                 }}><button className="standard-button">{topic.title.toUpperCase()}</button>
             </Link>
-            {/* {completedTopicStatus ? <p className="completed-trophy">&#127942;</p> : null} */}
+            {completedTopicStatus ? <p className="completed-trophy">&#127942;</p> : null}
+            <Link to={{
+                    pathname: `/audiogame`,
+                    state: {topic, accounts}
+                }}><button className="audio-game-btn">Audio Game</button>
+            </Link>
         </li>
     )
 }
