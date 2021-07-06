@@ -5,6 +5,25 @@ const AudioGame = function() {
     const [focusWord, setFocusWord] = useState("");
 
     const audioWordList = ["cat", "dog", "koala"];
+////
+    const [wordAudioAPI, setWordAudioAPI] = useState([]);
+
+
+    const getAudioLink = () => {      
+        if (wordAudioAPI[0]) {
+            const audioLink = wordAudioAPI[0].phonetics[0].audio;
+            return {    link: audioLink,
+                        text: "click to listen"
+                    };
+        } else {
+            return {    link: null,
+                        text: "no link available"
+                    };
+        };
+    };
+
+    const audioLink = getAudioLink();
+    ///
 
     
 
