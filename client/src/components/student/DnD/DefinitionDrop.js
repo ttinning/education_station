@@ -13,7 +13,7 @@ export const DefinitionDrop = ({word}) => {
     }))
 
 return (
-    <li className="dnd-image" ref={drop} role={'ImageDrop'}>{word.definitions[0].definition}</li>
+    <li className="dnd-definition" id={word.word} ref={drop} role={'DefinitionDrop'}>{word.definitions[0].definition}</li>
 )
 
 };

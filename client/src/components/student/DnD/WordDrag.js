@@ -1,6 +1,6 @@
 import { useDrag } from 'react-dnd';
 
-export const WordDrag = function WordBox({ word, incrementScore }) {
+export const WordDrag = function WordBox({ word, incrementScore, wordId }) {
 
     
 
@@ -24,14 +24,22 @@ export const WordDrag = function WordBox({ word, incrementScore }) {
         if (word === dropResult.name) {
             // alert("Correct!")
             incrementScore()
+            console.log(dropResult)
+            document.querySelector(`#word${wordId}`).remove()
+            document.querySelector(`#${word}`).style.backgroundColor = "green";
+            document.querySelector(`#${word}`).style.color = "white";
+            const correctAnswer = document.createElement('b')
+            correctAnswer.textContent = ` Correct! This is a ${word}`
+            document.querySelector(`#${word}`).appendChild(correctAnswer);
         } else {
-            alert("Sorry, that's wrong")
+            document.querySelector(`#${dropResult.name}`).style.animation = "shake 0.5s"
+            setTimeout(() => {  document.querySelector(`#${dropResult.name}`).removeAttribute('style')}, 1000)
         }
         // word === dropResult.name ? alert("Correct!") : null;
     }
     
 
     const opacity = isDragging ? 0 : 1;
-    return (<li className="dnd-word" ref={drag} style={{opacity}} role='Word'>{word}</li>);
+    return (<li className="dnd-word" id={`word${wordId}`} ref={drag} style={{opacity}} role='Word'>{word}</li>);
 
 };

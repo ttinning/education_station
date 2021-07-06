@@ -16,6 +16,7 @@ const DnDPage = () => {
 
     const [wordInfo, setWordInfo] = useState([])
     const [score, setScore] = useState(0);
+    const [gameComplete, setGameComplete] = useState(false)
 
     useEffect(() => {
         let tempArray = []
@@ -36,20 +37,26 @@ const DnDPage = () => {
 
     const finishGame = () => {
         if (topic.word_list.length === score) {
-            alert('You done completed it yo')
+            setGameComplete(true)
         } else {
             return null
         }
     }
-
- 
+    
         const words = topic.word_list.map((word, index) => {
-            return <WordDrag word={word} key={index} incrementScore={incrementScore}></WordDrag>
+            return <WordDrag word={word} key={index} wordId={index} incrementScore={incrementScore}></WordDrag>
         });
 
         const definitions = wordInfo.map((word, index) => {
             return <DefinitionDrop word={word} key={index}></DefinitionDrop>
         });
+
+        const updateAccount = () => {
+            const temp = {...accounts[0]}
+            temp.student.completed_topics.push(topic.title)
+            delete temp._id
+            AccountService.updateAccounts(accounts[0]._id, temp)
+        }
 
 
     return(
@@ -62,7 +69,9 @@ const DnDPage = () => {
                 <ul>
                     {definitions}
                 </ul>
-            
+                {gameComplete ? 
+                <Link to={`/student/${topic.title}/completed`}><button onClick={updateAccount}>Complete Topic!</button></Link> : 
+                null}
                 <Link to="/student"><button>Back To Dashboard</button> </Link>
             </section>
         </DndProvider>
