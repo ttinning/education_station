@@ -23,7 +23,6 @@ const QuizPage = () => {
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
             .then(res => setWordInfo(res))
-            setQuizWord(topic.word_list[questionNumber])
     }, [questionNumber]);
 
     useEffect(() => {
