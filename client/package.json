@@ -19,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "test:e2e": "cypress open"
+    "test:e2e": "cypress open",
+    "buildncopy": "npm run build && (cp -r build ../server/)"
   },
   "eslintConfig": {
     "extends": [
