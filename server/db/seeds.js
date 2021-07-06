@@ -10,7 +10,9 @@ db.accounts.insertMany([
         student: {
             name: "Sara",
             age: 6,
-            completed_topics: ["animals"]
+            trophies: {
+                animals: ["audio"]
+            }
         }
     },
 ])
