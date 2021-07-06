@@ -23,11 +23,9 @@ function App() {
         <Route path='/parent' component={ParentDashboard} />
         <Route path='/student' exact component={StudentDashboard} />
         <Route path='/student/quiz/:topic' exact component={QuizPage}/>
-        <Route path='/student/:gameType/:topic/completed' component={CompletionPage}/>
         <Route path='/student/audio/:topic' exact component={AudioGame}></Route>
-
-
-        <Route path='/student/:topic/dnd' exact component={DnDPage}/>
+        <Route path='/student/dnd/:topic' exact component={DnDPage}/>
+        <Route path='/student/:gameType/:topic/completed' component={CompletionPage}/>
         
 
         </Switch>
