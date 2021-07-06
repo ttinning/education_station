@@ -29,7 +29,7 @@ db.topics.insertMany([
     },
     {
         title: "food",
-        word_list: ["grape","egg","tomato", "onion", "mango", "apple", "fig", "peach", "meat", "yogurt"],
+        word_list: ["grape","egg","tomato", "onion", "mango", "apple", "fig", "peach", "meat", "cherry"],
         background_image: ""
     },
     {

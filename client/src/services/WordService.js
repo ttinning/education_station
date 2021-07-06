@@ -1,11 +1,11 @@
-import owlbotAuth from "./auth";
+import randomToken from "./auth";
 
 const baseURL = 'https://owlbot.info/api/v4/dictionary/';
 
 const getHeaders = {
     headers: {
         "Content-Type": "application/json",
-        "Authorization": `Token ${owlbotAuth.token}`
+        "Authorization": `Token ${randomToken}`
     }
 }
 
