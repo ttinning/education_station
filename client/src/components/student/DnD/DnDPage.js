@@ -67,7 +67,7 @@ const DnDPage = () => {
                 </ul>
                 {gameComplete ? 
                 <Link to={{
-                    pathname: `/student/dnd/${topic.title}/completed`,
+                    pathname: `/student/drag/${topic.title}/completed`,
                     state: {accounts}
                 }}><button>Complete Topic!</button></Link> : 
                 null}
