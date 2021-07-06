@@ -48,6 +48,17 @@ const AudioGame = function() {
         const audio = new Audio(audioLink);
         audio.play();
     };
+
+    const handleAnswerSubmit = (evt) => {
+        evt.preventDefault();
+        const guess = evt.target.guess.value.toLowerCase().trim();
+        console.log(guess);
+        if (guess === focusWord) {
+            console.log("correct")
+        } else {
+            console.log("incorrect");
+        };
+    };
     
 
     return (
@@ -56,6 +67,13 @@ const AudioGame = function() {
             {focusWord}
             <button onClick={playAudio}>Play audio</button> 
             <button id="next-button" onClick={handleButtonClick}>Next word</button>
+            <section>
+                <form onSubmit={handleAnswerSubmit}>
+                    <label for="guess">Your guess:</label>
+                    <input type="text" id="guess"></input>
+                    <button type="submit">Check</button>
+                </form>
+            </section>
         </div>
     );
 };
