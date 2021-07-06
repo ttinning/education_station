@@ -1,9 +1,9 @@
 import { useDrag } from 'react-dnd';
 
-export const WordDrag = function WordBox({ name }) {
+export const WordDrag = function WordBox({ word }) {
     const [{ isDragging }, drag] = useDrag(() => ({
         type: "Word",
-        item: { name },
+        item: { word },
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
             if (item && dropResult) {
@@ -17,7 +17,7 @@ export const WordDrag = function WordBox({ name }) {
     }));
 
     const opacity = isDragging ? 0.4 : 1;
-    return (<li className="dnd-word" ref={drag} role="Word">Cat</li>);
+    return (<li className="dnd-word" ref={drag} role="Word">{word}</li>);
 
 };
 
