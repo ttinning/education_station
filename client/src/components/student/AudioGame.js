@@ -85,8 +85,10 @@ const AudioGame = function() {
             text.textContent = "That's Correct!!!"
             console.log("correct")
             nextButton.hidden = false;
-            const newCorrectWordStore = [...correctWordStore, focusWord];
-            setCorrectWordStore(newCorrectWordStore);
+            if (!correctWordStore.includes(focusWord)) {
+                const newCorrectWordStore = [...correctWordStore, focusWord];
+                setCorrectWordStore(newCorrectWordStore);
+            };
             if (incorrectWordStore.includes(focusWord)) {
                 let temp = [...incorrectWordStore]
                 let newIncorrectWordStore = temp.filter((word) => {
@@ -102,8 +104,10 @@ const AudioGame = function() {
             if (wrongCounter >= 2 ) {
                 nextButton.hidden = false;
             }
-            const newIncorrectWordStore = [...incorrectWordStore, focusWord];
-            setIncorrectWordStore(newIncorrectWordStore);
+            if (!incorrectWordStore.includes(focusWord)) {
+                const newIncorrectWordStore = [...incorrectWordStore, focusWord];
+                setIncorrectWordStore(newIncorrectWordStore);
+            };  
         };
     };
 
@@ -113,6 +117,24 @@ const AudioGame = function() {
         delete temp._id
         AccountService.updateAccounts(accounts[0]._id, temp)
     };
+
+    
+    
+    const getSummaryCorrect = () => {
+        const tempCorrect = [...correctWordStore];
+        const correctWordsListItems = tempCorrect.map(word => <li>{word}</li>);
+        return correctWordsListItems;
+    };
+
+    const correctWordsListItems = getSummaryCorrect();
+
+    const getSummaryIncorrect = () => {
+        const tempIncorrect = [...incorrectWordStore];
+        const incorrectWordsListItems = tempIncorrect.map(word => <li>{word}</li>);
+        return incorrectWordsListItems;
+    };
+
+    const incorrectWordsListItems = getSummaryIncorrect();
     
 
     return (
@@ -136,14 +158,14 @@ const AudioGame = function() {
                 { correctWordStore.length > 0 ? <div>
                     <h3>Words you can spell:</h3>
                     <ul>
-                        {correctWordStore}
+                        {correctWordsListItems}
                     </ul>
                 </div> : null}
                
                 { incorrectWordStore.length > 0 && wrongCounter >= 3 ? <div>
                     <h3>Words to learn:</h3>
                     <ul>
-                        {incorrectWordStore}
+                        {incorrectWordsListItems}
                     </ul>
                 </div> : null}
             </section>
