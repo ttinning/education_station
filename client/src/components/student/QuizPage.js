@@ -17,7 +17,8 @@ const QuizPage = () => {
     const [answerCorrect, setAnswerCorrect] = useState(false);
     const [randomWord, setRandomWord] = useState('')
     const [answerIncorrect, setAnswerIncorrect] = useState(false);
-    const [quizWord, setQuizWord] = useState(topic.word_list[questionNumber])
+
+    const [counter, setCounter] = useState(1)
 
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
@@ -29,10 +30,14 @@ const QuizPage = () => {
         if (answer === quizWord) {
             setAnswerCorrect(true)
             setAnswerIncorrect(false)
+            setAnswer('')
+            setCounter(0)
             document.getElementById("answer-input").reset()
         } else if (answer.length === quizWord.length) {
             document.getElementById("answer-input").reset()
             setAnswerIncorrect(true)
+            setCounter(0)
+            setAnswer('')
         }
     }, [answer])
     
@@ -43,7 +48,11 @@ const QuizPage = () => {
         setShowAnswer(false);
         setAnswerCorrect(false);
         setAnswerIncorrect(false);
+        setCounter(1);
+        setAnswer('')
     }
+
+    const quizWord = topic.word_list[questionNumber]
 
     const handleHintClick = () => {
         letterRandomise(quizWord)
@@ -53,8 +62,6 @@ const QuizPage = () => {
     const handleRevealClick = () => {
         setShowAnswer(true);
     }
-
-    //const quizWord = topic.word_list[questionNumber]
 
     const letterRandomise = (quizWord) => {
         let word = quizWord;
@@ -70,8 +77,11 @@ const QuizPage = () => {
     }
 
     const checkAnswer = (event) => {
-        setAnswer(event.target.value.toLowerCase())
+        setAnswer(answer.concat(event.target.value.toLowerCase()))
+        // .then(handleKeyUp())
+        // setAnswer(event.target.value.toLowerCase())
     }
+
 
     const updateAccount = () => {
         const temp = {...accounts[0]}
@@ -79,6 +89,20 @@ const QuizPage = () => {
         delete temp._id
         AccountService.updateAccounts(accounts[0]._id, temp)
     }
+
+    const handleKeyUp = (event) => {
+        if (counter >= quizWord.length) {
+            setCounter(0)
+        } else if (event.target.value.length == 1) {
+            setCounter(counter +1)
+            document.querySelector(`#answer-box-${counter}`).focus()
+        } else{
+            console.log("oops")
+        }
+        // console.log("Keys Up!");
+        // console.log(counter)
+    }
+        
 
     return(
         <section id="quiz-body">
@@ -96,7 +120,10 @@ const QuizPage = () => {
 
             <form id="answer-input">
                 <label htmlFor="answer-box">Enter your answer here:</label>
-                <input id="answer-box" type="text" onChange={checkAnswer}></input>
+                {quizWord.split('').map((letter, index) => {
+                    return <input maxLength='1' className="letter-input" id={`answer-box-${index}`} type="text" onKeyUp={e => {checkAnswer(e); handleKeyUp(e)}} ></input>
+                })}
+                {/* <input id="answer-box" type="text" onChange={checkAnswer}></input> */}
             </form>
 
             {answerCorrect ? 
