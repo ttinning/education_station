@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import AudioService from "../../services/AudioService";
 import { useLocation, Link } from "react-router-dom"
+import AccountService from "../../services/AccountsService";
 
 const AudioGame = function() {
 
     
-    const data = useLocation()
-    const topic = data.state.topic
+    const data = useLocation();
+    const topic = data.state.topic;
+    const accounts = data.state.accounts;
     const audioWordList = topic.word_list;
 
     const [focusWord, setFocusWord] = useState(audioWordList[0]);
@@ -86,6 +88,13 @@ const AudioGame = function() {
             }
         };
     };
+
+    const updateAccount = () => {
+        const temp = {...accounts[0]}
+        temp.student.completed_topics.push(topic.title)
+        delete temp._id
+        AccountService.updateAccounts(accounts[0]._id, temp)
+    };
     
 
     return (
@@ -99,7 +108,7 @@ const AudioGame = function() {
                     <input type="text" id="guess"></input>
                     <button type="submit">Check</button>
                 </form>
-                { lastWordCheck ? <button className="next-button" hidden>Finsh topic</button> :
+                { lastWordCheck ? <Link to={`/student/${topic.title}/completed`}><button className="next-button" onClick={updateAccount} hidden>Complete Topic!</button></Link> :
                 <button className="next-button" onClick={handleButtonClick} hidden>Next word</button>}
             </section>
             <section>
