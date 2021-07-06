@@ -7,7 +7,7 @@ import AccountsService from "../../services/AccountsService";
 const StudentDashboard = () => {
 
     const [topics, setTopics] = useState([])
-    const [accounts, setAccounts] =useState({})
+    const [accounts, setAccounts] = useState([])
     
     useEffect(() => {
         TopicService.getTopics()
@@ -18,7 +18,8 @@ const StudentDashboard = () => {
     return (
         <section className="dashboard">
                 <h2>Student Dashboard</h2>
-                <TopicList topics={topics} accounts={accounts}></TopicList>
+                {accounts.length > 0 && topics.length > 0 ? <TopicList topics={topics} accounts={accounts}></TopicList> 
+                : null}
         </section>
     )
 }

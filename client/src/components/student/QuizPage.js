@@ -17,12 +17,13 @@ const QuizPage = () => {
     const [answerCorrect, setAnswerCorrect] = useState(false);
     const [randomWord, setRandomWord] = useState('')
     const [answerIncorrect, setAnswerIncorrect] = useState(false);
+
     const [counter, setCounter] = useState(1)
 
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
             .then(res => setWordInfo(res))
-            // .then(letterRandomise(quizWord));
+            setQuizWord(topic.word_list[questionNumber])
     }, [questionNumber]);
 
     useEffect(() => {
@@ -139,6 +140,7 @@ const QuizPage = () => {
             {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ? 
                 <button onClick={handleNextClick}>Next</button> : 
                 <Link to={`/student/${topic.title}/completed`}><button onClick={updateAccount}>Complete Topic!</button></Link>}
+            <Link to="/student"><button>Back To Dashboard</button> </Link>
 
         </section>
 

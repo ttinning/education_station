@@ -87,6 +87,13 @@ a:visited {
   background-color: #BF6900;
 }
 
+.completed-trophy {
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Quiz */
 
 #quiz-body {
