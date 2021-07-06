@@ -11,7 +11,8 @@ const AudioGame = function() {
 
     const [focusWord, setFocusWord] = useState(audioWordList[0]);
     const [wordAudioAPI, setWordAudioAPI] = useState({});
-    
+    let wrongCounter = 0;
+
     
     useEffect(() => {
         AudioService.getWordAudioAPI(focusWord)
@@ -42,6 +43,11 @@ const AudioGame = function() {
         } else {
             console.log("end of list");
         };
+        wrongCounter = 0;        
+        const text = document.querySelector('#correct-text');
+        text.hidden = true;
+        const form = document.querySelector('#form')
+        form.reset();
     };
 
     const playAudio = () => {
@@ -53,10 +59,20 @@ const AudioGame = function() {
         evt.preventDefault();
         const guess = evt.target.guess.value.toLowerCase().trim();
         console.log(guess);
+        const text = document.querySelector('#correct-text');
+        const nextButton = document.querySelector('#next-button');
+        text.hidden = false;
         if (guess === focusWord) {
+            text.textContent = "That's Correct!!!"
             console.log("correct")
-        } else {
+            nextButton.hidden = false;
+        } else {  
+            text.textContent = "Wrong, try again"
             console.log("incorrect");
+            wrongCounter ++;
+            if (wrongCounter >= 2 ) {
+                nextButton.hidden = false;
+            }
         };
     };
     
@@ -66,13 +82,16 @@ const AudioGame = function() {
             <h3>Can you spell these animal words?</h3>
             {focusWord}
             <button onClick={playAudio}>Play audio</button> 
-            <button id="next-button" onClick={handleButtonClick}>Next word</button>
             <section>
-                <form onSubmit={handleAnswerSubmit}>
-                    <label for="guess">Your guess:</label>
+                <form id="form" onSubmit={handleAnswerSubmit}>
+                    <label htmlFor="guess">Your guess:</label>
                     <input type="text" id="guess"></input>
                     <button type="submit">Check</button>
                 </form>
+                <button id="next-button" onClick={handleButtonClick} hidden>Next word</button>
+            </section>
+            <section>
+                <h2 id="correct-text" hidden></h2>
             </section>
         </div>
     );
