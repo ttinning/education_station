@@ -24,13 +24,6 @@ const AudioGame = function() {
     };
     const audioLink = getAudioLink();
     
-    
-    
-
-
-
-    
-
 
     const handleButtonClick = function() {
         const currentFocusWordIndex = audioWordList.indexOf(focusWord);
@@ -41,17 +34,18 @@ const AudioGame = function() {
             setFocusWord(nextFocusWord);
         } else {console.log("end of list");}
     };
-    
 
+    const playAudio = () => {
+        const audio = new Audio(audioLink);
+        audio.play();
+    };
     
-
 
     return (
         <div>
             <h3>Can you spell these animal words?</h3>
             {focusWord}
-            {audioLink}
-            
+            <button onClick={playAudio}>Play audio</button> 
             <button onClick={handleButtonClick}>Next word</button>
         </div>
     );
