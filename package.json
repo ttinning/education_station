@@ -1,7 +1,8 @@
 {
     "scripts": {
-        "start": "node client/package.json; npm run build",
-        "serve": "node server/package.json; npm run build"
+        "seeds": "cd server; npm run seeds",
+        "serve": "cd server; npm run start",
+        "start": "cd client; npm run start"
     }
 
 }
