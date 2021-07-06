@@ -16,7 +16,7 @@ const AudioGame = function() {
     const [wrongCounter, setWrongCounter] = useState(0);
     const [correctWordStore, setCorrectWordStore] = useState([]);
     const [incorrectWordStore, setIncorrectWordStore] = useState([]);
-    // let wrongCounter = 0;
+  
    
 
     const checkLastWord = () => {
@@ -33,6 +33,10 @@ const AudioGame = function() {
         AudioService.getWordAudioAPI(focusWord)
             .then(res => setWordAudioAPI(res))
     }, [focusWord]);
+
+    useEffect(() => {
+        playAudio();
+    }, [wordAudioAPI]);
 
     const getAudioLink = () => {      
         if (wordAudioAPI[0]) {
@@ -103,10 +107,11 @@ const AudioGame = function() {
             console.log(wrongCounter);
             if (wrongCounter >= 2 ) {
                 nextButton.hidden = false;
+                if (!incorrectWordStore.includes(focusWord)) {
+                    const newIncorrectWordStore = [...incorrectWordStore, focusWord];
+                    setIncorrectWordStore(newIncorrectWordStore);
             }
-            if (!incorrectWordStore.includes(focusWord)) {
-                const newIncorrectWordStore = [...incorrectWordStore, focusWord];
-                setIncorrectWordStore(newIncorrectWordStore);
+            
             };  
         };
     };
@@ -143,7 +148,6 @@ const AudioGame = function() {
     return (
         <div>
             <h3>Can you spell these animal words?</h3>
-            {focusWord}
             <button onClick={playAudio}>Play audio</button> 
             <section>
                 <form id="form" onSubmit={handleAnswerSubmit}>
@@ -168,7 +172,7 @@ const AudioGame = function() {
                     </ul>
                 </div> : null}
                
-                { incorrectWordStore.length > 0 && wrongCounter >= 3 ? <div>
+                { incorrectWordStore.length > 0 ? <div>
                     <h3>Words to learn:</h3>
                     <ul>
                         {incorrectWordsListItems}
