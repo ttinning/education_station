@@ -3,43 +3,41 @@ import AudioService from "../../services/AudioService";
 
 const AudioGame = function() {
 
-    const [focusWord, setFocusWord] = useState("");
-
     const audioWordList = ["cat", "dog", "koala"];
-////
-    const [wordAudioAPI, setWordAudioAPI] = useState([]);
 
+    const [focusWord, setFocusWord] = useState(audioWordList[0]);
+    const [wordAudioAPI, setWordAudioAPI] = useState({});
+    
+    
+    useEffect(() => {
+        AudioService.getWordAudioAPI(focusWord)
+            .then(res => setWordAudioAPI(res))
+    }, [focusWord]);
 
     const getAudioLink = () => {      
         if (wordAudioAPI[0]) {
             const audioLink = wordAudioAPI[0].phonetics[0].audio;
-            return {    link: audioLink,
-                        text: "click to listen"
-                    };
+            return audioLink;
         } else {
-            return {    link: null,
-                        text: "no link available"
-                    };
+            return "no audio link";
         };
     };
-
     const audioLink = getAudioLink();
-    ///
+    
+    
+    
+
+
 
     
 
-    useEffect(() => {
-        setFocusWord(audioWordList[0]);
-    }, []);
 
     const handleButtonClick = function() {
         const currentFocusWordIndex = audioWordList.indexOf(focusWord);
-        console.log("current", focusWord, currentFocusWordIndex);
-        console.log(audioWordList.length);
+        console.log(wordAudioAPI);
         if (currentFocusWordIndex < audioWordList.length - 1) {
             const nextFocusWordIndex = currentFocusWordIndex + 1
             const nextFocusWord = audioWordList[nextFocusWordIndex];
-            console.log("next word", nextFocusWord);
             setFocusWord(nextFocusWord);
         } else {console.log("end of list");}
     };
@@ -52,6 +50,8 @@ const AudioGame = function() {
         <div>
             <h3>Can you spell these animal words?</h3>
             {focusWord}
+            {audioLink}
+            
             <button onClick={handleButtonClick}>Next word</button>
         </div>
     );
