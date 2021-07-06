@@ -27,18 +27,14 @@ const DnDPage = () => {
             }, [])
 
  
-        const words = topic.word_list.map((word) => {
-            return <WordDrag word={word}></WordDrag>
+        const words = topic.word_list.map((word, index) => {
+            return <WordDrag word={word} key={index}></WordDrag>
         });
 
-        const definitions = wordInfo.map((word) => {
-            return <DefinitionDrop word={word}></DefinitionDrop>
+        const definitions = wordInfo.map((word, index) => {
+            return <DefinitionDrop word={word} key={index}></DefinitionDrop>
         });
 
-
-    
-
- 
 
     return(
         <DndProvider backend={HTML5Backend}>

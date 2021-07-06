@@ -7,7 +7,7 @@ export const WordDrag = function WordBox({ word }) {
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
             if (item && dropResult) {
-                alert(`You dropped ${item.name} into ${dropResult.name}!`);
+                alert(`You dropped ${word} into ${dropResult.name}!`);
             }
         },
         collect: (monitor) => ({

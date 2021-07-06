@@ -59,7 +59,7 @@ const TopicForm = ({addNewTopic}) => {
                 <label htmlFor="word10">10.</label>
                 <input onChange={onChange} type="text" id="word10"></input>
 
-                <button type="submit">Save topic</button>
+                <button className="standard-button" type="submit">Save topic</button>
             </form>
         </div>
     );

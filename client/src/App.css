@@ -6,6 +6,20 @@
   list-style: none;
 }
 
+main {
+  background-color: #E8DB7D;
+  min-height: 100vh;
+}
+
+.standard-button {
+  margin: 1rem;
+  padding: 2rem;
+  font-family: "Barrio";
+  border-radius: 2em;
+  color: #f3f3f3;
+  background-color: #BF6900;
+}
+
 /* Nav Bar*/
 
 nav {
@@ -37,8 +51,6 @@ a:visited {
 /* Landing Page */
 
 #landing-page {
-  background-color: #E8DB7D;
-  height: calc(100vh - 4rem);
   display: flex;
   align-items: center;
   justify-content:space-evenly;
@@ -56,11 +68,9 @@ a:visited {
 /* Dashboards */
 
 .dashboard {
-  background-color: #E8DB7D;
   font-family: "Cabin Sketch";
   padding-left: 2rem;
   padding-top: 1rem;
-  height: 100vh;
 }
 
 .dashboard h2, h3, p, li {
@@ -78,17 +88,8 @@ a:visited {
   justify-items: center;
 }
 
-.topic-button {
-  margin: 1rem;
-  padding: 2rem;
-  font-family: "Barrio";
-  border-radius: 2em;
-  color: #f3f3f3;
-  background-color: #BF6900;
-}
-
 .completed-trophy {
-  font-size: 3rem;
+  font-size: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,8 +100,6 @@ a:visited {
 #quiz-body {
   padding-left: 2rem;
   font-family: "Cabin Sketch";
-  background-color: #E8DB7D;
-  height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -119,12 +118,13 @@ a:visited {
 }
 
 #quiz-body button {
+
   padding: 1rem;
   font-family: "Barrio";
   border-radius: 1rem;
   color: #f3f3f3;
   background-color: #BF6900;
-  width: 10rem;
+  width: 12rem;
 }
 
 #dnd-list {

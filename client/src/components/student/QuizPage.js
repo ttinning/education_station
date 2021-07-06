@@ -17,22 +17,26 @@ const QuizPage = () => {
     const [answerCorrect, setAnswerCorrect] = useState(false);
     const [randomWord, setRandomWord] = useState('')
     const [answerIncorrect, setAnswerIncorrect] = useState(false);
-    const [quizWord, setQuizWord] = useState(topic.word_list[questionNumber])
+
+    const [counter, setCounter] = useState(1)
 
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
             .then(res => setWordInfo(res))
-            setQuizWord(topic.word_list[questionNumber])
     }, [questionNumber]);
 
     useEffect(() => {
         if (answer === quizWord) {
             setAnswerCorrect(true)
             setAnswerIncorrect(false)
+            setAnswer('')
+            setCounter(0)
             document.getElementById("answer-input").reset()
         } else if (answer.length === quizWord.length) {
             document.getElementById("answer-input").reset()
             setAnswerIncorrect(true)
+            setCounter(0)
+            setAnswer('')
         }
     }, [answer])
     
@@ -43,7 +47,11 @@ const QuizPage = () => {
         setShowAnswer(false);
         setAnswerCorrect(false);
         setAnswerIncorrect(false);
+        setCounter(1);
+        setAnswer('')
     }
+
+    const quizWord = topic.word_list[questionNumber]
 
     const handleHintClick = () => {
         letterRandomise(quizWord)
@@ -53,8 +61,6 @@ const QuizPage = () => {
     const handleRevealClick = () => {
         setShowAnswer(true);
     }
-
-    //const quizWord = topic.word_list[questionNumber]
 
     const letterRandomise = (quizWord) => {
         let word = quizWord;
@@ -70,8 +76,11 @@ const QuizPage = () => {
     }
 
     const checkAnswer = (event) => {
-        setAnswer(event.target.value.toLowerCase())
+        setAnswer(answer.concat(event.target.value.toLowerCase()))
+        // .then(handleKeyUp())
+        // setAnswer(event.target.value.toLowerCase())
     }
+
 
     const updateAccount = () => {
         const temp = {...accounts[0]}
@@ -80,23 +89,40 @@ const QuizPage = () => {
         AccountService.updateAccounts(accounts[0]._id, temp)
     }
 
+    const handleKeyUp = (event) => {
+        if (counter >= quizWord.length) {
+            setCounter(0)
+        } else if (event.target.value.length == 1) {
+            setCounter(counter +1)
+            document.querySelector(`#answer-box-${counter}`).focus()
+        } else{
+            console.log("oops")
+        }
+        // console.log("Keys Up!");
+        // console.log(counter)
+    }
+        
+
     return(
         <section id="quiz-body">
             <h2>{topic.title} quiz</h2>
             
             {Object.keys(wordInfo).length > 0 ? <img src={wordInfo.definitions[0].image_url } alt={wordInfo.word}></img> : null}
             
-            <button onClick={handleHintClick}>Show Hint</button>
+            <button className="standard-button" onClick={handleHintClick}>Show Hint</button>
             {showHint ? <p>{randomWord}</p> : null}
 
-            <button onClick={handleRevealClick}>Reveal answer</button>
+            <button className="standard-button" onClick={handleRevealClick}>Reveal answer</button>
             {showAnswer ? <p>The answer is {wordInfo.word}</p> : null}
 
             
 
             <form id="answer-input">
                 <label htmlFor="answer-box">Enter your answer here:</label>
-                <input id="answer-box" type="text" onChange={checkAnswer}></input>
+                {quizWord.split('').map((letter, index) => {
+                    return <input maxLength='1' className="letter-input" id={`answer-box-${index}`} type="text" onKeyUp={e => {checkAnswer(e); handleKeyUp(e)}} ></input>
+                })}
+                {/* <input id="answer-box" type="text" onChange={checkAnswer}></input> */}
             </form>
 
             {answerCorrect ? 
@@ -111,9 +137,9 @@ const QuizPage = () => {
                 </div> : null}
 
             {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ? 
-                <button onClick={handleNextClick}>Next</button> : 
+                <button className="standard-button" onClick={handleNextClick}>Next</button> : 
                 <Link to={`/student/${topic.title}/completed`}><button onClick={updateAccount}>Complete Topic!</button></Link>}
-            <Link to="/student"><button>Back To Dashboard</button> </Link>
+            <Link to="/student"><button className="standard-button">Back To Dashboard</button> </Link>
 
         </section>
 

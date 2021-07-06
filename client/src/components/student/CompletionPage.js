@@ -20,7 +20,7 @@ let {topic} = useParams()
             {isExploding && <ConfettiExplosion />}
             <p>You have completed the {topic} quiz!</p>
             <img id='trophy-img' src={trophy} alt="gold completion trophy" />
-            <Link to="/student"><button>Back To Dashboard</button> </Link>
+            <Link to="/student"><button className="standard-button">Back To Dashboard</button> </Link>
         </div>
     )
 }

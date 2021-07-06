@@ -5,7 +5,7 @@ export const DefinitionDrop = ({word}) => {
 
     const [{canDrop, isOver}, drop] = useDrop(() => ({
         accept: 'Word',
-        drop: () => ({name: 'ImageDrop'}),
+        drop: () => ({name: `${word.word}`}),
         collect: (monitor) => ({
             isOver: monitor.isOver(),
             canDrop: monitor.canDrop(),
