@@ -33,7 +33,7 @@ const ParentDashboard = () => {
                 <p>Student: {accounts[0].student.name}</p>
                 <p>Age: {accounts[0].student.age}</p>
             </section> : null}
-            <TopicForm addNewTopic={addNewTopic}></TopicForm>
+            <TopicForm addNewTopic={addNewTopic} accounts={accounts}></TopicForm>
             <TopicList topics={topics} accounts={accounts}></TopicList>
         </section>
     )
