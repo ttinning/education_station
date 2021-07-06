@@ -13,9 +13,10 @@ const AudioGame = function() {
 
     const [focusWord, setFocusWord] = useState(audioWordList[0]);
     const [wordAudioAPI, setWordAudioAPI] = useState({});
+    const [wrongCounter, setWrongCounter] = useState(0);
     const [correctWordStore, setCorrectWordStore] = useState([]);
     const [incorrectWordStore, setIncorrectWordStore] = useState([]);
-    let wrongCounter = 0;
+    // let wrongCounter = 0;
    
 
     const checkLastWord = () => {
@@ -60,7 +61,7 @@ const AudioGame = function() {
         } else {
             nextButton.textContent = "Finish topic";
         };
-        wrongCounter = 0;        
+        setWrongCounter(0);        
         const text = document.querySelector('#correct-text');
         text.hidden = true;
         const form = document.querySelector('#form')
@@ -86,14 +87,23 @@ const AudioGame = function() {
             nextButton.hidden = false;
             const newCorrectWordStore = [...correctWordStore, focusWord];
             setCorrectWordStore(newCorrectWordStore);
+            if (incorrectWordStore.includes(focusWord)) {
+                let temp = [...incorrectWordStore]
+                let newIncorrectWordStore = temp.filter((word) => {
+                    return word !== focusWord;
+                });
+                setIncorrectWordStore(newIncorrectWordStore);
+            }
         } else {  
             text.textContent = "Wrong, try again"
-            const newIncorrectWordStore = [...incorrectWordStore, focusWord];
-            setIncorrectWordStore(newIncorrectWordStore);
-            wrongCounter ++;
+            
+            setWrongCounter(wrongCounter + 1);
+            console.log(wrongCounter);
             if (wrongCounter >= 2 ) {
                 nextButton.hidden = false;
             }
+            const newIncorrectWordStore = [...incorrectWordStore, focusWord];
+            setIncorrectWordStore(newIncorrectWordStore);
         };
     };
 
@@ -122,11 +132,20 @@ const AudioGame = function() {
             <section>
                 <h2 id="correct-text" hidden></h2>
             </section>
-            <section>
-                <h3>You can spell:</h3>
-                {correctWordStore}
-                <h3>You can't spell:</h3>
-                {incorrectWordStore}
+            <section className="summary">
+                { correctWordStore.length > 0 ? <div>
+                    <h3>Words you can spell:</h3>
+                    <ul>
+                        {correctWordStore}
+                    </ul>
+                </div> : null}
+               
+                { incorrectWordStore.length > 0 && wrongCounter >= 3 ? <div>
+                    <h3>Words to learn:</h3>
+                    <ul>
+                        {incorrectWordStore}
+                    </ul>
+                </div> : null}
             </section>
         </div>
     );
