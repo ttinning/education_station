@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 const Topic = ({topic, accounts}) => {
 
     // const completedTopics = accounts[0].student.completed_topics;
-    const topicTrophies = accounts[0].student.trophies[`${topic.title}`];
+    const topicTrophies = accounts[0].student.topics_trophies[`${topic.title}`];
     console.log(topicTrophies);
 
     // const calculateCompletedTopicStatus = function () {
