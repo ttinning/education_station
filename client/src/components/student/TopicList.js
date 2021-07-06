@@ -15,11 +15,7 @@ const TopicList = ({topics, accounts}) => {
             <ul className="topic-buttons-container">
                 {listItems}
             </ul>
-            <Link to={{
-                    pathname: `/audiogame`,
-                    state: {accounts}
-                }}><button className="audio-game-btn">Audio Game</button>
-            </Link>
+            
 
         </div>
     )
