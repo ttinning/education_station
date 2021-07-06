@@ -2,7 +2,7 @@ import { useState } from "react";
 import TopicService from "../../services/TopicService";
 import WordService from "../../services/WordService";
 
-const TopicForm = ({addNewTopic}) => {
+const TopicForm = ({addNewTopic, accounts}) => {
 
     const [formData, setFormData] = useState({});
 
@@ -10,7 +10,7 @@ const TopicForm = ({addNewTopic}) => {
     const onChange = (evt) => {
         formData[evt.target.id] = evt.target.value;
         setFormData(formData);
-    };
+        };
 
     const handleFormSubmit = (evt) => {
         evt.preventDefault()
@@ -25,11 +25,20 @@ const TopicForm = ({addNewTopic}) => {
         
         TopicService.postTopic(formattedData)
             .then((data) => {addNewTopic(formattedData)})
+
         const form = document.querySelector('#new-topic-form')
         form.reset();
         setFormData({});
         
     };
+
+    // const updateTrophiesOnAccount = () => {
+    //     const temp = {...accounts[0]}
+    //     newTrophiesObject = {};
+    //     temp.student.topics_trophies
+    //     delete temp._id
+    //     AccountsService.updateAccounts(accounts[0]._id, temp)
+    // };
 
     return (
         <div>
