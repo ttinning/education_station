@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import AudioService from "../../services/AudioService";
 import { useLocation, Link } from "react-router-dom"
-import AccountService from "../../services/AccountsService";
 
 const AudioGame = function() {
 
@@ -117,12 +116,7 @@ const AudioGame = function() {
     };
 
 
-    const updateAccount = () => {
-        const temp = {...accounts[0]}
-        temp.student.completed_topics.push(topic.title)
-        delete temp._id
-        AccountService.updateAccounts(accounts[0]._id, temp)
-    };
+    
 
     
     
