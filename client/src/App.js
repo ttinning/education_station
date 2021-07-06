@@ -1,5 +1,6 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Switch, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { useState } from 'react'
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import ParentDashboard from './containers/parent/ParentDashboard';
@@ -11,9 +12,18 @@ import DnDPage from './components/student/DnD/DnDPage';
 
 import AudioGame from './components/student/AudioGame';
 
+import Login from './components/Login/Login';
+
 
 
 function App() {
+
+  const [token, setToken] = useState('')
+
+  if (!token) {
+    return <Login setToken={setToken} />
+  }
+
   return (
     <Router>    
       <Navbar></Navbar>
