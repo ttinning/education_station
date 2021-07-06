@@ -139,6 +139,8 @@ a:visited {
   height: 4rem;
   border: dotted 1px black;
   background-color: #26408B;
+  color: white;
+  /* box-shadow: -1rem 2rem 3rem rgba(0, 0, 0, 0.4); */
 }
 
 .dnd-definition {
@@ -148,6 +150,7 @@ a:visited {
   height: 4rem;
   border: dotted 1px black;
   background-color: #BF6900;
+  /* box-shadow: -1rem 2rem 3rem rgba(0, 0, 0, 0.4) */
 }
 
 
