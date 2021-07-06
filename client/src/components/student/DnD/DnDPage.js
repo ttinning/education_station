@@ -57,14 +57,16 @@ const DnDPage = () => {
 
     return(
         <DndProvider backend={HTML5Backend}>
-            <section id="dnd-body">
+            <section>
                 <h2>{topic.title} quiz</h2>
-                <ul id="dnd-list">
-                    {words}
-                </ul>
-                <ul>
-                    {definitions}
-                </ul>
+                <div id="dnd-container">
+                    <ul>
+                        {words}
+                    </ul>
+                    <ul>
+                        {definitions}
+                    </ul>
+                </div>
                 {gameComplete ? 
                 <Link to={{
                     pathname: `/student/drag/${topic.title}/completed`,
