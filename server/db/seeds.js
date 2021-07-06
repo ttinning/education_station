@@ -18,7 +18,7 @@ db.accounts.insertMany([
 db.topics.insertMany([
     {
         title: "animals",
-        word_list: ["tiger", "dog", "cat", "koala", "chicken", "turtle", "whale", "owl", "rooster", "pigeon", "zebra", "fox"],
+        word_list: ["shark", "dog", "cat", "koala", "otter", "turtle", "whale", "owl", "wolf", "walrus", "fish", "fox"],
         background_image: ''
 
     },
@@ -26,5 +26,15 @@ db.topics.insertMany([
         title: "vehicles",
         word_list: ["car", "train", "aeroplane", "bicycle", "crane", "motorbike", "motorbike", "motorbike", "motorbike", "motorbike"],
         background_image: ''
+    },
+    {
+        title: "food",
+        word_list: ["grape","egg","tomato", "onion", "mango", "apple", "fig", "peach", "meat", "yogurt"],
+        background_image: ""
+    },
+    {
+        title: "instuments",
+        word_list: ["harp", "guitar", "violin", "piano", "banjo", "cello", "drums", "flute", "trumpets", "tuba"],
+        background_image: ""
     }
 ])
