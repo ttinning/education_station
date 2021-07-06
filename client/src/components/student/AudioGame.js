@@ -13,13 +13,18 @@ const AudioGame = function() {
 
     const [focusWord, setFocusWord] = useState(audioWordList[0]);
     const [wordAudioAPI, setWordAudioAPI] = useState({});
+    const [correctWordStore, setCorrectWordStore] = useState([]);
+    const [incorrectWordStore, setIncorrectWordStore] = useState([]);
     let wrongCounter = 0;
+   
 
     const checkLastWord = () => {
         return audioWordList.indexOf(focusWord) === audioWordList.length - 1;
     };
 
     let lastWordCheck = checkLastWord();
+
+    
     
 
     
@@ -53,7 +58,7 @@ const AudioGame = function() {
             setFocusWord(nextFocusWord);
             nextButton.hidden = true;
         } else {
-            nextButton.textContent = "Finsh topic";
+            nextButton.textContent = "Finish topic";
         };
         wrongCounter = 0;        
         const text = document.querySelector('#correct-text');
@@ -79,9 +84,12 @@ const AudioGame = function() {
             text.textContent = "That's Correct!!!"
             console.log("correct")
             nextButton.hidden = false;
+            const newCorrectWordStore = [...correctWordStore, focusWord];
+            setCorrectWordStore(newCorrectWordStore);
         } else {  
             text.textContent = "Wrong, try again"
-            console.log("incorrect");
+            const newIncorrectWordStore = [...incorrectWordStore, focusWord];
+            setIncorrectWordStore(newIncorrectWordStore);
             wrongCounter ++;
             if (wrongCounter >= 2 ) {
                 nextButton.hidden = false;
@@ -113,6 +121,12 @@ const AudioGame = function() {
             </section>
             <section>
                 <h2 id="correct-text" hidden></h2>
+            </section>
+            <section>
+                <h3>You can spell:</h3>
+                {correctWordStore}
+                <h3>You can't spell:</h3>
+                {incorrectWordStore}
             </section>
         </div>
     );
