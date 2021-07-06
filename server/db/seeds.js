@@ -18,11 +18,9 @@ db.accounts.insertMany([
 db.topics.insertMany([
     {
         title: "animals",
-<<<<<<< HEAD
         word_list: ["tiger", "dog", "cat", "koala", "lamb", "turtle", "whale", "owl", "rooster", "pigeon", "zebra", "fox"]
-=======
-        word_list: ["tiger", "cat", "dog", "turtle", "chicken", "koala", "whale", "owl", "rooster", "pigeon", "zebra", "fox"]
->>>>>>> develop
+
+  
     },
     {
         title: "vehicles",
