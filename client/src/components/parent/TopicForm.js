@@ -6,7 +6,6 @@ const TopicForm = ({addNewTopic}) => {
 
     const [formData, setFormData] = useState({});
 
-
     const onChange = (evt) => {
         formData[evt.target.id] = evt.target.value;
         setFormData(formData);
@@ -21,7 +20,6 @@ const TopicForm = ({addNewTopic}) => {
             "title": formData.title,
             "word_list": words
         };
-        console.log(formattedData);
         
         TopicService.postTopic(formattedData)
             .then((data) => {addNewTopic(formattedData)})
@@ -58,12 +56,10 @@ const TopicForm = ({addNewTopic}) => {
                 <input onChange={onChange} type="text" id="word9"></input>
                 <label htmlFor="word10">10.</label>
                 <input onChange={onChange} type="text" id="word10"></input>
-
                 <button className="standard-button" type="submit">Save topic</button>
             </form>
         </div>
     );
-
 };
 
 export default TopicForm;

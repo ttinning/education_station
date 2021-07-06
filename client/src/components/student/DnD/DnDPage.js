@@ -4,7 +4,6 @@ import WordService from "../../../services/WordService"
 import AccountService from '../../../services/AccountsService'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
-
 import { WordDrag } from "./WordDrag"
 import { DefinitionDrop } from "./DefinitionDrop"
 
@@ -24,8 +23,8 @@ const DnDPage = () => {
             WordService.getWordInfo(word)
             .then(res => tempArray = [...tempArray, res])
             .then(res => setWordInfo(tempArray))
-        })
-            }, [])
+            })
+        }, [])
 
     useEffect(() => {
         finishGame()
@@ -58,7 +57,6 @@ const DnDPage = () => {
             AccountService.updateAccounts(accounts[0]._id, temp)
         }
 
-
     return(
         <DndProvider backend={HTML5Backend}>
             <section id="dnd-body">
@@ -75,8 +73,6 @@ const DnDPage = () => {
                 <Link to="/student"><button>Back To Dashboard</button> </Link>
             </section>
         </DndProvider>
-
-
     )
 }
 

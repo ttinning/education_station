@@ -17,12 +17,12 @@ const Topic = ({topic, accounts}) => {
     };
 
     const completedTopicStatus = calculateCompletedTopicStatus();
- 
+
     return ( 
         <div>
             <h3>{topic.title} {completedTopicStatus}</h3>
             <ul>
-              {words}
+                {words}
             </ul>
         </div>
     )

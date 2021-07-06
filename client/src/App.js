@@ -6,12 +6,8 @@ import ParentDashboard from './containers/parent/ParentDashboard';
 import StudentDashboard from './containers/student/StudentDashboard';
 import QuizPage from './components/student/QuizPage';
 import CompletionPage from './components/student/CompletionPage';
-
 import DnDPage from './components/student/DnD/DnDPage';
-
 import AudioGame from './components/student/AudioGame';
-
-
 
 function App() {
   return (
@@ -30,8 +26,6 @@ function App() {
       </main>
     </Router> 
     );
-    
-      
 }
 
 export default App;

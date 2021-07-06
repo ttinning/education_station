@@ -6,7 +6,6 @@ const AccountsService = {
         .then(res => res.json())
     },
 
-
     updateAccounts(id, payload) {
         console.log(id, payload)
         return fetch(baseURL + id, {
@@ -16,7 +15,6 @@ const AccountsService = {
         })
             .then(res => res.json());
     }
-      
 }
 
 export default AccountsService;
