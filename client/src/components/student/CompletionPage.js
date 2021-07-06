@@ -19,7 +19,7 @@ useEffect(() => {
 
 const updateAccount = () => {
     const temp = {...accounts[0]}
-    temp.student.completed_topics.push(topic.title)
+    temp.student.topics_trophies[`${topic}`][`${gameType}`] = true;
     delete temp._id
     AccountsService.updateAccounts(accounts[0]._id, temp)
 };
