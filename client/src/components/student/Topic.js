@@ -5,6 +5,7 @@ const Topic = ({topic, accounts}) => {
     // const completedTopics = accounts[0].student.completed_topics;
     const topicTrophies = accounts[0].student.topics_trophies[`${topic.title}`];
     console.log(topicTrophies);
+    
 
     // const calculateCompletedTopicStatus = function () {
     //     for (let completedTopic of completedTopics) {
@@ -23,7 +24,9 @@ const Topic = ({topic, accounts}) => {
                     state: {topic, accounts}
                 }}><button className="standard-button">{topic.title.toUpperCase()}</button>
             </Link>
-            {completedTopicStatus ? <p className="completed-trophy">&#127942;</p> : null}
+            {topicTrophies.quiz ? <p className="completed-trophy">&#127942;</p> : null}
+            {topicTrophies.drag ? <p className="completed-trophy">&#127942;</p> : null}
+            {topicTrophies.audio ? <p className="completed-trophy">&#127942;</p> : null}
             <Link to={{
                     pathname: `/audiogame`,
                     state: {topic, accounts}
