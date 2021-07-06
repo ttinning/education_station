@@ -13,12 +13,22 @@ import DnDPage from './components/student/DnD/DnDPage';
 import AudioGame from './components/student/AudioGame';
 
 import Login from './components/Login/Login';
+import useToken from './components/Login/useToken';
 
+// function setToken(userToken) {
+//   localStorage.setItem('token', JSON.stringify(userToken));
+// }
 
+// function getToken() {
+//   const tokenString = localStorage.getItem('token');
+//   const userToken = JSON.parse(tokenString);
+//   return userToken?.token
+// }
 
 function App() {
 
-  const [token, setToken] = useState('')
+  // const [token, setToken] = useState('')
+  const {token, setToken} = useToken()
 
   if (!token) {
     return <Login setToken={setToken} />

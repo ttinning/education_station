@@ -25,6 +25,7 @@ const Login = ({ setToken }) => {
             password
         })
         setToken(token)
+        window.location.reload(false)
     }
 
     return(
