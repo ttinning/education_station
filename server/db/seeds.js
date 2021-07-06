@@ -30,8 +30,7 @@ db.accounts.insertMany([
 db.topics.insertMany([
     {
         title: "animals",
-feature/audio-game
-        word_list: ["tiger", "dog", "cat", "koala", "chicken", "turtle", "whale", "owl", "rooster", "pigeon", "zebra", "fox"]
+        word_list: ["tiger", "dog", "cat", "koala", "chicken", "turtle", "whale", "owl", "rooster", "pigeon", "zebra", "fox"],
         background_image: ''
 
     },

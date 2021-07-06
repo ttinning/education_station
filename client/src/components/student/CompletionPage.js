@@ -22,7 +22,7 @@ const updateAccount = () => {
     temp.student.completed_topics.push(topic.title)
     delete temp._id
     AccountsService.updateAccounts(accounts[0]._id, temp)
-}
+};
 
 let {topic} = useParams()
 let {gameType} = useParams()

@@ -6,12 +6,16 @@ import ParentDashboard from './containers/parent/ParentDashboard';
 import StudentDashboard from './containers/student/StudentDashboard';
 import QuizPage from './components/student/QuizPage';
 import CompletionPage from './components/student/CompletionPage';
+
+import DnDPage from './components/student/DnD/DnDPage';
+
 import AudioGame from './components/student/AudioGame';
+
 
 
 function App() {
   return (
-    <Router>
+    <Router>    
       <Navbar></Navbar>
       <main>
         <Switch>
@@ -21,8 +25,13 @@ function App() {
         <Route path='/student/quiz/:topic' exact component={QuizPage}/>
         <Route path='/student/:gameType/:topic/completed' component={CompletionPage}/>
         <Route path='/student/audio/:topic' exact component={AudioGame}></Route>
+
+
+        <Route path='/student/:topic/dnd' exact component={DnDPage}/>
+        
+
         </Switch>
-      </main>   
+      </main>
     </Router> 
     );
     
