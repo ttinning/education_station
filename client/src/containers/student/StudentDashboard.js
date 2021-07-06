@@ -4,6 +4,7 @@ import TopicList from "../../components/student/TopicList";
 import AccountsService from "../../services/AccountsService";
 
 
+
 const StudentDashboard = () => {
 
     const [topics, setTopics] = useState([])
@@ -20,6 +21,8 @@ const StudentDashboard = () => {
                 <h2>Student Dashboard</h2>
                 {accounts.length > 0 && topics.length > 0 ? <TopicList topics={topics} accounts={accounts}></TopicList> 
                 : null}
+
+                
         </section>
     )
 }
