@@ -20,7 +20,7 @@ const Topic = ({topic, accounts}) => {
     return (
         <li>
             <Link to={{
-                    pathname: `/student/${topic.title}`,
+                    pathname: `/student/quiz/${topic.title}`,
                     state: {topic, accounts}
                 }}><button className="standard-button">{topic.title.toUpperCase()}</button>
             </Link>
@@ -28,7 +28,7 @@ const Topic = ({topic, accounts}) => {
             {topicTrophies.drag ? <p className="completed-trophy">&#127942;</p> : null}
             {topicTrophies.audio ? <p className="completed-trophy">&#127942;</p> : null}
             <Link to={{
-                    pathname: `/audiogame`,
+                    pathname: `/student/audio/${topic.title}`,
                     state: {topic, accounts}
                 }}><button className="audio-game-btn">Audio Game</button>
             </Link>
