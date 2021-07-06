@@ -6,21 +6,12 @@ const Topic = ({topic, accounts}) => {
         return <Word word={word} accounts={accounts}></Word>
     });
 
-    const completedTopics = accounts[0].student.completed_topics;
+  
 
-    const calculateCompletedTopicStatus = function () {
-        for (let completedTopic of completedTopics) {
-            if (topic.title === completedTopic) {
-                return "Completed!"
-            };
-        };
-    };
-
-    const completedTopicStatus = calculateCompletedTopicStatus();
  
     return ( 
         <div>
-            <h3>{topic.title} {completedTopicStatus}</h3>
+            <h3>{topic.title}</h3>
             <ul>
               {words}
             </ul>
