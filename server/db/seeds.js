@@ -12,8 +12,16 @@ db.accounts.insertMany([
             age: 6,
 
             topics_trophies: {
-                animals: ["audio"],
-                vehicles: ["drag", "quiz"]
+                animals: {
+                    quiz: false,
+                    drag: false,
+                    audio: true
+                },
+                vehicles: {
+                    quiz: false,
+                    drag: true,
+                    audio: true
+                }
             }
         }
     },
