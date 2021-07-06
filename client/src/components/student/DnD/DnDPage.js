@@ -42,7 +42,7 @@ const DnDPage = () => {
             return null
         }
     }
-    
+
         const words = topic.word_list.map((word, index) => {
             return <WordDrag word={word} key={index} wordId={index} incrementScore={incrementScore}></WordDrag>
         });
@@ -61,7 +61,7 @@ const DnDPage = () => {
 
     return(
         <DndProvider backend={HTML5Backend}>
-            <section id="quiz-body">
+            <section id="dnd-body">
                 <h2>{topic.title} quiz</h2>
                 <ul id="dnd-list">
                     {words}

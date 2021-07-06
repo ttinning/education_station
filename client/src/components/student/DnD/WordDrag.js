@@ -10,7 +10,6 @@ export const WordDrag = function WordBox({ word, incrementScore, wordId }) {
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
             if (item && dropResult) {
-                // alert(`You dropped ${word} into ${dropResult.name}!`);
                 isCorrect(word, dropResult);
             }
         },
@@ -22,7 +21,6 @@ export const WordDrag = function WordBox({ word, incrementScore, wordId }) {
 
     const isCorrect = (word, dropResult) => {
         if (word === dropResult.name) {
-            // alert("Correct!")
             incrementScore()
             console.log(dropResult)
             document.querySelector(`#word${wordId}`).remove()
@@ -33,13 +31,17 @@ export const WordDrag = function WordBox({ word, incrementScore, wordId }) {
             document.querySelector(`#${word}`).appendChild(correctAnswer);
         } else {
             document.querySelector(`#${dropResult.name}`).style.animation = "shake 0.5s"
-            setTimeout(() => {  document.querySelector(`#${dropResult.name}`).style.removeProperty('animation')}, 1000)
+            document.querySelector(`#${dropResult.name}`).style.animation = "red-incorrect 2s"
+            setTimeout(() => {  document.querySelector(`#${dropResult.name}`).style.removeProperty('animation')}, 2500)
+
         }
-        // word === dropResult.name ? alert("Correct!") : null;
+
     }
     
 
     const opacity = isDragging ? 0 : 1;
-    return (<li className="dnd-word" id={`word${wordId}`} ref={drag} style={{opacity}} role='Word'>{word}</li>);
+    return (
+            <li className="dnd-word" id={`word${wordId}`} ref={drag} style={{opacity}} role='Word'>{word}</li>
+    );
 
 };
