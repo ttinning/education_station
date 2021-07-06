@@ -15,8 +15,8 @@ const DnDPage = () => {
     const accounts = data.state.accounts
 
     const [wordInfo, setWordInfo] = useState([])
+    const [score, setScore] = useState(0);
 
-           
     useEffect(() => {
         let tempArray = []
         topic.word_list.map((word) => {
@@ -26,9 +26,25 @@ const DnDPage = () => {
         })
             }, [])
 
+    useEffect(() => {
+        finishGame()
+    }, [score])
+
+    const incrementScore = () => {
+        setScore(score => score +1);
+    }
+
+    const finishGame = () => {
+        if (topic.word_list.length === score) {
+            alert('You done completed it yo')
+        } else {
+            return null
+        }
+    }
+
  
         const words = topic.word_list.map((word, index) => {
-            return <WordDrag word={word} key={index}></WordDrag>
+            return <WordDrag word={word} key={index} incrementScore={incrementScore}></WordDrag>
         });
 
         const definitions = wordInfo.map((word, index) => {
