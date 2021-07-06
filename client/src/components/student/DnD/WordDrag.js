@@ -33,7 +33,7 @@ export const WordDrag = function WordBox({ word, incrementScore, wordId }) {
             document.querySelector(`#${word}`).appendChild(correctAnswer);
         } else {
             document.querySelector(`#${dropResult.name}`).style.animation = "shake 0.5s"
-            setTimeout(() => {  document.querySelector(`#${dropResult.name}`).removeAttribute('style')}, 1000)
+            setTimeout(() => {  document.querySelector(`#${dropResult.name}`).style.removeProperty('animation')}, 1000)
         }
         // word === dropResult.name ? alert("Correct!") : null;
     }
