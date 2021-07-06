@@ -92,10 +92,7 @@ const QuizPage = () => {
             setCounter(counter +1)
             document.querySelector(`#answer-box-${counter}`).focus()
         } else{
-            console.log("oops")
         }
-        // console.log("Keys Up!");
-        // console.log(counter)
     }
         
 
@@ -110,8 +107,6 @@ const QuizPage = () => {
 
             <button className="standard-button" onClick={handleRevealClick}>Reveal answer</button>
             {showAnswer ? <p>The answer is {wordInfo.word}</p> : null}
-
-            
 
             <form id="answer-input">
                 <label htmlFor="answer-box">Enter your answer here:</label>

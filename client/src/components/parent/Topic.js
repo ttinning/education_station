@@ -6,14 +6,11 @@ const Topic = ({topic, accounts}) => {
         return <Word word={word} accounts={accounts}></Word>
     });
 
-  
-
- 
     return ( 
         <div>
             <h3>{topic.title}</h3>
             <ul>
-              {words}
+                {words}
             </ul>
         </div>
     )

@@ -2,8 +2,6 @@ import { useDrag } from 'react-dnd';
 
 export const WordDrag = function WordBox({ word, incrementScore, wordId }) {
 
-    
-
     const [{ isDragging }, drag] = useDrag(() => ({
         type: "Word",
         item: { word },
@@ -33,15 +31,12 @@ export const WordDrag = function WordBox({ word, incrementScore, wordId }) {
             document.querySelector(`#${dropResult.name}`).style.animation = "shake 0.5s"
             document.querySelector(`#${dropResult.name}`).style.animation = "red-incorrect 2s"
             setTimeout(() => {  document.querySelector(`#${dropResult.name}`).style.removeProperty('animation')}, 2500)
-
         }
-
     }
-    
 
     const opacity = isDragging ? 0 : 1;
     return (
-            <li className="dnd-word" id={`word${wordId}`} ref={drag} style={{opacity}} role='Word'>{word}</li>
+        <li className="dnd-word" id={`word${wordId}`} ref={drag} style={{opacity}} role='Word'>{word}</li>
     );
 
 };

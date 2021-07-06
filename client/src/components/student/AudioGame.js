@@ -4,7 +4,6 @@ import { useLocation, Link } from "react-router-dom"
 
 const AudioGame = function() {
 
-    
     const data = useLocation();
     const topic = data.state.topic;
     const accounts = data.state.accounts;
@@ -26,8 +25,6 @@ const AudioGame = function() {
 
     
     
-
-    
     useEffect(() => {
         AudioService.getWordAudioAPI(focusWord)
             .then(res => setWordAudioAPI(res))
@@ -47,7 +44,6 @@ const AudioGame = function() {
     };
     const audioLink = getAudioLink();
     
-
     const handleButtonClick = function() {
         goToNextWord();
     };
@@ -80,13 +76,11 @@ const AudioGame = function() {
     const handleAnswerSubmit = (evt) => {
         evt.preventDefault();
         const guess = evt.target.guess.value.toLowerCase().trim();
-        console.log(guess);
         const text = document.querySelector('#correct-text');
         const nextButton = document.querySelector('.next-button');
         text.hidden = false;
         if (guess === focusWord) {
             text.textContent = "That's Correct!!!"
-            console.log("correct")
             nextButton.hidden = false;
             if (!correctWordStore.includes(focusWord)) {
                 const newCorrectWordStore = [...correctWordStore, focusWord];
@@ -101,9 +95,7 @@ const AudioGame = function() {
             }
         } else {  
             text.textContent = "Wrong, try again"
-            
             setWrongCounter(wrongCounter + 1);
-            console.log(wrongCounter);
             if (wrongCounter >= 2 ) {
                 nextButton.hidden = false;
                 if (!incorrectWordStore.includes(focusWord)) {
@@ -138,7 +130,6 @@ const AudioGame = function() {
  
 
     
-
     return (
         <div>
             <h3>Can you spell these animal words?</h3>
