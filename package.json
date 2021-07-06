@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "start": "cd client; npm run start"
+    }   
+}
