@@ -118,9 +118,52 @@ a:visited {
 }
 
 #quiz-body button {
+
+  padding: 1rem;
+  font-family: "Barrio";
+  border-radius: 1rem;
+  color: #f3f3f3;
+  background-color: #BF6900;
   width: 12rem;
 }
 
-/* Audio Game */
+#dnd-list {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+}
+
+.dnd-word {
+  border: solid 2px black;
+}
+
+.dnd-definition {
+  border: solid 2px black;
+}
 
 
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes red-incorrect {
+  0% {background-color: #E8DB7D}
+  50% {background-color: red;}
+  100% {background-color: #E8DB7D}
+}
+
+@keyframes red-incorrect {
+  0% {background-color: #E8DB7D}
+  50% {background-color: red;}
+  100% {background-color: #E8DB7D}
+}
