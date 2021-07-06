@@ -27,7 +27,7 @@ const AnswerPage = () => {
         <div>
             <form onSubmit={handleSubmit}>
                 <input type='text' onChange={handleAnswer}></input>
-                <button type='submit'>Submit</button>
+                <button className="standard-button" type='submit'>Submit</button>
             </form>
             
         </div>

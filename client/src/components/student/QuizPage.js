@@ -110,10 +110,10 @@ const QuizPage = () => {
             
             {Object.keys(wordInfo).length > 0 ? <img src={wordInfo.definitions[0].image_url } alt={wordInfo.word}></img> : null}
             
-            <button onClick={handleHintClick}>Show Hint</button>
+            <button className="standard-button" onClick={handleHintClick}>Show Hint</button>
             {showHint ? <p>{randomWord}</p> : null}
 
-            <button onClick={handleRevealClick}>Reveal answer</button>
+            <button className="standard-button" onClick={handleRevealClick}>Reveal answer</button>
             {showAnswer ? <p>The answer is {wordInfo.word}</p> : null}
 
             
@@ -138,9 +138,9 @@ const QuizPage = () => {
                 </div> : null}
 
             {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ? 
-                <button onClick={handleNextClick}>Next</button> : 
+                <button className="standard-button" onClick={handleNextClick}>Next</button> : 
                 <Link to={`/student/${topic.title}/completed`}><button onClick={updateAccount}>Complete Topic!</button></Link>}
-            <Link to="/student"><button>Back To Dashboard</button> </Link>
+            <Link to="/student"><button className="standard-button">Back To Dashboard</button> </Link>
 
         </section>
 
