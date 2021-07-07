@@ -1,4 +1,4 @@
-import '../../CompletionPage.css'
+import '../../styles/CompletionPage.css'
 import trophy from "../../images/trophy.png"
 import { useParams, Link, useLocation} from 'react-router-dom'
 import { useState, useEffect } from 'react'

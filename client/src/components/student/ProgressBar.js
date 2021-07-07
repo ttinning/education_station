@@ -1,4 +1,4 @@
-import '../../ProgressBar.css'
+import '../../styles/ProgressBar.css'
 import {useEffect} from 'react'
 
 const ProgressBar = ({questionNumber, answerCorrect}) => {
