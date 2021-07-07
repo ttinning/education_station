@@ -31,7 +31,7 @@ const Login = ({ setToken }) => {
     return(
         <div className='login-wrapper'>
             <h1>Please Log In</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} id='login-submit'>
                 <label>
                     <p>Username</p>
                     <input type="text" name="username" id="username" onChange={event => setUserName(event.target.value)}/>
