@@ -51,7 +51,7 @@ const DnDPage = () => {
             return <DefinitionDrop word={word} key={index}></DefinitionDrop>
         });
 
-        
+  
 
     return(
         <DndProvider backend={HTML5Backend}>

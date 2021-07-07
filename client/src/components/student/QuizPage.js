@@ -11,7 +11,7 @@ const QuizPage = () => {
 
     const [questionNumber, setQuestionNumber] = useState(0);
     const [answer, setAnswer] = useState('');
-    const [wordInfo, setWordInfo] = useState({});
+    const [wordInfo, setWordInfo] = useState(null);
     const [showHint, setShowHint]= useState(false);
     const [showAnswer, setShowAnswer]= useState(false);
     const [answerCorrect, setAnswerCorrect] = useState(false);
@@ -19,6 +19,7 @@ const QuizPage = () => {
     const [answerIncorrect, setAnswerIncorrect] = useState(false);
 
     const [counter, setCounter] = useState(1)
+    const error = false;
 
     useEffect(() => {
         WordService.getWordInfo(topic.word_list[questionNumber])
@@ -90,53 +91,66 @@ const QuizPage = () => {
             setCounter(counter +1)
             document.querySelector(`#answer-box-${counter}`).focus();
         } 
-    }  
+    }
+
+    const returnContent = () => {
+        if (wordInfo.definitions) {
+            return (
+                <section id="quiz-body">
+                        <div class="quiz-head">
+                            <h2>{topic.title} quiz</h2>
+                            <ProgressBar questionNumber={questionNumber} answerCorrect={answerCorrect}/>
+                        </div>
+                        <div class="image-and-info-wrapper">
+                            {Object.keys(wordInfo).length > 0 ? <img src={wordInfo.definitions[0].image_url } alt={wordInfo.word}></img> : null}
+                            {answerCorrect ?
+                                <div id="correct-wrapper">
+                                    <h2>CORRECT!</h2>
+                                    <p>{wordInfo.definitions[0].definition}</p>
+                                </div> : null}
+                            {answerIncorrect ?
+                                <div id="incorrect-wrapper">
+                                    <h2>TRY AGAIN!</h2>
+                                </div> : null}
+                        </div>
+                        <form id="answer-input">
+                            <label htmlFor="answer-box">Enter your answer here:</label>
+                            {quizWord.split('').map((letter, index) => {
+                                return <input maxLength='1' className="letter-input" id={`answer-box-${index}`} type="text" onKeyUp={e => {checkAnswer(e); handleKeyUp(e)}} ></input>
+                            })}
+                            {/* <input id="answer-box" type="text" onChange={checkAnswer}></input> */}
+                        </form>
+                        <div class="assist-buttons">
+                            <button className="standard-button" onClick={handleHintClick}>Show Hint</button>
+                            <button className="standard-button" onClick={handleRevealClick}>Reveal answer</button>
+                            <div className="assist-words">
+                                {showHint ? <p>Unscramble These Letters: <span className="random-word">{randomWord}</span></p> : null}
+                                {showAnswer ? <p>Answer: {wordInfo.word}</p> : null}
+                            </div>
+                        </div>
+                        <div class="nav-buttons">
+                            <Link to="/student"><button className="standard-button">Back To Dashboard</button> </Link>
+                            {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ?
+                                <button className="standard-button" onClick={handleNextClick}>Next</button> :
+                                <Link to={{
+                                    pathname: `/student/quiz/${topic.title}/completed`,
+                                    state: {accounts}
+                                }}><button>Complete Topic!</button></Link>}
+                        </div>
+                    </section> )
+        }
+        else {
+            return (
+                <p>Sorry, not all of the words ae available to play in this game.  Try choosing another from your dashboard</p>
+            )
+        }
+    }
+
 
     return(
         <div>
-            { wordInfo.definitions ?
-            <section id="quiz-body">
-                <div class="quiz-head">
-                    <h2>{topic.title} quiz</h2>
-                    <ProgressBar questionNumber={questionNumber} answerCorrect={answerCorrect}/>
-                </div>
-                <div class="image-and-info-wrapper">
-                    {Object.keys(wordInfo).length > 0 ? <img src={wordInfo.definitions[0].image_url } alt={wordInfo.word}></img> : null}
-                    {answerCorrect ?
-                        <div id="correct-wrapper">
-                            <h2>CORRECT!</h2>
-                            <p>{wordInfo.definitions[0].definition}</p>
-                        </div> : null}
-                    {answerIncorrect ?
-                        <div id="incorrect-wrapper">
-                            <h2>TRY AGAIN!</h2>
-                        </div> : null}
-                </div>
-                <form id="answer-input">
-                    <label htmlFor="answer-box">Enter your answer here:</label>
-                    {quizWord.split('').map((letter, index) => {
-                        return <input maxLength='1' className="letter-input" id={`answer-box-${index}`} type="text" onKeyUp={e => {checkAnswer(e); handleKeyUp(e)}} ></input>
-                    })}
-                    {/* <input id="answer-box" type="text" onChange={checkAnswer}></input> */}
-                </form>
-                <div class="assist-buttons">
-                    <button className="standard-button" onClick={handleHintClick}>Show Hint</button>
-                    <button className="standard-button" onClick={handleRevealClick}>Reveal answer</button>
-                    <div className="assist-words">
-                        {showHint ? <p>Unscramble These Letters: <span className="random-word">{randomWord}</span></p> : null}
-                        {showAnswer ? <p>Answer: {wordInfo.word}</p> : null}
-                    </div>
-                </div>
-                <div class="nav-buttons">
-                    <Link to="/student"><button className="standard-button">Back To Dashboard</button> </Link>
-                    {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ?
-                        <button className="standard-button" onClick={handleNextClick}>Next</button> :
-                        <Link to={{
-                            pathname: `/student/quiz/${topic.title}/completed`,
-                            state: {accounts}
-                        }}><button>Complete Topic!</button></Link>}
-                </div>
-            </section> : <p>Sorry, this game is not available for {topic.title}.  Try selecting a diffferent one from your dashboard</p>}
+            { wordInfo ? returnContent()
+             : null }
         </div>
 
 
