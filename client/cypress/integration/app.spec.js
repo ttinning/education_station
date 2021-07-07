@@ -48,4 +48,14 @@ describe('App', () => {
         landingpage.should('be.visible')
     })
 
+    it('visit the student page and choose game', () => {
+        const student = cy.get('#student-button')
+        student.click()
+        const dashboard = cy.get('.dashboard')
+        dashboard.should('be.visible')
+        const animal = cy.get('.topic-buttons-container > li').children().first()
+        animal.click()
+        const answer = cy.get('#answer-input')
+        answer.should('be.visible')
+    })
 })
