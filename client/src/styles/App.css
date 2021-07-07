@@ -167,6 +167,7 @@ footer{
   margin: 0 1rem 0 1rem;
   width: 300px;
   border-radius: .5rem;
+  animation: fadeIn 1.5s;
 }
 
 .quiz-head{
@@ -192,6 +193,7 @@ footer{
 #correct-wrapper, #incorrect-wrapper{
   border: 3px dotted #25283D;
   margin-right: 3rem;
+  animation: fadeIn ease 1.5s;
 }
 
 #incorrect-wrapper{
@@ -250,7 +252,8 @@ footer{
   border: dotted 1px black;
   background-color: #25283D;
   color: white;
-  font-family: "Montserrat"
+  font-family: "Montserrat";
+  animation: fadeIn 1.5s;
   /* box-shadow: -1rem 2rem 3rem rgba(0, 0, 0, 0.4); */
 }
 
@@ -262,7 +265,8 @@ footer{
   border: dotted 1px black;
   padding: 0 1rem 0 1rem;
   background-color: #84A6CE;
-  font-family: "Montserrat"
+  font-family: "Montserrat";
+  animation: fadeIn 2s;
   /* box-shadow: -1rem 2rem 3rem rgba(0, 0, 0, 0.4) */
 }
 
@@ -299,12 +303,19 @@ footer{
 
 #play-button-and-summary{
   display:flex;
+  justify-content: space-between;
   align-items: center;
+}
+
+.summary {
+  margin-right: 3rem;
+  flex-grow: 0.5;
+  animation: fadeIn 1.5s;
 }
 
 ul.lists li{
   display: inline;
-  text-transform: capitalize;
+  animation: fadeIn 1.5s;
 } 
 
 /* .summary > h3{
@@ -345,4 +356,15 @@ ul.lists li{
 #celebration-text{
   text-align: center;
   font-size: 2rem;
+}
+
+/* Animations */
+
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
 }

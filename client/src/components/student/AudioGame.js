@@ -143,14 +143,14 @@ const AudioGame = function() {
                     { correctWordStore.length > 0 ? <div>
                         <h3>Words you can spell:</h3>
                         <ul className="lists">
-                            {correctWordsListItems}
+                            <li>{correctWordsListItems}</li>
                         </ul>
                     </div> : null}
                 
                     { incorrectWordStore.length > 0 ? <div>
                         <h3>Words to learn:</h3>
                         <ul className="lists">
-                            {incorrectWordsListItems}
+                            <li>{incorrectWordsListItems}</li>
                         </ul>
                     </div> : null}
                 </section>
