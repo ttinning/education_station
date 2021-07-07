@@ -24,21 +24,21 @@ describe('App', () => {
         landingpage.should('be.visible')
     })
 
-    it('visit the parent page', () => {
+    xit('visit the parent page', () => {
         const parent = cy.get('#parent-button')
         parent.click()
         const dashboard = cy.get('.dashboard')
         dashboard.should('be.visible')
     })
 
-    it('visit the student page', () => {
+    xit('visit the student page', () => {
         const student = cy.get('#student-button')
         student.click()
         const dashboard = cy.get('.dashboard')
         dashboard.should('be.visible')
     })
 
-    it('home button returns after choosing student', () => {
+    xit('home button returns after choosing student', () => {
         const student = cy.get('#student-button')
         student.click()
         const dashboard = cy.get('.dashboard')
@@ -48,7 +48,7 @@ describe('App', () => {
         landingpage.should('be.visible')
     })
 
-    it('visit the student page and choose game', () => {
+    xit('visit the student page and choose game', () => {
         const student = cy.get('#student-button')
         student.click()
         const dashboard = cy.get('.dashboard')
@@ -57,5 +57,19 @@ describe('App', () => {
         animal.click()
         const answer = cy.get('#answer-input')
         answer.should('be.visible')
+    })
+
+    it('visit the student page and answer game', () => {
+        const student = cy.get('#student-button')
+        student.click()
+        const dashboard = cy.get('.dashboard')
+        dashboard.should('be.visible')
+        const animal = cy.get('.topic-buttons-container > li').children().eq(3)
+        animal.click()
+        const answerInput = cy.get('#guess')
+        answerInput.type('shark')
+        cy.get('#form').submit()
+        const correct = cy.get('h2')
+        correct.should('contain', "That's Correct!!!")
     })
 })
