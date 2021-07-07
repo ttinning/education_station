@@ -318,9 +318,19 @@ ul.lists li{
   animation: fadeIn 1.5s;
 } 
 
-/* .summary > h3{
-  margin-left: 3rem;
-} */
+#form {
+  display: flex;
+  align-items: center;
+}
+
+#guess {
+  width: 12rem;
+  height: 2.3rem;
+  font-size: 2rem;
+  font-family: "Montserrat";
+  border-radius: 0.25rem;
+}
+
 /* Parents' dashboard */
 
 .word-inputs {
