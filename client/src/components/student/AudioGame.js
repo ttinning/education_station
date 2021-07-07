@@ -80,10 +80,12 @@ const AudioGame = function() {
         const guess = evt.target.guess.value.toLowerCase().trim();
         const text = document.querySelector('#correct-text');
         const nextButton = document.querySelector('.next-button');
+        const form = document.querySelector('#form');
         text.hidden = false;
-        if (guess === focusWord) {
+        if (guess === focusWord.toLowerCase()) {
             text.textContent = "That's Correct!!!"
             nextButton.hidden = false;
+            form.hidden = true;
             if (!correctWordStore.includes(focusWord)) {
                 const newCorrectWordStore = [...correctWordStore, focusWord];
                 setCorrectWordStore(newCorrectWordStore);
@@ -100,9 +102,7 @@ const AudioGame = function() {
             setWrongCounter(wrongCounter + 1);
             if (wrongCounter >= 2 ) {
                 nextButton.hidden = false;
-                const form = document.querySelector('#form');
                 form.hidden = true;
-                
                 if (!incorrectWordStore.includes(focusWord)) {
                     const newIncorrectWordStore = [...incorrectWordStore, focusWord];
                     setIncorrectWordStore(newIncorrectWordStore);
@@ -110,7 +110,6 @@ const AudioGame = function() {
             
             };  
         };
-        const form = document.querySelector('#form');
         form.reset();
     };
 
@@ -134,7 +133,9 @@ const AudioGame = function() {
     
     return (
         <div>
-            <h3>Can you spell these animal words?</h3>
+            <h2>{topic.title}</h2>
+            <h3>Can you spell these words?</h3>
+            <h4>You will need some headphones, or your speakers switched on!</h4>
             <button onClick={playAudio}>Play audio</button> 
             <section>
                 <form id="form" onSubmit={handleAnswerSubmit}>
