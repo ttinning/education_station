@@ -25,16 +25,24 @@ const ParentDashboard = () => {
     return (
         <section className="dashboard">
             <h2>Parent Dashboard</h2>
-            { accounts.length > 0 ?
-            <section id="account-details">
-                <h3>Account details</h3>
-                <p>Parent: {accounts[0].parent.name}</p>
-                <p>email: {accounts[0].parent.email}</p>
-                <p>Student: {accounts[0].student.name}</p>
-                <p>Age: {accounts[0].student.age}</p>
-            </section> : null}
-            <TopicForm addNewTopic={addNewTopic} accounts={accounts}></TopicForm>
-            <TopicList topics={topics} accounts={accounts}></TopicList>
+            <section id="account-section">
+                { accounts.length > 0 ?
+                <section id="account-details">
+                    <h3>Account details</h3>
+                    <p>Parent: {accounts[0].parent.name}</p>
+                    <p>email: {accounts[0].parent.email}</p>
+                    <p>Student: {accounts[0].student.name}</p>
+                    <p>Age: {accounts[0].student.age}</p>
+                </section> : null}
+            </section>
+            <div id="lower-parents-section">
+                <section id="custom-section">
+                <TopicList topics={topics} accounts={accounts}></TopicList>
+                </section>
+                <section id="topics-display-section">
+                <TopicForm addNewTopic={addNewTopic} accounts={accounts}></TopicForm>                    
+                </section>
+            </div>
         </section>
     )
 }

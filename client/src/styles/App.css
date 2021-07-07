@@ -70,15 +70,17 @@ footer{
   display: flex;
   align-items: center;
   justify-content:space-evenly;
+  min-height: 90vh;
 }
 
 #landing-page > a > button {
-  padding: 8rem;
+
+  padding: 6rem;
   border-radius: 2rem;
   font-size: 4rem;
-  font-family: "Barrio";
-  background-color: #26408B;
-  color: #f3f3f3;
+  font-family: "Gochi Hand";
+  background-color: #84A6CE;
+  color: #25283D;
 }
 
 /* Dashboards */
@@ -203,9 +205,15 @@ footer{
   font-size: 1.5rem;
 }
 
+.random-word{
+  letter-spacing: 0.5rem;
+  font-weight: 800;
+}
+
 .nav-buttons{
   display: flex;
   justify-content: space-between;
+  margin-top: 3rem;
 }
 
 .nav-buttons .standard-button{
@@ -265,11 +273,13 @@ footer{
   100% { transform: translate(1px, -2px) rotate(-1deg); background-color: transparent;}
 }
 
+/* audio game */
+
 #audio-wrapper {
   margin-left: 2rem;
 }
 
-#audio-wrapper h2, p, button{
+#audio-wrapper h2, h3, h4, p, button{
   margin: 1rem;
 }
 
@@ -278,6 +288,52 @@ footer{
   padding-top: 1rem;
 }
 
+#play-button-and-summary{
+  display:flex;
+  align-items: center;
+}
+
+ul.lists li{
+  display: inline;
+  text-transform: capitalize;
+} 
+
 /* .summary > h3{
   margin-left: 3rem;
 } */
+/* Parents' dashboard */
+
+.word-inputs {
+  display: flex;
+  flex-direction: column;
+  width:300px;
+}
+
+#lower-parents-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+}
+
+.list-word {
+  padding: 1px;
+  margin: 1px;
+}
+
+.topics-list-parents {
+  display: flex;
+  
+}
+
+#topics-list-title {
+  margin-left: 0px;
+}
+
+#completion-page-wrapper{
+  width: 100vh;
+}
+
+#celebration-text{
+  text-align: center;
+  font-size: 2rem;
+}

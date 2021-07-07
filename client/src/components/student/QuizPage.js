@@ -124,7 +124,7 @@ const QuizPage = () => {
                 <button className="standard-button" onClick={handleRevealClick}>Reveal answer</button>
 
                 <div className="assist-words">
-                    {showHint ? <p>Hint: {randomWord}</p> : null}
+                    {showHint ? <p>Unscramble These Letters: <span className="random-word">{randomWord}</span></p> : null}
                     {showAnswer ? <p>Answer: {wordInfo.word}</p> : null}
                 </div>
             </div>

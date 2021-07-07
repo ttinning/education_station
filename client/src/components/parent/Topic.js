@@ -8,7 +8,7 @@ const Topic = ({topic, accounts}) => {
 
     return ( 
         <div>
-            <h3>{topic.title}</h3>
+            <h3 id="topics-list-title">{topic.title}</h3>
             <ul>
                 {words}
             </ul>

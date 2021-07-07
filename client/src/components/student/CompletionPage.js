@@ -30,7 +30,7 @@ let {gameType} = useParams()
     return(
         <div id='completion-page-wrapper'>
             {isExploding && <ConfettiExplosion />}
-            <p>You have completed the {topic} {gameType} game!</p>
+            <p id="celebration-text" >You have completed the {topic} game!</p>
             <img id='trophy-img' src={trophy} alt="gold completion trophy" />
             <Link to="/student"><button className="standard-button" onClick={updateAccount}>Claim trophy</button> </Link>
         </div>
