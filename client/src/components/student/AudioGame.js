@@ -137,7 +137,7 @@ const AudioGame = function() {
             <section>
                 <form id="form" onSubmit={handleAnswerSubmit}>
                     <label htmlFor="guess">Your guess:</label>
-                    <input type="text" id="guess"></input>
+                    <input type="text" id="guess" spellCheck = "false"></input>
                     <button type="submit">Check</button>
                 </form>
                 { lastWordCheck ? <Link to={{
