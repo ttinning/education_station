@@ -55,21 +55,24 @@ const DnDPage = () => {
 
     return(
         <DndProvider backend={HTML5Backend}>
-            <section id="dnd-body">
-                <h2>{topic.title} quiz</h2>
-                <ul id="dnd-list">
-                    {words}
-                </ul>
-                <ul>
-                    {definitions}
-                </ul>
+            <section>
+                <h2>{topic.title} Drag and Drop Game</h2>
+                <p>Drag the correct word onto its definition.</p>
+                <div id="dnd-container">
+                    <ul>
+                        {words}
+                    </ul>
+                    <ul>
+                        {definitions}
+                    </ul>
+                </div>
                 {gameComplete ? 
                 <Link to={{
                     pathname: `/student/drag/${topic.title}/completed`,
                     state: {accounts}
-                }}><button>Complete Topic!</button></Link> : 
+                }}><button className="standard-button">Complete Topic!</button></Link> : 
                 null}
-                <Link to="/student"><button>Back To Dashboard</button> </Link>
+                <Link to="/student"><button className="standard-button">Back To Dashboard</button> </Link>
             </section>
         </DndProvider>
     )

@@ -21,12 +21,12 @@ const Topic = ({topic, accounts}) => {
             <Link to={{
                     pathname: `/student/dnd/${topic.title}`,
                     state: {topic, accounts}
-                }}><button className="topic-button">{topic.title.toUpperCase()} DnD</button>
+                }}><button className="standard-button">{topic.title.toUpperCase()} DnD</button>
             </Link>
             <Link to={{
                     pathname: `/student/audio/${topic.title}`,
                     state: {topic, accounts}
-                }}><button className="audio-game-btn">Audio Game</button>
+                }}><button className="standard-button">Audio Game</button>
             </Link>
         </li>
         
