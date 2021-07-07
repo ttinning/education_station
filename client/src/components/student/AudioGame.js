@@ -131,22 +131,24 @@ const AudioGame = function() {
 
     
     return (
-        <div>
-            <h3>Can you spell these animal words?</h3>
-            <button onClick={playAudio}>Play audio</button> 
-            <section>
-                <form id="form" onSubmit={handleAnswerSubmit}>
-                    <label htmlFor="guess">Your guess:</label>
-                    <input type="text" id="guess" spellCheck = "false"></input>
-                    <button type="submit">Check</button>
-                </form>
-                { lastWordCheck ? <Link to={{
-                    pathname: `/student/audio/${topic.title}/completed`,
-                    state: {accounts}
-                }}><button className="next-button" hidden>Complete Topic!</button></Link> :
-                <button className="next-button" onClick={handleButtonClick} hidden>Next word</button>}
-            </section>
-            <section>
+        <div id="audio-wrapper">
+            <h2>Can you spell these animal words?</h2>
+            <div>
+                <button onClick={playAudio}>Play audio</button>
+                <section>
+                    <form id="form" onSubmit={handleAnswerSubmit}>
+                        <label htmlFor="guess">Your guess:</label>
+                        <input type="text" id="guess" spellCheck = "false"></input>
+                        <button type="submit">Check</button>
+                    </form>
+                    { lastWordCheck ? <Link to={{
+                        pathname: `/student/audio/${topic.title}/completed`,
+                        state: {accounts}
+                    }}><button className="next-button" hidden>Complete Topic!</button></Link> :
+                    <button className="next-button" onClick={handleButtonClick} hidden>Next word</button>}
+                </section>
+            </div>
+            <section id="summary-lists">
                 <h2 id="correct-text" hidden></h2>
             </section>
             <section className="summary">
@@ -156,7 +158,7 @@ const AudioGame = function() {
                         {correctWordsListItems}
                     </ul>
                 </div> : null}
-               
+            
                 { incorrectWordStore.length > 0 ? <div>
                     <h3>Words to learn:</h3>
                     <ul>

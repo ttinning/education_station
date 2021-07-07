@@ -212,6 +212,14 @@ footer{
   margin-right: 3rem;
 }
 
+#dnd-page {
+  margin: 0 1rem 0 3rem;
+}
+
+#dnd-page > p{
+  margin-left: 0;
+}
+
 #dnd-container {
   display: grid;
   grid-template-columns: 10rem 1fr;
@@ -223,8 +231,9 @@ footer{
   justify-content: center;
   height: 4rem;
   border: dotted 1px black;
-  background-color: #26408B;
+  background-color: #25283D;
   color: white;
+  font-family: "Montserrat"
   /* box-shadow: -1rem 2rem 3rem rgba(0, 0, 0, 0.4); */
 }
 
@@ -234,7 +243,9 @@ footer{
   justify-content: center;
   height: 4rem;
   border: dotted 1px black;
-  background-color: #BF6900;
+  padding: 0 1rem 0 1rem;
+  background-color: #84A6CE;
+  font-family: "Montserrat"
   /* box-shadow: -1rem 2rem 3rem rgba(0, 0, 0, 0.4) */
 }
 
@@ -253,3 +264,20 @@ footer{
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); background-color: transparent;}
 }
+
+#audio-wrapper {
+  margin-left: 2rem;
+}
+
+#audio-wrapper h2, p, button{
+  margin: 1rem;
+}
+
+#audio-wrapper > h2 {
+  margin-top: 0;
+  padding-top: 1rem;
+}
+
+/* .summary > h3{
+  margin-left: 3rem;
+} */
