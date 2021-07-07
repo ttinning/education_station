@@ -21,6 +21,16 @@ db.accounts.insertMany([
                     quiz: false,
                     drag: true,
                     audio: true
+                },
+                food: {
+                    quiz: false,
+                    drag: true,
+                    audio: true
+                },
+                instruments: {
+                    quiz: false,
+                    drag: true,
+                    audio: true
                 }
             }
         }
@@ -45,7 +55,7 @@ db.topics.insertMany([
         background_image: ""
     },
     {
-        title: "instuments",
+        title: "instruments",
         word_list: ["harp", "guitar", "violin", "piano", "banjo", "cello", "drums", "flute", "trumpets", "tuba"],
         background_image: ""
     }
