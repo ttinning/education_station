@@ -141,7 +141,7 @@ const QuizPage = () => {
         }
         else {
             return (
-                <p>Sorry, not all of the words ae available to play in this game.  Try choosing another from your dashboard</p>
+                <p>Sorry, not all of the words are available to play in this game.  Try choosing another from your dashboard</p>
             )
         }
     }

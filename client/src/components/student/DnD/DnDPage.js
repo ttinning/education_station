@@ -51,30 +51,44 @@ const DnDPage = () => {
             return <DefinitionDrop word={word} key={index}></DefinitionDrop>
         });
 
-  
-
+    const returnContent = () => {
+        if (wordInfo[0].definitions) {
+            return (
+            <DndProvider backend={HTML5Backend}>
+                <section id="dnd-page">
+                    <h2>{topic.title} Drag and Drop Game</h2>
+                    <p>Drag the correct word onto its definition.</p>
+                    <div id="dnd-container">
+                        <ul>
+                            {words}
+                        </ul>
+                        <ul>
+                            {definitions}
+                        </ul>
+                    </div>
+                    {gameComplete ? 
+                    <Link to={{
+                        pathname: `/student/drag/${topic.title}/completed`,
+                        state: {accounts}
+                    }}><button className="standard-button">Complete Topic!</button></Link> : 
+                    null}
+                    <Link to="/student"><button className="standard-button">Back To Dashboard</button> </Link>
+                </section>
+            </DndProvider>
+            )
+        }
+        else {
+            return (
+                <p>Sorry, not all of the words are available to play in this game.  Try choosing another from your dashboard</p>
+            );
+        }
+    }; 
+    
     return(
-        <DndProvider backend={HTML5Backend}>
-            <section id="dnd-page">
-                <h2>{topic.title} Drag and Drop Game</h2>
-                <p>Drag the correct word onto its definition.</p>
-                <div id="dnd-container">
-                    <ul>
-                        {words}
-                    </ul>
-                    <ul>
-                        {definitions}
-                    </ul>
-                </div>
-                {gameComplete ? 
-                <Link to={{
-                    pathname: `/student/drag/${topic.title}/completed`,
-                    state: {accounts}
-                }}><button className="standard-button">Complete Topic!</button></Link> : 
-                null}
-                <Link to="/student"><button className="standard-button">Back To Dashboard</button> </Link>
-            </section>
-        </DndProvider>
+        
+        <div>
+            { wordInfo.length > 0 ? returnContent() : null}
+        </div>
     )
 }
 
