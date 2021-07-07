@@ -11,18 +11,28 @@ const AudioGame = function() {
 
     const [focusWord, setFocusWord] = useState(audioWordList[0]);
     const [wordAudioAPI, setWordAudioAPI] = useState({});
-    let wrongCounter = 0;
+    const [wrongCounter, setWrongCounter] = useState(0);
+    const [correctWordStore, setCorrectWordStore] = useState([]);
+    const [incorrectWordStore, setIncorrectWordStore] = useState([]);
+  
+   
 
     const checkLastWord = () => {
         return audioWordList.indexOf(focusWord) === audioWordList.length - 1;
     };
 
     let lastWordCheck = checkLastWord();
+
+    
     
     useEffect(() => {
         AudioService.getWordAudioAPI(focusWord)
             .then(res => setWordAudioAPI(res))
     }, [focusWord]);
+
+    useEffect(() => {
+        playAudio();
+    }, [wordAudioAPI]);
 
     const getAudioLink = () => {      
         if (wordAudioAPI[0]) {
@@ -48,9 +58,9 @@ const AudioGame = function() {
             setFocusWord(nextFocusWord);
             nextButton.hidden = true;
         } else {
-            nextButton.textContent = "Finsh topic";
+            nextButton.textContent = "Finish topic";
         };
-        wrongCounter = 0;        
+        setWrongCounter(0);        
         const text = document.querySelector('#correct-text');
         text.hidden = true;
         const form = document.querySelector('#form')
@@ -72,26 +82,62 @@ const AudioGame = function() {
         if (guess === focusWord) {
             text.textContent = "That's Correct!!!"
             nextButton.hidden = false;
+            if (!correctWordStore.includes(focusWord)) {
+                const newCorrectWordStore = [...correctWordStore, focusWord];
+                setCorrectWordStore(newCorrectWordStore);
+            };
+            if (incorrectWordStore.includes(focusWord)) {
+                let temp = [...incorrectWordStore]
+                let newIncorrectWordStore = temp.filter((word) => {
+                    return word !== focusWord;
+                });
+                setIncorrectWordStore(newIncorrectWordStore);
+            }
         } else {  
             text.textContent = "Wrong, try again"
-            wrongCounter ++;
+            setWrongCounter(wrongCounter + 1);
             if (wrongCounter >= 2 ) {
                 nextButton.hidden = false;
+                if (!incorrectWordStore.includes(focusWord)) {
+                    const newIncorrectWordStore = [...incorrectWordStore, focusWord];
+                    setIncorrectWordStore(newIncorrectWordStore);
             }
+            
+            };  
         };
     };
 
-   
+
+    
+
+    
+    
+    const getSummaryCorrect = () => {
+        const tempCorrect = [...correctWordStore];
+        const correctWordsListItems = tempCorrect.map(word => <li>{word}</li>);
+        return correctWordsListItems;
+    };
+
+    const correctWordsListItems = getSummaryCorrect();
+
+    const getSummaryIncorrect = () => {
+        const tempIncorrect = [...incorrectWordStore];
+        const incorrectWordsListItems = tempIncorrect.map(word => <li>{word}</li>);
+        return incorrectWordsListItems;
+    };
+
+    const incorrectWordsListItems = getSummaryIncorrect();
+ 
+
     
     return (
         <div>
             <h3>Can you spell these animal words?</h3>
-            {focusWord}
             <button onClick={playAudio}>Play audio</button> 
             <section>
                 <form id="form" onSubmit={handleAnswerSubmit}>
                     <label htmlFor="guess">Your guess:</label>
-                    <input type="text" id="guess"></input>
+                    <input type="text" id="guess" spellCheck = "false"></input>
                     <button type="submit">Check</button>
                 </form>
                 { lastWordCheck ? <Link to={{
@@ -102,6 +148,21 @@ const AudioGame = function() {
             </section>
             <section>
                 <h2 id="correct-text" hidden></h2>
+            </section>
+            <section className="summary">
+                { correctWordStore.length > 0 ? <div>
+                    <h3>Words you can spell:</h3>
+                    <ul>
+                        {correctWordsListItems}
+                    </ul>
+                </div> : null}
+               
+                { incorrectWordStore.length > 0 ? <div>
+                    <h3>Words to learn:</h3>
+                    <ul>
+                        {incorrectWordsListItems}
+                    </ul>
+                </div> : null}
             </section>
         </div>
     );
