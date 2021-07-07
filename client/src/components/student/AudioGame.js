@@ -51,6 +51,8 @@ const AudioGame = function() {
     const goToNextWord = () => {
         const currentFocusWordIndex = audioWordList.indexOf(focusWord);
         const nextButton = document.querySelector('.next-button');
+        const form = document.querySelector('#form')
+        form.hidden = false;
         
         if (currentFocusWordIndex < audioWordList.length - 1) {
             const nextFocusWordIndex = currentFocusWordIndex + 1
@@ -63,7 +65,7 @@ const AudioGame = function() {
         setWrongCounter(0);        
         const text = document.querySelector('#correct-text');
         text.hidden = true;
-        const form = document.querySelector('#form')
+        
         form.reset();
         
     };
@@ -98,6 +100,9 @@ const AudioGame = function() {
             setWrongCounter(wrongCounter + 1);
             if (wrongCounter >= 2 ) {
                 nextButton.hidden = false;
+                const form = document.querySelector('#form');
+                form.hidden = true;
+                
                 if (!incorrectWordStore.includes(focusWord)) {
                     const newIncorrectWordStore = [...incorrectWordStore, focusWord];
                     setIncorrectWordStore(newIncorrectWordStore);
@@ -105,13 +110,10 @@ const AudioGame = function() {
             
             };  
         };
+        const form = document.querySelector('#form');
+        form.reset();
     };
 
-
-    
-
-    
-    
     const getSummaryCorrect = () => {
         const tempCorrect = [...correctWordStore];
         const correctWordsListItems = tempCorrect.map(word => <li>{word}</li>);
@@ -138,7 +140,7 @@ const AudioGame = function() {
                 <form id="form" onSubmit={handleAnswerSubmit}>
                     <label htmlFor="guess">Your guess:</label>
                     <input type="text" id="guess" spellCheck = "false"></input>
-                    <button type="submit">Check</button>
+                    <button id="check-button" type="submit">Check</button>
                 </form>
                 { lastWordCheck ? <Link to={{
                     pathname: `/student/audio/${topic.title}/completed`,
