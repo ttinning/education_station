@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import './Login.css'
+import '../../styles/Login.css'
 
 async function loginUser(credentials) {
     return fetch('http://localhost:5000/login', {
@@ -33,11 +33,11 @@ const Login = ({ setToken }) => {
             <h1>Please Log In</h1>
             <form onSubmit={handleSubmit}>
                 <label>
-                    <p>Username</p>
+                    <p>Username:</p>
                     <input type="text" name="username" id="username" onChange={event => setUserName(event.target.value)}/>
                 </label>
                 <label>
-                    <p>Password</p>
+                    <p>Password:</p>
                     <input type="password" name="password" id="password" onChange={ event => setPassword(event.target.value)}/>
                 </label>
                 <div>
