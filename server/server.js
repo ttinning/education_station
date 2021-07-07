@@ -7,6 +7,12 @@ const cors = require('cors')
 app.use(express.json());
 app.use(cors());
 
+app.use('/login', (req, res) => {
+    res.send({
+        token: 'bootypump123'
+    })
+})
+
 MongoClient.connect('mongodb://localhost:27017').then((client) => {
     const db = client.db('education_hub');
     const accountCollection = db.collection('accounts');
