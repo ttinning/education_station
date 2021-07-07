@@ -17,11 +17,6 @@ db.accounts.insertMany([
                     drag: false,
                     audio: true
                 },
-                vehicles: {
-                    quiz: false,
-                    drag: true,
-                    audio: true
-                },
                 food: {
                     quiz: false,
                     drag: true,
@@ -43,11 +38,6 @@ db.topics.insertMany([
         word_list: ["shark", "dog", "cat", "koala", "turtle", "whale", "owl", "wolf", "fish", "fox"],
         background_image: ''
 
-    },
-    {
-        title: "vehicles",
-        word_list: ["car", "train", "aeroplane", "bicycle", "crane", "motorbike", "motorbike", "motorbike", "motorbike", "motorbike"],
-        background_image: ''
     },
     {
         title: "food",
