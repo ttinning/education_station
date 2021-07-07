@@ -17,6 +17,8 @@ const Login = ({ setToken }) => {
 
     const [username, setUserName] = useState('')
     const [password, setPassword] = useState('') 
+    const passUsername = 'SueP'
+    const passPassword = 'BootyPump123'
 
     const handleSubmit = async event => {
         event.preventDefault()
@@ -24,7 +26,10 @@ const Login = ({ setToken }) => {
             username,
             password
         })
-        setToken(token)
+        if(username === passUsername && password === passPassword){
+            setToken(token)
+            window.location.reload(false)
+        }
         window.location.reload(false)
     }
 
