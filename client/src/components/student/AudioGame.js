@@ -98,11 +98,12 @@ const AudioGame = function() {
                 setIncorrectWordStore(newIncorrectWordStore);
             }
         } else {  
-            text.textContent = "Wrong, try again"
+            text.textContent = `Try again. ${2-wrongCounter} more guesses left`
             setWrongCounter(wrongCounter + 1);
             if (wrongCounter >= 2 ) {
                 nextButton.hidden = false;
                 form.hidden = true;
+                text.hidden = true;
                 if (!incorrectWordStore.includes(focusWord)) {
                     const newIncorrectWordStore = [...incorrectWordStore, focusWord];
                     setIncorrectWordStore(newIncorrectWordStore);
