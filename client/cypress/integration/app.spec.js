@@ -24,21 +24,21 @@ describe('App', () => {
         landingpage.should('be.visible')
     })
 
-    xit('visit the parent page', () => {
+    it('visit the parent page', () => {
         const parent = cy.get('#parent-button')
         parent.click()
         const dashboard = cy.get('.dashboard')
         dashboard.should('be.visible')
     })
 
-    xit('visit the student page', () => {
+    it('visit the student page', () => {
         const student = cy.get('#student-button')
         student.click()
         const dashboard = cy.get('.dashboard')
         dashboard.should('be.visible')
     })
 
-    xit('home button returns after choosing student', () => {
+    it('home button returns after choosing student', () => {
         const student = cy.get('#student-button')
         student.click()
         const dashboard = cy.get('.dashboard')
@@ -48,7 +48,7 @@ describe('App', () => {
         landingpage.should('be.visible')
     })
 
-    xit('visit the student page and choose game', () => {
+    it('visit the student page and choose game', () => {
         const student = cy.get('#student-button')
         student.click()
         const dashboard = cy.get('.dashboard')
@@ -71,5 +71,31 @@ describe('App', () => {
         cy.get('#form').submit()
         const correct = cy.get('h2')
         correct.should('contain', "That's Correct!!!")
+    })
+
+    it('visit the student page and answer game incorrect', () => {
+        const student = cy.get('#student-button')
+        student.click()
+        const dashboard = cy.get('.dashboard')
+        dashboard.should('be.visible')
+        const animal = cy.get('.topic-buttons-container > li').children().eq(3)
+        animal.click()
+        const answerInput = cy.get('#guess')
+        answerInput.type('Meth')
+        cy.get('#form').submit()
+        const correct = cy.get('h2')
+        correct.should('contain', "Wrong, try again")
+    })
+
+    it('should be able to move to next item', () => {
+        const student = cy.get('#student-button')
+        student.click()
+        const dashboard = cy.get('.dashboard')
+        dashboard.should('be.visible')
+        const animal = cy.get('.topic-buttons-container > li').children().first()
+        animal.click()
+        const next = cy.get('button').eq(2)
+        next.click()
+        cy.get('#quiz-body').should('be.visible')
     })
 })
