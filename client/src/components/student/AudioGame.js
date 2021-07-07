@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import AudioService from "../../services/AudioService";
 import { useLocation, Link } from "react-router-dom"
-import AccountService from "../../services/AccountsService";
 
 const AudioGame = function() {
 
-    
     const data = useLocation();
     const topic = data.state.topic;
     const accounts = data.state.accounts;
@@ -20,8 +18,6 @@ const AudioGame = function() {
     };
 
     let lastWordCheck = checkLastWord();
-    
-
     
     useEffect(() => {
         AudioService.getWordAudioAPI(focusWord)
@@ -38,7 +34,6 @@ const AudioGame = function() {
     };
     const audioLink = getAudioLink();
     
-
     const handleButtonClick = function() {
         goToNextWord();
     };
@@ -71,17 +66,14 @@ const AudioGame = function() {
     const handleAnswerSubmit = (evt) => {
         evt.preventDefault();
         const guess = evt.target.guess.value.toLowerCase().trim();
-        console.log(guess);
         const text = document.querySelector('#correct-text');
         const nextButton = document.querySelector('.next-button');
         text.hidden = false;
         if (guess === focusWord) {
             text.textContent = "That's Correct!!!"
-            console.log("correct")
             nextButton.hidden = false;
         } else {  
             text.textContent = "Wrong, try again"
-            console.log("incorrect");
             wrongCounter ++;
             if (wrongCounter >= 2 ) {
                 nextButton.hidden = false;
@@ -89,14 +81,8 @@ const AudioGame = function() {
         };
     };
 
-    const updateAccount = () => {
-        const temp = {...accounts[0]}
-        temp.student.completed_topics.push(topic.title)
-        delete temp._id
-        AccountService.updateAccounts(accounts[0]._id, temp)
-    };
+   
     
-
     return (
         <div>
             <h3>Can you spell these animal words?</h3>
@@ -108,7 +94,10 @@ const AudioGame = function() {
                     <input type="text" id="guess"></input>
                     <button type="submit">Check</button>
                 </form>
-                { lastWordCheck ? <Link to={`/student/${topic.title}/completed`}><button className="next-button" onClick={updateAccount} hidden>Complete Topic!</button></Link> :
+                { lastWordCheck ? <Link to={{
+                    pathname: `/student/audio/${topic.title}/completed`,
+                    state: {accounts}
+                }}><button className="next-button" hidden>Complete Topic!</button></Link> :
                 <button className="next-button" onClick={handleButtonClick} hidden>Next word</button>}
             </section>
             <section>

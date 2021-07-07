@@ -127,17 +127,30 @@ a:visited {
   width: 12rem;
 }
 
-#dnd-list {
+#dnd-container {
   display: grid;
   grid-template-columns: 10rem 1fr;
 }
 
 .dnd-word {
-  border: solid 2px black;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  border: dotted 1px black;
+  background-color: #26408B;
+  color: white;
+  /* box-shadow: -1rem 2rem 3rem rgba(0, 0, 0, 0.4); */
 }
 
 .dnd-definition {
-  border: solid 2px black;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  border: dotted 1px black;
+  background-color: #BF6900;
+  /* box-shadow: -1rem 2rem 3rem rgba(0, 0, 0, 0.4) */
 }
 
 
