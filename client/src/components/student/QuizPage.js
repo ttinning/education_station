@@ -30,12 +30,12 @@ const QuizPage = () => {
             setAnswerCorrect(true)
             setAnswerIncorrect(false)
             setAnswer('')
-            setCounter(0)
+            setCounter(1)
             document.getElementById("answer-input").reset()
         } else if (answer.length === quizWord.length) {
             document.getElementById("answer-input").reset()
             setAnswerIncorrect(true)
-            setCounter(0)
+            setCounter(1)
             setAnswer('')
         }
     }, [answer])
@@ -83,13 +83,13 @@ const QuizPage = () => {
     }
 
     const handleKeyUp = (event) => {
-        if (counter >= quizWord.length) {
-            setCounter(1)
-        } else if (event.target.value.length == 1) {
+        if (counter === quizWord.length) {
+            document.querySelector(`#answer-box-0`).focus();
+            setCounter(0)
+        } else {
             setCounter(counter +1)
-            document.querySelector(`#answer-box-${counter}`).focus()
-        } else{
-        }
+            document.querySelector(`#answer-box-${counter}`).focus();
+        } 
     }  
 
     return(
