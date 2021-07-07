@@ -51,6 +51,8 @@ const AudioGame = function() {
     const goToNextWord = () => {
         const currentFocusWordIndex = audioWordList.indexOf(focusWord);
         const nextButton = document.querySelector('.next-button');
+        const form = document.querySelector('#form')
+        form.hidden = false;
         
         if (currentFocusWordIndex < audioWordList.length - 1) {
             const nextFocusWordIndex = currentFocusWordIndex + 1
@@ -63,7 +65,7 @@ const AudioGame = function() {
         setWrongCounter(0);        
         const text = document.querySelector('#correct-text');
         text.hidden = true;
-        const form = document.querySelector('#form')
+        
         form.reset();
         
     };
@@ -78,10 +80,12 @@ const AudioGame = function() {
         const guess = evt.target.guess.value.toLowerCase().trim();
         const text = document.querySelector('#correct-text');
         const nextButton = document.querySelector('.next-button');
+        const form = document.querySelector('#form');
         text.hidden = false;
-        if (guess === focusWord) {
+        if (guess === focusWord.toLowerCase()) {
             text.textContent = "That's Correct!!!"
             nextButton.hidden = false;
+            form.hidden = true;
             if (!correctWordStore.includes(focusWord)) {
                 const newCorrectWordStore = [...correctWordStore, focusWord];
                 setCorrectWordStore(newCorrectWordStore);
@@ -98,6 +102,7 @@ const AudioGame = function() {
             setWrongCounter(wrongCounter + 1);
             if (wrongCounter >= 2 ) {
                 nextButton.hidden = false;
+                form.hidden = true;
                 if (!incorrectWordStore.includes(focusWord)) {
                     const newIncorrectWordStore = [...incorrectWordStore, focusWord];
                     setIncorrectWordStore(newIncorrectWordStore);
@@ -105,13 +110,9 @@ const AudioGame = function() {
             
             };  
         };
+        form.reset();
     };
 
-
-    
-
-    
-    
     const getSummaryCorrect = () => {
         const tempCorrect = [...correctWordStore];
         const correctWordsListItems = tempCorrect.map(word => <li>{word}</li>);
@@ -132,13 +133,15 @@ const AudioGame = function() {
     
     return (
         <div>
-            <h3>Can you spell these animal words?</h3>
+            <h2>{topic.title}</h2>
+            <h3>Can you spell these words?</h3>
+            <h4>You will need some headphones, or your speakers switched on!</h4>
             <button onClick={playAudio}>Play audio</button> 
             <section>
                 <form id="form" onSubmit={handleAnswerSubmit}>
                     <label htmlFor="guess">Your guess:</label>
                     <input type="text" id="guess" spellCheck = "false"></input>
-                    <button type="submit">Check</button>
+                    <button id="check-button" type="submit">Check</button>
                 </form>
                 { lastWordCheck ? <Link to={{
                     pathname: `/student/audio/${topic.title}/completed`,
