@@ -37,4 +37,15 @@ describe('App', () => {
         const dashboard = cy.get('.dashboard')
         dashboard.should('be.visible')
     })
+
+    it('home button returns after choosing student', () => {
+        const student = cy.get('#student-button')
+        student.click()
+        const dashboard = cy.get('.dashboard')
+        const home = cy.get('#navbar').first()
+        home.click()
+        const landingpage = cy.get('#landing-page')
+        landingpage.should('be.visible')
+    })
+
 })
