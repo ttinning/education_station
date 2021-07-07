@@ -19,6 +19,15 @@ button {
   border-radius: 3rem;
   color: #25283D;
   background-color: #84A6CE;
+  min-width: 8rem;
+  transition: 0.3s;
+}
+
+button:hover {
+  transition: 0.3;
+  background-color: #406DA0;
+  color: whitesmoke;
+  transform: scale(1.1);
 }
 
 h2{
