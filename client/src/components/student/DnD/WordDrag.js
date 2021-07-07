@@ -29,8 +29,9 @@ export const WordDrag = function WordBox({ word, incrementScore, wordId }) {
             document.querySelector(`#${word}`).appendChild(correctAnswer);
         } else {
             document.querySelector(`#${dropResult.name}`).style.animation = "shake 0.5s"
-            document.querySelector(`#${dropResult.name}`).style.animation = "red-incorrect 2s"
-            setTimeout(() => {  document.querySelector(`#${dropResult.name}`).style.removeProperty('animation')}, 2500)
+            setTimeout(() => {  document.querySelector(`#${dropResult.name}`).style.removeProperty('animation')}, 2000)
+            // document.querySelector(`#${dropResult.name}`).style.animation = "red-incorrect 2s"
+            // setTimeout(() => {  document.querySelector(`#${dropResult.name}`).style.removeProperty('animation')}, 2500)
         }
     }
 
