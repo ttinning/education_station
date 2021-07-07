@@ -82,31 +82,34 @@ const QuizPage = () => {
         // setAnswer(event.target.value.toLowerCase())
     }
 
-
-    
-
     const handleKeyUp = (event) => {
         if (counter >= quizWord.length) {
-            setCounter(0)
+            setCounter(1)
         } else if (event.target.value.length == 1) {
             setCounter(counter +1)
             document.querySelector(`#answer-box-${counter}`).focus()
         } else{
         }
-    }
-        
+    }  
 
     return(
         <section id="quiz-body">
-            <h2>{topic.title} quiz</h2>
-            <ProgressBar questionNumber={questionNumber} answerCorrect={answerCorrect}/>
-            {Object.keys(wordInfo).length > 0 ? <img src={wordInfo.definitions[0].image_url } alt={wordInfo.word}></img> : null}
-            
-            <button className="standard-button" onClick={handleHintClick}>Show Hint</button>
-            {showHint ? <p>{randomWord}</p> : null}
-
-            <button className="standard-button" onClick={handleRevealClick}>Reveal answer</button>
-            {showAnswer ? <p>The answer is {wordInfo.word}</p> : null}
+            <div class="quiz-head">
+                <h2>{topic.title} quiz</h2>
+                <ProgressBar questionNumber={questionNumber} answerCorrect={answerCorrect}/>
+            </div>
+            <div class="image-and-info-wrapper">
+                {Object.keys(wordInfo).length > 0 ? <img src={wordInfo.definitions[0].image_url } alt={wordInfo.word}></img> : null}
+                {answerCorrect ?
+                    <div id="correct-wrapper">
+                        <h2>CORRECT!</h2>
+                        <p>{wordInfo.definitions[0].definition}</p>
+                    </div> : null}
+                {answerIncorrect ?
+                    <div id="incorrect-wrapper">
+                        <h2>TRY AGAIN!</h2>
+                    </div> : null}
+            </div>
 
             <form id="answer-input">
                 <label htmlFor="answer-box">Enter your answer here:</label>
@@ -116,25 +119,25 @@ const QuizPage = () => {
                 {/* <input id="answer-box" type="text" onChange={checkAnswer}></input> */}
             </form>
 
-            {answerCorrect ? 
-                <div>
-                    <h2>CORRECT!</h2>
-                    <p>{wordInfo.definitions[0].definition}</p>
-                </div> : null}
+            <div class="assist-buttons">
+                <button className="standard-button" onClick={handleHintClick}>Show Hint</button>
+                <button className="standard-button" onClick={handleRevealClick}>Reveal answer</button>
 
-            {answerIncorrect ?
-                <div>
-                    <h2>TRY AGAIN!</h2>
-                </div> : null}
+                <div className="assist-words">
+                    {showHint ? <p>Hint: {randomWord}</p> : null}
+                    {showAnswer ? <p>Answer: {wordInfo.word}</p> : null}
+                </div>
+            </div>
 
-            {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ? 
-                <button className="standard-button" onClick={handleNextClick}>Next</button> : 
-
-                <Link to={{
-                    pathname: `/student/quiz/${topic.title}/completed`,
-                    state: {accounts}
-                }}><button>Complete Topic!</button></Link>}
-            <Link to="/student"><button className="standard-button">Back To Dashboard</button> </Link>
+            <div class="nav-buttons">
+                <Link to="/student"><button className="standard-button">Back To Dashboard</button> </Link>
+                {wordInfo.word !== topic.word_list[topic.word_list.length - 1] ?
+                    <button className="standard-button" onClick={handleNextClick}>Next</button> :
+                    <Link to={{
+                        pathname: `/student/quiz/${topic.title}/completed`,
+                        state: {accounts}
+                    }}><button>Complete Topic!</button></Link>}    
+            </div>
 
         </section>
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Barrio&family=Montserrat2&family=Gochi+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barrio&family=Montserrat&family=Gochi+Hand&display=swap');
 
 * {
   margin: 0;
@@ -16,7 +16,7 @@ button {
   padding: 1rem;
   font-family: "Gochi Hand";
   font-size: 2rem;
-  border-radius: 20%;
+  border-radius: 3rem;
   color: #25283D;
   background-color: #84A6CE;
 }
@@ -143,7 +143,7 @@ footer{
   flex-direction: column;
 }
 
-#quiz-body h2, img, p, button, input, label {
+#quiz-body h2, p, button, input, label {
   margin: 1rem;
 }
 
@@ -153,7 +153,63 @@ footer{
 }
 
 #quiz-body img {
+  margin: 0 1rem 0 1rem;
   width: 300px;
+  border-radius: .5rem;
+}
+
+.quiz-head{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-and-info-wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+
+#answer-input{
+  display: flex;
+  align-items: center;
+}
+
+#answer-input label{
+  font-size: 1.5rem;
+}
+
+#correct-wrapper, #incorrect-wrapper{
+  border: 3px dotted #25283D;
+  margin-right: 3rem;
+}
+
+#incorrect-wrapper{
+  flex-grow: 1;
+}
+
+.letter-input{
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem;
+  font-family: "Montserrat";
+  text-align: center;
+}
+
+.assist-buttons{
+  display: flex;
+}
+
+.assist-words{
+  font-size: 1.5rem;
+}
+
+.nav-buttons{
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-buttons .standard-button{
+  margin-right: 3rem;
 }
 
 #dnd-container {
