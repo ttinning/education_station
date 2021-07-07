@@ -9,7 +9,6 @@ const TopicList = ({topics, accounts}) => {
 
     return (
         <div>
-            <h3>Topics</h3>
             <ul className="topic-buttons-container">
                 {listItems}
             </ul>

@@ -133,11 +133,28 @@ const AudioGame = function() {
 
     
     return (
-        <div>
+        <div id="audio-wrapper">
             <h2>{topic.title}</h2>
             <h3>Can you spell these words?</h3>
             <h4>You will need some headphones, or your speakers switched on!</h4>
-            <button onClick={playAudio}>Play audio</button> 
+            <div id="play-button-and-summary">
+                <button id='play-audio-button' onClick={playAudio}>Play audio</button>
+                <section className="summary">
+                    { correctWordStore.length > 0 ? <div>
+                        <h3>Words you can spell:</h3>
+                        <ul className="lists">
+                            {correctWordsListItems}
+                        </ul>
+                    </div> : null}
+                
+                    { incorrectWordStore.length > 0 ? <div>
+                        <h3>Words to learn:</h3>
+                        <ul className="lists">
+                            {incorrectWordsListItems}
+                        </ul>
+                    </div> : null}
+                </section>
+            </div>
             <section>
                 <form id="form" onSubmit={handleAnswerSubmit}>
                     <label htmlFor="guess">Your guess:</label>
@@ -153,21 +170,7 @@ const AudioGame = function() {
             <section>
                 <h2 id="correct-text" hidden></h2>
             </section>
-            <section className="summary">
-                { correctWordStore.length > 0 ? <div>
-                    <h3>Words you can spell:</h3>
-                    <ul>
-                        {correctWordsListItems}
-                    </ul>
-                </div> : null}
-               
-                { incorrectWordStore.length > 0 ? <div>
-                    <h3>Words to learn:</h3>
-                    <ul>
-                        {incorrectWordsListItems}
-                    </ul>
-                </div> : null}
-            </section>
+            
         </div>
     );
 };

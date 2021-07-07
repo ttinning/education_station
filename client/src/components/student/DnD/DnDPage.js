@@ -55,7 +55,7 @@ const DnDPage = () => {
 
     return(
         <DndProvider backend={HTML5Backend}>
-            <section>
+            <section id="dnd-page">
                 <h2>{topic.title} Drag and Drop Game</h2>
                 <p>Drag the correct word onto its definition.</p>
                 <div id="dnd-container">

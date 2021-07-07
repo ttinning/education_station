@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Barrio&family=Montserrat&family=Gochi+Hand&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+main {
+  background-color: #D1DD69;
+  min-height: 100vh;
+}
+
+button {
+  margin: 1rem;
+  padding: 1rem;
+  font-family: "Gochi Hand";
+  font-size: 2rem;
+  border-radius: 3rem;
+  color: #25283D;
+  background-color: #84A6CE;
+}
+
+h2{
+  text-transform: capitalize;
+}
+
+/* Nav Bar*/
+nav {
+  height: 4rem;
+  background-color: #25283D;
+  color: whitesmoke;
+  display: flex;
+  align-items: center;
+  font-family: "Gochi Hand";
+  font-size: 2rem;
+  width: 100%;
+  justify-content: space-between;
+}
+#navbar {
+  margin-right: 3rem;
+}
+
+nav > h1 {
+  margin-left: 3rem;
+}
+
+a {
+  color: #f3f3f3;
+}
+
+a:visited {
+  color: white;
+}
+
+/* Footer */
+footer{
+  background-color: #25283D;
+  color: whitesmoke;
+  text-align: center;
+  font-family: "Montserrat";
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Landing Page */
+
+#landing-page {
+  display: flex;
+  align-items: center;
+  justify-content:space-evenly;
+  min-height: 90vh;
+}
+
+#landing-page > a > button {
+
+  padding: 6rem;
+  border-radius: 2rem;
+  font-size: 4rem;
+  font-family: "Gochi Hand";
+  background-color: #84A6CE;
+  color: #25283D;
+}
+
+/* Dashboards */
+
+.dashboard {
+  font-family: "Montserrat";
+  padding-left: 2rem;
+  padding-top: 1rem;
+}
+
+.dashboard h2, h3, p, li {
+  margin: 1rem;
+}
+
+.topic-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.topics-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.topic-buttons-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  justify-items: center;
+}
+
+.completed-trophy {
+  font-size: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uncompleted-trophy{
+  font-size: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:transparent; 
+  text-shadow: 0 0 0 grey;
+  opacity: 30%;
+  /* filter:brightness(0%); */
+}
+
+.topics{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+}
+
+/* Quiz */
+
+#quiz-body {
+  padding-left: 2rem;
+  font-family: "Montserrat";
+  display: flex;
+  flex-direction: column;
+}
+
+#quiz-body h2, p, button, input, label {
+  margin: 1rem;
+}
+
+#quiz-body h2 {
+  margin-top: 0;
+  padding-top: 1rem;
+}
+
+#quiz-body img {
+  margin: 0 1rem 0 1rem;
+  width: 300px;
+  border-radius: .5rem;
+}
+
+.quiz-head{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-and-info-wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+
+#answer-input{
+  display: flex;
+  align-items: center;
+}
+
+#answer-input label{
+  font-size: 1.5rem;
+}
+
+#correct-wrapper, #incorrect-wrapper{
+  border: 3px dotted #25283D;
+  margin-right: 3rem;
+}
+
+#incorrect-wrapper{
+  flex-grow: 1;
+}
+
+.letter-input{
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem;
+  font-family: "Montserrat";
+  text-align: center;
+}
+
+.assist-buttons{
+  display: flex;
+}
+
+.assist-words{
+  font-size: 1.5rem;
+}
+
+.random-word{
+  letter-spacing: 0.5rem;
+  font-weight: 800;
+}
+
+.nav-buttons{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.nav-buttons .standard-button{
+  margin-right: 3rem;
+}
+
+#dnd-page {
+  margin: 0 1rem 0 3rem;
+}
+
+#dnd-page > p{
+  margin-left: 0;
+}
+
+#dnd-container {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+}
+
+.dnd-word {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  border: dotted 1px black;
+  background-color: #25283D;
+  color: white;
+  font-family: "Montserrat"
+  /* box-shadow: -1rem 2rem 3rem rgba(0, 0, 0, 0.4); */
+}
+
+.dnd-definition {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  border: dotted 1px black;
+  padding: 0 1rem 0 1rem;
+  background-color: #84A6CE;
+  font-family: "Montserrat"
+  /* box-shadow: -1rem 2rem 3rem rgba(0, 0, 0, 0.4) */
+}
+
+
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); background-color: transparent;}
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); background-color: red;}
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); background-color: transparent;}
+}
+
+/* audio game */
+
+#audio-wrapper {
+  margin-left: 2rem;
+}
+
+#audio-wrapper h2, h3, h4, p, button{
+  margin: 1rem;
+}
+
+#audio-wrapper > h2 {
+  margin-top: 0;
+  padding-top: 1rem;
+}
+
+#play-button-and-summary{
+  display:flex;
+  align-items: center;
+}
+
+ul.lists li{
+  display: inline;
+  text-transform: capitalize;
+} 
+
+/* .summary > h3{
+  margin-left: 3rem;
+} */
+/* Parents' dashboard */
+
+.word-inputs {
+  display: flex;
+  flex-direction: column;
+  width:300px;
+}
+
+#lower-parents-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+}
+
+.list-word {
+  padding: 1px;
+  margin: 1px;
+}
+
+.topics-list-parents {
+  display: flex;
+  
+}
+
+#topics-list-title {
+  margin-left: 0px;
+}
+
+#completion-page-wrapper{
+  width: 100vh;
+}
+
+#celebration-text{
+  text-align: center;
+  font-size: 2rem;
+}
