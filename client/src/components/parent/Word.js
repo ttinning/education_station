@@ -1,7 +1,7 @@
 const Word = ({word, accounts}) => {
 
     return (
-        <li>{word}</li>
+        <li className="list-word">{word}</li>
     )
 };
 

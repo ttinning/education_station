@@ -281,3 +281,30 @@ footer{
 /* .summary > h3{
   margin-left: 3rem;
 } */
+/* Parents' dashboard */
+
+.word-inputs {
+  display: flex;
+  flex-direction: column;
+  width:300px;
+}
+
+#lower-parents-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+}
+
+.list-word {
+  padding: 1px;
+  margin: 1px;
+}
+
+.topics-list-parents {
+  display: flex;
+  
+}
+
+#topics-list-title {
+  margin-left: 0px;
+}
