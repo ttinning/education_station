@@ -19,6 +19,7 @@ const StudentDashboard = () => {
     return (
         <section className="dashboard">
                 <h2>Student Dashboard</h2>
+                <p>Pick a topic and game, then try and collect all the trophies!</p>
                 {accounts.length > 0 && topics.length > 0 ? <TopicList topics={topics} accounts={accounts}></TopicList> 
                 : null}
 

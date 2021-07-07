@@ -10,26 +10,37 @@ const Topic = ({topic, accounts}) => {
 
     return (
         <li>
-            <Link to={{
-                    pathname: `/student/quiz/${topic.title}`,
-                    state: {topic, accounts}
-                }}><button className="standard-button">{topic.title.toUpperCase()}</button>
-            </Link>
-            {topicTrophies.quiz ? <p className="completed-trophy">&#127942;</p> : null}
-            {topicTrophies.drag ? <p className="completed-trophy">&#127942;</p> : null}
-            {topicTrophies.audio ? <p className="completed-trophy">&#127942;</p> : null}
-            <Link to={{
-                    pathname: `/student/dnd/${topic.title}`,
-                    state: {topic, accounts}
-                }}><button className="standard-button">{topic.title.toUpperCase()} DnD</button>
-            </Link>
-            <Link to={{
-                    pathname: `/student/audio/${topic.title}`,
-                    state: {topic, accounts}
-                }}><button className="standard-button">Audio Game</button>
-            </Link>
-        </li>
-        
+           
+            <div className='topic-wrapper'>
+                <h2>{topic.title}</h2>
+                    <div className='topics'>
+                        <Link to={{
+                                pathname: `/student/quiz/${topic.title}`,
+                                state: {topic, accounts}
+                            }}><button className="standard-button">Spell</button>
+                        </Link>
+                        {topicTrophies.quiz ? <p className="completed-trophy">&#127942;</p> : <p className="uncompleted-trophy">&#127942;</p>}
+                    </div>
+                
+                    <div className="topics">
+                        <Link to={{
+                                pathname: `/student/dnd/${topic.title}`,
+                                state: {topic, accounts}
+                            }}><button className="standard-button">Match</button>
+                        </Link>
+                        {topicTrophies.drag ? <p className="completed-trophy">&#127942;</p> : <p className="uncompleted-trophy">&#127942;</p>}
+                    </div>
+                
+                    <div className="topics">
+                        <Link to={{
+                                pathname: `/student/audio/${topic.title}`,
+                                state: {topic, accounts}
+                            }}><button className="standard-button">Listen</button>
+                        </Link>
+                        {topicTrophies.audio ? <p className="completed-trophy">&#127942;</p> : <p className="uncompleted-trophy">&#127942;</p>}
+                    </div>
+                </div>
+        </li>   
     )
 }
 
