@@ -8,7 +8,7 @@
 
 main {
   background-color: #D1DD69;
-  min-height: 100vh;
+  min-height: calc(100vh - 4rem);
 }
 
 button {
@@ -206,6 +206,7 @@ footer{
   font-size: 2rem;
   font-family: "Montserrat";
   text-align: center;
+  border-radius: 0.25rem;
 }
 
 .assist-buttons{
@@ -232,7 +233,7 @@ footer{
 }
 
 #dnd-page {
-  margin: 0 1rem 0 3rem;
+  margin: 0 1rem 1.5rem 3rem;
 }
 
 #dnd-page > p{
@@ -242,6 +243,8 @@ footer{
 #dnd-container {
   display: grid;
   grid-template-columns: 10rem 1fr;
+  margin-left: -1rem;
+  animation: fadeIn 1.5s;
 }
 
 .dnd-word {
@@ -253,7 +256,6 @@ footer{
   background-color: #25283D;
   color: white;
   font-family: "Montserrat";
-  animation: fadeIn 1.5s;
   /* box-shadow: -1rem 2rem 3rem rgba(0, 0, 0, 0.4); */
 }
 
@@ -266,7 +268,6 @@ footer{
   padding: 0 1rem 0 1rem;
   background-color: #84A6CE;
   font-family: "Montserrat";
-  animation: fadeIn 2s;
   /* box-shadow: -1rem 2rem 3rem rgba(0, 0, 0, 0.4) */
 }
 
