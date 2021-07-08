@@ -8,7 +8,7 @@
 
 main {
   background-color: #D1DD69;
-  min-height: 100vh;
+  min-height: calc(100vh - 4rem);
 }
 
 button {
@@ -19,6 +19,15 @@ button {
   border-radius: 3rem;
   color: #25283D;
   background-color: #84A6CE;
+  min-width: 8rem;
+  transition: 0.3s;
+}
+
+button:hover {
+  transition: 0.3;
+  background-color: #406DA0;
+  color: whitesmoke;
+  transform: scale(1.1);
 }
 
 h2{
@@ -158,6 +167,7 @@ footer{
   margin: 0 1rem 0 1rem;
   width: 300px;
   border-radius: .5rem;
+  animation: fadeIn 1.5s;
 }
 
 .quiz-head{
@@ -183,6 +193,7 @@ footer{
 #correct-wrapper, #incorrect-wrapper{
   border: 3px dotted #25283D;
   margin-right: 3rem;
+  animation: fadeIn ease 1.5s;
 }
 
 #incorrect-wrapper{
@@ -195,6 +206,7 @@ footer{
   font-size: 2rem;
   font-family: "Montserrat";
   text-align: center;
+  border-radius: 0.25rem;
 }
 
 .assist-buttons{
@@ -221,7 +233,7 @@ footer{
 }
 
 #dnd-page {
-  margin: 0 1rem 0 3rem;
+  margin: 0 1rem 1.5rem 3rem;
 }
 
 #dnd-page > p{
@@ -231,6 +243,8 @@ footer{
 #dnd-container {
   display: grid;
   grid-template-columns: 10rem 1fr;
+  margin-left: -1rem;
+  animation: fadeIn 1.5s;
 }
 
 .dnd-word {
@@ -241,7 +255,7 @@ footer{
   border: dotted 1px black;
   background-color: #25283D;
   color: white;
-  font-family: "Montserrat"
+  font-family: "Montserrat";
   /* box-shadow: -1rem 2rem 3rem rgba(0, 0, 0, 0.4); */
 }
 
@@ -253,7 +267,7 @@ footer{
   border: dotted 1px black;
   padding: 0 1rem 0 1rem;
   background-color: #84A6CE;
-  font-family: "Montserrat"
+  font-family: "Montserrat";
   /* box-shadow: -1rem 2rem 3rem rgba(0, 0, 0, 0.4) */
 }
 
@@ -290,17 +304,34 @@ footer{
 
 #play-button-and-summary{
   display:flex;
+  justify-content: space-between;
   align-items: center;
+}
+
+.summary {
+  margin-right: 3rem;
+  flex-grow: 0.5;
+  animation: fadeIn 1.5s;
 }
 
 ul.lists li{
   display: inline;
-  text-transform: capitalize;
+  animation: fadeIn 1.5s;
 } 
 
-/* .summary > h3{
-  margin-left: 3rem;
-} */
+#form {
+  display: flex;
+  align-items: center;
+}
+
+#guess {
+  width: 12rem;
+  height: 2.3rem;
+  font-size: 2rem;
+  font-family: "Montserrat";
+  border-radius: 0.25rem;
+}
+
 /* Parents' dashboard */
 
 .word-inputs {
@@ -336,4 +367,15 @@ ul.lists li{
 #celebration-text{
   text-align: center;
   font-size: 2rem;
+}
+
+/* Animations */
+
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
 }

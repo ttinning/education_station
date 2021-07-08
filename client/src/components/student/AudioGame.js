@@ -182,8 +182,49 @@ const AudioGame = function() {
 
     
     return (
+<<<<<<< HEAD
         <div>
             {wordAudioAPI ? returnContent() : null}
+=======
+        <div id="audio-wrapper">
+            <h2>{topic.title}</h2>
+            <h3>Can you spell these words?</h3>
+            <h4>You will need some headphones, or your speakers switched on!</h4>
+            <div id="play-button-and-summary">
+                <button id='play-audio-button' onClick={playAudio}>Play audio</button>
+                <section className="summary">
+                    { correctWordStore.length > 0 ? <div>
+                        <h3>Words you can spell:</h3>
+                        <ul className="lists">
+                            <li>{correctWordsListItems}</li>
+                        </ul>
+                    </div> : null}
+                
+                    { incorrectWordStore.length > 0 ? <div>
+                        <h3>Words to learn:</h3>
+                        <ul className="lists">
+                            <li>{incorrectWordsListItems}</li>
+                        </ul>
+                    </div> : null}
+                </section>
+            </div>
+            <section>
+                <form id="form" onSubmit={handleAnswerSubmit}>
+                    <label htmlFor="guess">Your guess:</label>
+                    <input type="text" id="guess" spellCheck = "false"></input>
+                    <button id="check-button" type="submit">Check</button>
+                </form>
+                { lastWordCheck ? <Link to={{
+                    pathname: `/student/audio/${topic.title}/completed`,
+                    state: {accounts}
+                }}><button className="next-button" hidden>Complete Topic!</button></Link> :
+                <button className="next-button" onClick={handleButtonClick} hidden>Next word</button>}
+            </section>
+            <section>
+                <h2 id="correct-text" hidden></h2>
+            </section>
+            
+>>>>>>> develop
         </div>
         
     );
