@@ -194,11 +194,12 @@ footer{
   border: 3px dotted #25283D;
   margin-right: 3rem;
   animation: fadeIn ease 1.5s;
-}
-
-#incorrect-wrapper{
   flex-grow: 1;
 }
+
+/* #incorrect-wrapper{
+  flex-grow: 1;
+} */
 
 .letter-input{
   width: 2rem;
