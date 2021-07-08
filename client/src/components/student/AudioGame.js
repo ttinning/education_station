@@ -183,7 +183,7 @@ const AudioGame = function() {
     
     return (
         <div>
-            {wordAudioAPI ? returnContent() : null}
+            {Object.keys(wordAudioAPI).length > 0 ? returnContent() : null}
         </div>
         
     );
