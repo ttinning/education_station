@@ -11,7 +11,7 @@ const QuizPage = () => {
 
     const [questionNumber, setQuestionNumber] = useState(0);
     const [answer, setAnswer] = useState('');
-    const [wordInfo, setWordInfo] = useState(null);
+    const [wordInfo, setWordInfo] = useState({});
     const [showHint, setShowHint]= useState(false);
     const [showAnswer, setShowAnswer]= useState(false);
     const [answerCorrect, setAnswerCorrect] = useState(false);
@@ -149,7 +149,7 @@ const QuizPage = () => {
 
     return(
         <div>
-            { wordInfo ? returnContent()
+            { Object.keys(wordInfo).length > 0 ? returnContent()
              : null }
         </div>
 
