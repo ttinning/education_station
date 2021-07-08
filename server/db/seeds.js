@@ -46,7 +46,7 @@ db.topics.insertMany([
     },
     {
         title: "instruments",
-        word_list: ["harp", "guitar", "violin", "piano", "banjo", "cello", "drums", "flute", "trumpets", "tuba"],
+        word_list: ["harp", "guitar", "violin", "piano", "banjo", "cello", "drums", "flute", "trumpet", "tuba"],
         background_image: ""
     }
 ])
