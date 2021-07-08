@@ -10,8 +10,11 @@ export const DefinitionDrop = ({word}) => {
             canDrop: monitor.canDrop(),
         }),
     }))
-
+    
     return (
-        <li className="dnd-definition" id={word.word} ref={drop} role={'DefinitionDrop'}>{word.definitions[0].definition}</li>
+        <div>
+            
+            { word.definitions ? <li className="dnd-definition" id={word.word} ref={drop} role={'DefinitionDrop'}>{word.definitions[0].definition}</li> : null}
+        </div>
     )
 };
