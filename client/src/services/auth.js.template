@@ -1,0 +1,6 @@
+const owlbotAuth = {
+    token: ['INSERT YOUR OWLBOT API KEY HERE']
+}
+const allTokens = owlbotAuth.token
+let randomToken = allTokens[Math.floor(Math.random() * allTokens.length)]
+export default randomToken;

@@ -1,0 +1,14 @@
+#progress-bar-wrapper{
+    width: 50%;
+    background-color: grey;
+    border: 3px solid black;
+    margin-right: 3rem;
+}
+
+#progress-bar-inner{
+    width: 10%; 
+    height:auto ;
+    background-color: green;
+    text-align: center;
+    line-height: 30px;
+}
